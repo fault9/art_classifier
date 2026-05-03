@@ -1,0 +1,44 @@
+========================================================================
+Arnheim Perceptual Dimension Analysis — Summary
+========================================================================
+
+Per-class mean scores (range approx. -1 to +1)
+
+Class                        Balance         Shape         Depth       Tension         Light         Color
+----------------------------------------------------------------------------------------------------------
+Renaissance                    0.882        -0.429         1.005        -0.124         1.169        -1.485
+Baroque                        0.507        -0.620         0.849         0.073         1.169        -1.626
+Impressionism                 -0.653        -1.327         0.086        -1.283        -0.961        -1.055
+Expressionism                 -0.680        -0.173        -0.238         0.353        -0.443        -0.317
+Cubism                        -0.985         0.568        -0.617         0.631        -0.798         0.425
+Abstract                      -1.072         0.845        -0.948         1.238        -0.847         0.974
+Surrealism                    -0.948         0.783        -0.664         1.144        -0.487         0.600
+Pop Art                       -0.833         0.751        -0.850         0.943        -0.885         0.992
+
+========================================================================
+Observations
+========================================================================
+
+Balance (High = symmetrical/centered composition, Low = asymmetrical/dynamic)
+  Highest: Renaissance            (+0.882)
+  Lowest:  Abstract               (-1.072)
+
+Shape (High = geometric/regular forms, Low = organic/fluid forms)
+  Highest: Abstract               (+0.845)
+  Lowest:  Impressionism          (-1.327)
+
+Depth (High = deep spatial recession, Low = flat/planar)
+  Highest: Renaissance            (+1.005)
+  Lowest:  Abstract               (-0.948)
+
+Tension (High = energetic/dynamic movement, Low = static/calm)
+  Highest: Abstract               (+1.238)
+  Lowest:  Impressionism          (-1.283)
+
+Light (High = dramatic contrast/chiaroscuro, Low = even/diffused light)
+  Highest: Renaissance            (+1.169)
+  Lowest:  Impressionism          (-0.961)
+
+Color (High = vivid/saturated, Low = muted/tonal)
+  Highest: Pop Art                (+0.992)
+  Lowest:  Baroque                (-1.626)

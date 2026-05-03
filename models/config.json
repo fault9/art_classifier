@@ -1,0 +1,15 @@
+{
+  "embedding_model": "openai/clip-vit-base-patch32",
+  "embedding_name": "CLIP",
+  "classifier": "MLP",
+  "classes": [
+    "Renaissance",
+    "Baroque",
+    "Impressionism",
+    "Expressionism",
+    "Cubism",
+    "Abstract",
+    "Surrealism",
+    "Pop Art"
+  ]
+}

@@ -1,0 +1,389 @@
+file_path,label,source,artist,title,year,source_url,wikiart_style,split
+data/images/Renaissance/andrea_mantegna_san_zeno_altarpiece.jpg,Renaissance,wikiart,Andrea Mantegna,San Zeno Altarpiece,1457,https://www.wikiart.org/en/andrea-mantegna/san-zeno-altarpiece,high-renaissance,test
+data/images/Renaissance/leonardo_da_vinci_study_of_an_old_man.jpg,Renaissance,wikiart,Leonardo da Vinci,Study of an Old Man,1480,https://www.wikiart.org/en/leonardo-da-vinci/study-of-an-old-man,high-renaissance,test
+data/images/Renaissance/vittore_carpaccio_saviour_blesses_the_four_apostles.jpg,Renaissance,wikiart,Vittore Carpaccio,Saviour blesses the four apostles,1480,https://www.wikiart.org/en/vittore-carpaccio/saviour-blesses-the-four-apostles,high-renaissance,test
+data/images/Renaissance/vittore_carpaccio_portrait_of_a_lady.jpg,Renaissance,wikiart,Vittore Carpaccio,Portrait of a lady,1485,https://www.wikiart.org/en/vittore-carpaccio/portrait-of-a-lady,high-renaissance,test
+data/images/Renaissance/leonardo_da_vinci_the_proportions_of_the_head.jpg,Renaissance,wikiart,Leonardo da Vinci,The proportions of the head,1490,https://www.wikiart.org/en/leonardo-da-vinci/the-proportions-of-the-head,high-renaissance,test
+data/images/Renaissance/leonardo_da_vinci_various_figure_studies.jpg,Renaissance,wikiart,Leonardo da Vinci,Various figure studies,1490,https://www.wikiart.org/en/leonardo-da-vinci/various-figure-studies,high-renaissance,test
+data/images/Renaissance/andrea_solario_portrait_of_a_young_man.jpg,Renaissance,wikiart,Andrea Solario,Portrait of a Young Man,1490,https://www.wikiart.org/en/andrea-solario/portrait-of-a-young-man-1490,high-renaissance,test
+data/images/Renaissance/giovanni_antonio_boltraffio_madonna_litta.jpg,Renaissance,wikiart,Giovanni Antonio Boltraffio,Madonna Litta,1490,https://www.wikiart.org/en/giovanni-antonio-boltraffio/madonna-litta-1490,high-renaissance,test
+data/images/Renaissance/filippino_lippi_saint_jerome.jpg,Renaissance,wikiart,Filippino Lippi,Saint Jerome,1490,https://www.wikiart.org/en/filippino-lippi/saint-jerome-1490,high-renaissance,test
+data/images/Renaissance/vittore_carpaccio_glorification_of_st__ursula_and_her_companions.jpg,Renaissance,wikiart,Vittore Carpaccio,Glorification of St. Ursula and her Companions,1491,https://www.wikiart.org/en/vittore-carpaccio/glorification-of-st-ursula-and-her-companions-1491,high-renaissance,test
+data/images/Renaissance/cima_da_conegliano_st__john_the_baptist_and_saints.jpg,Renaissance,wikiart,Cima da Conegliano,St. John the Baptist and Saints,1493,https://www.wikiart.org/en/cima-da-conegliano/st-john-the-baptist-and-saints-1493,high-renaissance,test
+data/images/Renaissance/luca_signorelli_virgin_and_child_with_sts_jerome_and_bernard_of_clairvaux.jpg,Renaissance,wikiart,Luca Signorelli,Virgin and Child with Sts Jerome and Bernard of Clairvaux,1492-1493,https://www.wikiart.org/en/luca-signorelli/virgin-and-child-with-sts-jerome-and-bernard-of-clairvaux-1493,high-renaissance,test
+data/images/Renaissance/andrea_mantegna_christ_the_redeemer.jpg,Renaissance,wikiart,Andrea Mantegna,Christ the Redeemer,1493,https://www.wikiart.org/en/andrea-mantegna/christ-the-redeemer-1493,high-renaissance,test
+data/images/Renaissance/leonardo_da_vinci_study_for_the_last_supper.jpg,Renaissance,wikiart,Leonardo da Vinci,Study for the Last Supper,1494,https://www.wikiart.org/en/leonardo-da-vinci/study-for-the-last-supper,high-renaissance,test
+data/images/Renaissance/vittore_carpaccio_the_miracle_of_the_relic_of_the_true_cross_on_the_rialto_bridg.jpg,Renaissance,wikiart,Vittore Carpaccio,The Miracle of the Relic of the True Cross on the Rialto Bridge,1494,https://www.wikiart.org/en/vittore-carpaccio/the-miracle-of-the-relic-of-the-true-cross-on-the-rialto-bridge-1494,high-renaissance,test
+data/images/Renaissance/leonardo_da_vinci_head_of_christ.jpg,Renaissance,wikiart,Leonardo da Vinci,Head of Christ,1495,https://www.wikiart.org/en/leonardo-da-vinci/head-of-christ,high-renaissance,test
+data/images/Renaissance/leonardo_da_vinci_study_for_the_last_supper__judas.jpg,Renaissance,wikiart,Leonardo da Vinci,Study for the Last Supper: Judas,1495,https://www.wikiart.org/en/leonardo-da-vinci/study-for-the-last-supper-judas,high-renaissance,test
+data/images/Renaissance/vittore_carpaccio_dream_of_st_ursula.jpg,Renaissance,wikiart,Vittore Carpaccio,Dream of St.Ursula,1495,https://www.wikiart.org/en/vittore-carpaccio/dream-of-st-ursula-1495,high-renaissance,test
+data/images/Renaissance/andrea_mantegna_hercules_and_antaeus.jpg,Renaissance,wikiart,Andrea Mantegna,Hercules and Antaeus,1495,https://www.wikiart.org/en/andrea-mantegna/heruli-and-ante-1495,high-renaissance,test
+data/images/Renaissance/giovanni_antonio_boltraffio_portrait_alleged_to_be_of_anne_whateley__in_fact_lik.jpg,Renaissance,wikiart,Giovanni Antonio Boltraffio,Portrait alleged to be of Anne Whateley (in fact likely to be Girolamo Casio),1495,https://www.wikiart.org/en/giovanni-antonio-boltraffio/portrait-alleged-to-be-of-anne-whateley-in-fact-likely-to-be-girolamo-casio-1495,high-renaissance,test
+data/images/Renaissance/filippino_lippi_sacra_famiglia_coi_ss__giovanni_battista_e_margherita__detail_.jpg,Renaissance,wikiart,Filippino Lippi,Sacra Famiglia coi Ss. Giovanni Battista e Margherita (detail),1495,https://www.wikiart.org/en/filippino-lippi/sacra-famiglia-coi-ss-giovanni-battista-e-margherita-detail-1495,high-renaissance,test
+data/images/Renaissance/pietro_perugino_the_crucifixion.jpg,Renaissance,wikiart,Pietro Perugino,The Crucifixion,1494-1496,https://www.wikiart.org/en/pietro-perugino/the-crucifixion-1496,high-renaissance,test
+data/images/Renaissance/andrea_mantegna_the_virgin_of_victory__the_madonna_and_child_enthroned_with_six_.jpg,Renaissance,wikiart,Andrea Mantegna,The Virgin of Victory (The Madonna and Child Enthroned with Six Saints and Adored by Gian Francesco II Gonzaga),1496,https://www.wikiart.org/en/andrea-mantegna/the-virgin-of-victory-the-madonna-and-child-enthroned-with-six-saints-and-adored-by-gian-1496,high-renaissance,test
+data/images/Renaissance/pietro_perugino_fortitude_and_temperance_with_six_antique_heroes.jpg,Renaissance,wikiart,Pietro Perugino,Fortitude and Temperance with Six Antique Heroes,1497,https://www.wikiart.org/en/pietro-perugino/fortitude-and-temperance-with-six-antique-heroes,high-renaissance,test
+data/images/Renaissance/pietro_perugino_pala_di_fano__nativity_of_mary_.jpg,Renaissance,wikiart,Pietro Perugino,Pala di Fano (Nativity of Mary),1497,https://www.wikiart.org/en/pietro-perugino/pala-di-fano-nativity-of-mary,high-renaissance,test
+data/images/Renaissance/cima_da_conegliano_madonna_and_child_with_saints.jpg,Renaissance,wikiart,Cima da Conegliano,Madonna and Child with saints,1497,https://www.wikiart.org/en/cima-da-conegliano/madonna-and-child-with-saints,high-renaissance,test
+data/images/Renaissance/pietro_perugino_st__benedict.jpg,Renaissance,wikiart,Pietro Perugino,St. Benedict,1495-1498,https://www.wikiart.org/en/pietro-perugino/st-benedict-1498,high-renaissance,test
+data/images/Renaissance/vittore_carpaccio_arrival_of_st_ursula_during_the_siege_of_cologne.jpg,Renaissance,wikiart,Vittore Carpaccio,Arrival of St.Ursula during the Siege of Cologne,1498,https://www.wikiart.org/en/vittore-carpaccio/arrival-of-st-ursula-during-the-siege-of-cologne-1498,high-renaissance,test
+data/images/Renaissance/vittore_carpaccio_the_arrival_of_the_english_ambassadors.jpg,Renaissance,wikiart,Vittore Carpaccio,The Arrival of the English Ambassadors,1498,https://www.wikiart.org/en/vittore-carpaccio/the-arrival-of-the-english-ambassadors-1498,high-renaissance,test
+data/images/Renaissance/vittore_carpaccio_the_meeting_of_etherius_and_ursula_and_the_departure_of_the_pi.jpg,Renaissance,wikiart,Vittore Carpaccio,The Meeting of Etherius and Ursula and the Departure of the Pilgrims,1498,https://www.wikiart.org/en/vittore-carpaccio/the-meeting-of-etherius-and-ursula-and-the-departure-of-the-pilgrims-1498,high-renaissance,test
+data/images/Renaissance/luca_signorelli_st__augustine_altarpiece__right_wing_.jpg,Renaissance,wikiart,Luca Signorelli,St. Augustine Altarpiece (right wing),1498,https://www.wikiart.org/en/luca-signorelli/st-augustine-altarpiece-right-wing,high-renaissance,test
+data/images/Renaissance/raphael_self_portrait.jpg,Renaissance,wikiart,Raphael,Self Portrait,1499,https://www.wikiart.org/en/raphael/self-portrait,high-renaissance,test
+data/images/Renaissance/giovanni_bellini_portrait_of_a_young_man.jpg,Renaissance,wikiart,Giovanni Bellini,Portrait of a Young Man,1500,https://www.wikiart.org/en/giovanni-bellini/portrait-of-a-young-man-1500,high-renaissance,test
+data/images/Renaissance/giovanni_bellini_sacred_allegory.jpg,Renaissance,wikiart,Giovanni Bellini,Sacred Allegory,1490-1500,https://www.wikiart.org/en/giovanni-bellini/sacred-allegory-1500,high-renaissance,test
+data/images/Renaissance/pietro_perugino_archangel_raphael_with_tobias.jpg,Renaissance,wikiart,Pietro Perugino,Archangel Raphael with Tobias,1496-1500,https://www.wikiart.org/en/pietro-perugino/archangel-raphael-with-tobias,high-renaissance,test
+data/images/Renaissance/pietro_perugino_nativity.jpg,Renaissance,wikiart,Pietro Perugino,Nativity,1496-1500,https://www.wikiart.org/en/pietro-perugino/nativity-1500,high-renaissance,test
+data/images/Renaissance/pietro_perugino_polyptych_of_st__peter__san_pietro_vincioli_.jpg,Renaissance,wikiart,Pietro Perugino,Polyptych of St. Peter (San Pietro Vincioli),1496-1500,https://www.wikiart.org/en/pietro-perugino/polyptych-of-st-peter-san-pietro-vincioli-1500,high-renaissance,test
+data/images/Renaissance/pietro_perugino_polyptych_of_st__peter__st__ercolano_.jpg,Renaissance,wikiart,Pietro Perugino,Polyptych of St. Peter (St. Ercolano),1496-1500,https://www.wikiart.org/en/pietro-perugino/polyptych-of-st-peter-st-ercolano-1500,high-renaissance,test
+data/images/Renaissance/pietro_perugino_polyptych_of_st__peter__eternal_blessing_with_cherubs_and_angels.jpg,Renaissance,wikiart,Pietro Perugino,Polyptych of St. Peter (Eternal Blessing with cherubs and angels),1496-1500,https://www.wikiart.org/en/pietro-perugino/polyptych-of-st-peter-eternal-blessing-with-cherubs-and-angels-1500,high-renaissance,test
+data/images/Renaissance/pietro_perugino_self_portrait.jpg,Renaissance,wikiart,Pietro Perugino,Self Portrait,1496-1500,https://www.wikiart.org/en/pietro-perugino/self-portrait-1500,high-renaissance,test
+data/images/Baroque/agostino_carracci_st__agatha__from_the_episode__holy_women_.jpg,Baroque,wikiart,Agostino Carracci,"St. Agatha, from the episode ""Holy Women""",1576-1578,https://www.wikiart.org/en/agostino-carracci/st-agatha-from-the-episode-holy-women-1578,baroque,test
+data/images/Baroque/frans_francken_the_younger_monkeys_playing_backgammon.jpg,Baroque,wikiart,Frans Francken the Younger,Monkeys playing backgammon,XVI cent.,https://www.wikiart.org/en/frans-francken-the-younger/monkeys-playing-backgammon,baroque,test
+data/images/Baroque/annibale_carracci_christ_wearing_the_crown_of_thorns__supported_by_angels.jpg,Baroque,wikiart,Annibale Carracci,"Christ Wearing the Crown of Thorns, Supported by Angels",1585-1587,https://www.wikiart.org/en/annibale-carracci/christ-wearing-the-crown-of-thorns-supported-by-angels-1587,baroque,test
+data/images/Baroque/annibale_carracci_man_with_monkey.jpg,Baroque,wikiart,Annibale Carracci,Man with Monkey,1590-1591,https://www.wikiart.org/en/annibale-carracci/man-with-monkey-1591,baroque,test
+data/images/Baroque/annibale_carracci_st__magdalene_in_the_desert.jpg,Baroque,wikiart,Annibale Carracci,St. Magdalene in the Desert,1591,https://www.wikiart.org/en/annibale-carracci/st-magdalene-in-the-desert-1591,baroque,test
+data/images/Baroque/paul_bril_landscape_with_a_marsh.jpg,Baroque,wikiart,Paul Bril,Landscape with a Marsh,1595,https://www.wikiart.org/en/paul-bril/landscape-with-a-marsh-1595,baroque,test
+data/images/Baroque/paul_bril_landscape_with_stag_hunt.jpg,Baroque,wikiart,Paul Bril,Landscape with Stag Hunt,1595,https://www.wikiart.org/en/paul-bril/landscape-with-stag-hunt-1595,baroque,test
+data/images/Baroque/paul_bril_landschaft_mit_sibyllentempel.jpg,Baroque,wikiart,Paul Bril,Landschaft mit Sibyllentempel,1595,https://www.wikiart.org/en/paul-bril/landschaft-mit-sibyllentempel-1595,baroque,test
+data/images/Baroque/caravaggio_boy_bitten_by_a_lizard.jpg,Baroque,wikiart,Caravaggio,Boy Bitten by a Lizard,1596,https://www.wikiart.org/en/caravaggio/boy-bitten-by-a-lizard,baroque,test
+data/images/Baroque/annibale_carracci_mocking_of_christ.jpg,Baroque,wikiart,Annibale Carracci,Mocking of Christ,1596,https://www.wikiart.org/en/annibale-carracci/mocking-of-christ,baroque,test
+data/images/Baroque/caravaggio_medusa.jpg,Baroque,wikiart,Caravaggio,Medusa,1597,https://www.wikiart.org/en/caravaggio/medusa-1597-1,baroque,test
+data/images/Baroque/caravaggio_rest_on_the_flight_into_egypt.jpg,Baroque,wikiart,Caravaggio,Rest on the Flight into Egypt,1597,https://www.wikiart.org/en/caravaggio/rest-on-the-flight-into-egypt,baroque,test
+data/images/Baroque/guido_reni_rosary_madonna.jpg,Baroque,wikiart,Guido Reni,Rosary Madonna,1598,https://www.wikiart.org/en/guido-reni/rosary-madonna-1598,baroque,test
+data/images/Baroque/adam_elsheimer_jacob_s_dream.jpg,Baroque,wikiart,Adam Elsheimer,Jacob's Dream,1598,https://www.wikiart.org/en/adam-elsheimer/jacobs-dream-1598,baroque,test
+data/images/Baroque/agostino_carracci_landscape_with_bathers.jpg,Baroque,wikiart,Agostino Carracci,Landscape with Bathers,1597-1599,https://www.wikiart.org/en/agostino-carracci/landscape-with-bathers-1599,baroque,test
+data/images/Baroque/paul_bril_mountain_scene.jpg,Baroque,wikiart,Paul Bril,Mountain Scene,1599,https://www.wikiart.org/en/paul-bril/mountain-scene-1599,baroque,test
+data/images/Baroque/adam_elsheimer_the_holy_family_with_the_infant_john_the_baptist_and_angels.jpg,Baroque,wikiart,Adam Elsheimer,The Holy Family with the Infant John the Baptist and Angels,1599,https://www.wikiart.org/en/adam-elsheimer/the-holy-family-with-the-infant-john-the-baptist-and-angels-1599,baroque,test
+data/images/Baroque/annibale_carracci_portrait_of_giovanni_gabrieli_with_the_lute.jpg,Baroque,wikiart,Annibale Carracci,Portrait of Giovanni Gabrieli with the lute,1600,https://www.wikiart.org/en/annibale-carracci/portrait-of-giovanni-gabrieli-with-the-lute,baroque,test
+data/images/Baroque/frans_snyders_vegetable_still_life.jpg,Baroque,wikiart,Frans Snyders,Vegetable Still Life,1600,https://www.wikiart.org/en/frans-snyders/vegetable-still-life,baroque,test
+data/images/Baroque/agostino_carracci_venus_and_mars.jpg,Baroque,wikiart,Agostino Carracci,Venus and Mars,1600,https://www.wikiart.org/en/agostino-carracci/venus-and-mars-1600,baroque,test
+data/images/Baroque/paul_bril_ruins_and_figures.jpg,Baroque,wikiart,Paul Bril,Ruins and Figures,1600,https://www.wikiart.org/en/paul-bril/ruins-and-figures-1600,baroque,test
+data/images/Baroque/georges_lallemand_la_sainte_famille.jpg,Baroque,wikiart,Georges Lallemand,La Sainte Famille,1600,https://www.wikiart.org/en/georges-lallemand/la-sainte-famille-1600,baroque,test
+data/images/Baroque/adam_elsheimer_st__paul_at_malta.jpg,Baroque,wikiart,Adam Elsheimer,St. Paul at Malta,1600,https://www.wikiart.org/en/adam-elsheimer/st-paul-at-malta-1600,baroque,test
+data/images/Baroque/giulio_cesare_procaccini_self_portrait.jpg,Baroque,wikiart,Giulio Cesare Procaccini,Self Portrait,1600,https://www.wikiart.org/en/giulio-cesare-procaccini/self-portrait-1600,baroque,test
+data/images/Baroque/giulio_cesare_procaccini_mary_magdalen_with_saint_john_the_baptist_and_an_angel.jpg,Baroque,wikiart,Giulio Cesare Procaccini,Mary Magdalen with Saint John the Baptist and An Angel,1600,https://www.wikiart.org/en/giulio-cesare-procaccini/mary-magdalen-with-saint-john-the-baptist-and-an-angel-1600,baroque,test
+data/images/Baroque/adam_elsheimer_saint_lawrence_prepared_for_martyrdom.jpg,Baroque,wikiart,Adam Elsheimer,Saint Lawrence Prepared for Martyrdom,1601,https://www.wikiart.org/en/adam-elsheimer/saint-lawrence-prepared-for-martyrdom-1601,baroque,test
+data/images/Baroque/caravaggio_taking_of_christ.jpg,Baroque,wikiart,Caravaggio,Taking of Christ,1602,https://www.wikiart.org/en/caravaggio/taking-of-christ-1602,baroque,test
+data/images/Baroque/peter_paul_rubens_self-portrait_in_a_circle_of_friends_from_mantua.jpg,Baroque,wikiart,Peter Paul Rubens,Self-Portrait in a Circle of Friends from Mantua,1602,https://www.wikiart.org/en/peter-paul-rubens/self-portrait-in-a-circle-of-friends-from-mantua-1602,baroque,test
+data/images/Baroque/hendrick_cornelisz_vroom_attack_on_spanish_treasure_galleys__portugal.jpg,Baroque,wikiart,Hendrick Cornelisz Vroom,"Attack on Spanish Treasure Galleys, Portugal",1602,https://www.wikiart.org/en/hendrick-cornelisz-vroom/attack-on-spanish-treasure-galleys-portugal-1602,baroque,test
+data/images/Baroque/agostino_carracci_hercules_and_deianira.jpg,Baroque,wikiart,Agostino Carracci,Hercules and Deianira,XVI-XVII cent.,https://www.wikiart.org/en/agostino-carracci/hercules-and-deianira,baroque,test
+data/images/Baroque/agostino_carracci_religion_of_priapus.jpg,Baroque,wikiart,Agostino Carracci,Religion of Priapus,XVI-XVII cent.,https://www.wikiart.org/en/agostino-carracci/religion-of-priapus,baroque,test
+data/images/Baroque/agostino_carracci_the_flood.jpg,Baroque,wikiart,Agostino Carracci,The Flood,XVI-XVII cent.,https://www.wikiart.org/en/agostino-carracci/the-flood,baroque,test
+data/images/Baroque/caravaggio_holy_family_with_st__john_the_baptist.jpg,Baroque,wikiart,Caravaggio,Holy Family with St. John the Baptist,1603,https://www.wikiart.org/en/caravaggio/holy-family-with-st-john-the-baptist,baroque,test
+data/images/Baroque/caravaggio_still_life_with_fruit.jpg,Baroque,wikiart,Caravaggio,Still Life with Fruit,1603,https://www.wikiart.org/en/caravaggio/not-identified-1,baroque,test
+data/images/Baroque/peter_paul_rubens_democritus.jpg,Baroque,wikiart,Peter Paul Rubens,Democritus,1603,https://www.wikiart.org/en/peter-paul-rubens/democritus-1603,baroque,test
+data/images/Baroque/peter_paul_rubens_study_for_an_equestrian_portrait_of_the_duke_of_lerma.jpg,Baroque,wikiart,Peter Paul Rubens,Study for an Equestrian Portrait of the Duke of Lerma,1603,https://www.wikiart.org/en/peter-paul-rubens/study-for-an-equestrian-portrait-of-the-duke-of-lerma-1603,baroque,test
+data/images/Baroque/annibale_carracci_the_flight_into_egypt.jpg,Baroque,wikiart,Annibale Carracci,The Flight into Egypt,1603,https://www.wikiart.org/en/annibale-carracci/the-flight-into-egypt,baroque,test
+data/images/Baroque/annibale_carracci_the_martyrdom_of_st_stephen.jpg,Baroque,wikiart,Annibale Carracci,The Martyrdom of St Stephen,1603,https://www.wikiart.org/en/annibale-carracci/the-martyrdom-of-st-stephen-1603,baroque,test
+data/images/Baroque/maarten_de_vos_st__thomas.jpg,Baroque,wikiart,Maarten de Vos,St. Thomas,XVI-XVII cent.,https://www.wikiart.org/en/maarten-de-vos/st-thomas,baroque,test
+data/images/Baroque/peter_paul_rubens_allegory_on_emperor_charles_as_ruler_of_vast_realms.jpg,Baroque,wikiart,Peter Paul Rubens,Allegory on Emperor Charles as Ruler of Vast Realms,1604,https://www.wikiart.org/en/peter-paul-rubens/allegory-on-emperor-charles-as-ruler-of-vast-realms-1604,baroque,test
+data/images/Impressionism/j_m_w__turner_the_lake__petworth__sunset__sample_study.jpg,Impressionism,wikiart,J.M.W. Turner,"The Lake, Petworth, Sunset; Sample Study",1827-1828,https://www.wikiart.org/en/william-turner/the-lake-petworth-sunset-sample-study-1828,impressionism,test
+data/images/Impressionism/edgar_degas_landscape_at_valery-sur-somme.jpg,Impressionism,wikiart,Edgar Degas,Landscape at Valery-sur-Somme,1854,https://www.wikiart.org/en/edgar-degas/landscape-at-valery-sur-somme,impressionism,test
+data/images/Impressionism/edgar_degas_the_millinery_shop.jpg,Impressionism,wikiart,Edgar Degas,The Millinery Shop,1855,https://www.wikiart.org/en/edgar-degas/the-millinery-shop-1855,impressionism,test
+data/images/Impressionism/mart_n_rico_y_ortega_the_covadonga_cave.jpg,Impressionism,wikiart,Martín Rico y Ortega,The Covadonga Cave,1857,https://www.wikiart.org/en/martin-rico/la-cueva-de-covadonga-1857,impressionism,test
+data/images/Impressionism/edgar_degas_self_portrait_in_a_soft_hat.jpg,Impressionism,wikiart,Edgar Degas,Self Portrait in a Soft Hat,1858,https://www.wikiart.org/en/edgar-degas/self-portrait-in-a-soft-hat-1858,impressionism,test
+data/images/Impressionism/mart_n_rico_y_ortega_cross_of_the_gallows_in_el_escorial.jpg,Impressionism,wikiart,Martín Rico y Ortega,Cross of the Gallows in El Escorial,1858,https://www.wikiart.org/en/martin-rico/cruz-de-la-horca-en-el-escorial-1858,impressionism,test
+data/images/Impressionism/edgar_degas_the_daughter_of_jephtha__study_.jpg,Impressionism,wikiart,Edgar Degas,The Daughter of Jephtha (study),1859-1860,https://www.wikiart.org/en/edgar-degas/the-daughter-of-jephtha-study-1860,impressionism,test
+data/images/Impressionism/edgar_degas_at_the_stables__horse_and_dog.jpg,Impressionism,wikiart,Edgar Degas,"At the Stables, Horse and Dog",1861,https://www.wikiart.org/en/edgar-degas/at-the-stables-horse-and-dog,impressionism,test
+data/images/Impressionism/edouard_manet_music_in_the_tuileries_garden.jpg,Impressionism,wikiart,Edouard Manet,Music in the Tuileries Garden,1862,https://www.wikiart.org/en/edouard-manet/music-in-the-tuileries-garden-1862-1,impressionism,test
+data/images/Impressionism/edgar_degas_little_girl_carrying_flowers_in_her_apron.jpg,Impressionism,wikiart,Edgar Degas,Little Girl Carrying Flowers in Her Apron,1860-1862,https://www.wikiart.org/en/edgar-degas/little-girl-carrying-flowers-in-her-apron,impressionism,test
+data/images/Impressionism/edgar_degas_on_the_racecourse.jpg,Impressionism,wikiart,Edgar Degas,On the Racecourse,1860-1862,https://www.wikiart.org/en/edgar-degas/on-the-racecourse,impressionism,test
+data/images/Impressionism/james_mcneill_whistler_the_last_of_old_westminster.jpg,Impressionism,wikiart,James McNeill Whistler,The Last of Old Westminster,1862,https://www.wikiart.org/en/james-mcneill-whistler/the-last-of-old-westminster,impressionism,test
+data/images/Impressionism/edgar_degas_therese_de_gas__sister_of_the_artist__later_madame_edmond_morbilli.jpg,Impressionism,wikiart,Edgar Degas,"Therese de Gas, sister of the artist, later Madame Edmond Morbilli",1863,https://www.wikiart.org/en/edgar-degas/therese-de-gas-sister-of-the-artist-later-madame-edmond-morbilli,impressionism,test
+data/images/Impressionism/james_mcneill_whistler_battersea_reach.jpg,Impressionism,wikiart,James McNeill Whistler,Battersea Reach,1863,https://www.wikiart.org/en/james-mcneill-whistler/battersea-reach,impressionism,test
+data/images/Impressionism/claude_monet_the_coast_at_sainte-adresse.jpg,Impressionism,wikiart,Claude Monet,The Coast at Sainte-Adresse,1864,https://www.wikiart.org/en/claude-monet/the-coast-at-sainte-adresse,impressionism,test
+data/images/Impressionism/pierre-auguste_renoir_arum_and_conservatory_plants.jpg,Impressionism,wikiart,Pierre-Auguste Renoir,Arum and Conservatory Plants,1864,https://www.wikiart.org/en/pierre-auguste-renoir/arum-and-conservatory-plants-1864,impressionism,test
+data/images/Impressionism/frederic_bazille_the_dog_rita_asleep.jpg,Impressionism,wikiart,Frederic Bazille,The Dog Rita Asleep,1864,https://www.wikiart.org/en/frederic-bazille/the-dog-rita-asleep,impressionism,test
+data/images/Impressionism/johan_jongkind_view_of_notre-dame__paris.jpg,Impressionism,wikiart,Johan Jongkind,"View of Notre-Dame, Paris",1864,https://www.wikiart.org/en/johan-jongkind/view-of-notre-dame-paris-1864,impressionism,test
+data/images/Impressionism/claude_monet_farmyard_at_chailly.jpg,Impressionism,wikiart,Claude Monet,Farmyard at Chailly,1865,https://www.wikiart.org/en/claude-monet/farmyard-at-chailly,impressionism,test
+data/images/Impressionism/claude_monet_fontainebleau_forest.jpg,Impressionism,wikiart,Claude Monet,Fontainebleau Forest,1865,https://www.wikiart.org/en/claude-monet/fontainebleau-forest,impressionism,test
+data/images/Impressionism/claude_monet_the_pave_de_chailly_in_the_forest.jpg,Impressionism,wikiart,Claude Monet,The Pave de Chailly in the Forest,1865,https://www.wikiart.org/en/claude-monet/the-pave-de-chailly-in-the-forest,impressionism,test
+data/images/Impressionism/claude_monet_victor_jacquemont_holding_a_parasol.jpg,Impressionism,wikiart,Claude Monet,Victor Jacquemont Holding a Parasol,1865,https://www.wikiart.org/en/claude-monet/victor-jacquemont-holding-a-parasol,impressionism,test
+data/images/Impressionism/claude_monet_wooded_path.jpg,Impressionism,wikiart,Claude Monet,Wooded Path,1865,https://www.wikiart.org/en/claude-monet/wooded-path-1865,impressionism,test
+data/images/Impressionism/edgar_degas_estelle_musson_balfour.jpg,Impressionism,wikiart,Edgar Degas,Estelle Musson Balfour,1865,https://www.wikiart.org/en/edgar-degas/estelle-musson-balfour,impressionism,test
+data/images/Impressionism/james_mcneill_whistler_the_princess_from_the_land_of_porcelain.jpg,Impressionism,wikiart,James McNeill Whistler,The Princess from the Land of Porcelain,1863-1865,https://www.wikiart.org/en/james-mcneill-whistler/the-princess-from-the-land-of-porcelain-1865,impressionism,test
+data/images/Impressionism/berthe_morisot_thatched_cottage_in_normandy.jpg,Impressionism,wikiart,Berthe Morisot,Thatched Cottage in Normandy,1865,https://www.wikiart.org/en/berthe-morisot/thatched-cottage-in-normandy,impressionism,test
+data/images/Impressionism/frederic_bazille_village_street.jpg,Impressionism,wikiart,Frederic Bazille,Village Street,1865,https://www.wikiart.org/en/frederic-bazille/village-street,impressionism,test
+data/images/Impressionism/johan_jongkind_honfleur.jpg,Impressionism,wikiart,Johan Jongkind,Honfleur,1865,https://www.wikiart.org/en/johan-jongkind/honfleur-1865,impressionism,test
+data/images/Impressionism/johan_jongkind_winter_scene_in_holland.jpg,Impressionism,wikiart,Johan Jongkind,Winter Scene in Holland,1865,https://www.wikiart.org/en/johan-jongkind/winter-scene-in-holland-1865,impressionism,test
+data/images/Impressionism/johan_jongkind_le_boulevard_jourdan__paris.jpg,Impressionism,wikiart,Johan Jongkind,"Le Boulevard Jourdan, Paris",1865,https://www.wikiart.org/en/johan-jongkind/le-boulevard-jourdan-paris-1865,impressionism,test
+data/images/Impressionism/claude_monet_sailboats.jpg,Impressionism,wikiart,Claude Monet,Sailboats,1864-1866,https://www.wikiart.org/en/claude-monet/sailboats-1866,impressionism,test
+data/images/Impressionism/claude_monet_sailing_boats_at_honfleur.jpg,Impressionism,wikiart,Claude Monet,Sailing Boats at Honfleur,1866,https://www.wikiart.org/en/claude-monet/sailing-boats-at-honfleur,impressionism,test
+data/images/Impressionism/claude_monet_seascape__night_effect.jpg,Impressionism,wikiart,Claude Monet,"Seascape, Night Effect",1866,https://www.wikiart.org/en/claude-monet/seascape-night-effect,impressionism,test
+data/images/Impressionism/claude_monet_the_beach_at_honfleur.jpg,Impressionism,wikiart,Claude Monet,The Beach at Honfleur,1864-1866,https://www.wikiart.org/en/claude-monet/the-beach-at-honfleux,impressionism,test
+data/images/Impressionism/claude_monet_the_green_wave.jpg,Impressionism,wikiart,Claude Monet,The Green Wave,1866,https://www.wikiart.org/en/claude-monet/the-green-wave,impressionism,test
+data/images/Impressionism/claude_monet_women_in_the_garden.jpg,Impressionism,wikiart,Claude Monet,Women in the garden,1866,https://www.wikiart.org/en/claude-monet/women-in-the-garden,impressionism,test
+data/images/Impressionism/edgar_degas_exit_from_weighing.jpg,Impressionism,wikiart,Edgar Degas,Exit from Weighing,1866,https://www.wikiart.org/en/edgar-degas/exit-from-weighing-1866,impressionism,test
+data/images/Impressionism/edgar_degas_portrait_of_a_man.jpg,Impressionism,wikiart,Edgar Degas,Portrait of a Man,1866,https://www.wikiart.org/en/edgar-degas/portrait-of-a-man,impressionism,test
+data/images/Impressionism/giovanni_fattori_the_rotunda_of_the_palmieri_baths.jpg,Impressionism,wikiart,Giovanni Fattori,The rotunda of the Palmieri baths,1866,https://www.wikiart.org/en/giovanni-fattori/la-rotonda-di-palmieri-1866,impressionism,test
+data/images/Impressionism/claude_monet_regatta_at_sainte-adresse.jpg,Impressionism,wikiart,Claude Monet,Regatta at Sainte-Adresse,1867,https://www.wikiart.org/en/claude-monet/regatta-at-sainte-adresse,impressionism,test
+data/images/Expressionism/edvard_munch_writer_hans_jaeger.jpg,Expressionism,wikiart,Edvard Munch,Writer Hans Jaeger,1889,https://www.wikiart.org/en/edvard-munch/writer-hans-jaeger-1889,expressionism,test
+data/images/Expressionism/edvard_munch_night.jpg,Expressionism,wikiart,Edvard Munch,Night,1890,https://www.wikiart.org/en/edvard-munch/night-1890,expressionism,test
+data/images/Expressionism/edvard_munch_tavern_in_st__cloud.jpg,Expressionism,wikiart,Edvard Munch,Tavern in St. Cloud,1890,https://www.wikiart.org/en/edvard-munch/tavern-in-st-cloud-1890,expressionism,test
+data/images/Expressionism/albin_egger-lienz_das_tor.jpg,Expressionism,wikiart,Albin Egger-Lienz,Das Tor,1890,https://www.wikiart.org/en/albin-egger-lienz/das-tor-1890,expressionism,test
+data/images/Expressionism/albin_egger-lienz_the_portrait_painter_in_the_country.jpg,Expressionism,wikiart,Albin Egger-Lienz,The portrait painter in the country,1891,https://www.wikiart.org/en/albin-egger-lienz/vermittlung-prof-dr-rudolf-leopold,expressionism,test
+data/images/Expressionism/edvard_munch_melancholy.jpg,Expressionism,wikiart,Edvard Munch,Melancholy,1892,https://www.wikiart.org/en/edvard-munch/melancholy-1892,expressionism,test
+data/images/Expressionism/edvard_munch_the_painter_jacob_bratland.jpg,Expressionism,wikiart,Edvard Munch,The Painter Jacob Bratland,1891-1892,https://www.wikiart.org/en/edvard-munch/the-painter-jacob-bratland-1892,expressionism,test
+data/images/Expressionism/edvard_munch_the_day_after.jpg,Expressionism,wikiart,Edvard Munch,The Day After,1894-1895,https://www.wikiart.org/en/edvard-munch/the-day-after-1895,expressionism,test
+data/images/Expressionism/kees_van_dongen_self-portrait.jpg,Expressionism,wikiart,Kees van Dongen,Self-Portrait,1895,https://www.wikiart.org/en/kees-van-dongen/self-portrait-1895,expressionism,test
+data/images/Expressionism/edvard_munch_the_sick_child_ii.jpg,Expressionism,wikiart,Edvard Munch,The Sick Child II,1896,https://www.wikiart.org/en/edvard-munch/the-sick-child-ii-1896,expressionism,test
+data/images/Expressionism/laszlo_mednyanszky_head_of_a_tramp.jpg,Expressionism,wikiart,Laszlo Mednyanszky,Head of a Tramp,1896,https://www.wikiart.org/en/laszlo-mednyanszky/head-of-a-tramp-1896,expressionism,test
+data/images/Expressionism/kathe_kollwitz_revolt__by_the_gates_of_a_park_.jpg,Expressionism,wikiart,Kathe Kollwitz,Revolt (By the Gates of a Park),1897,https://www.wikiart.org/en/kathe-kollwitz/revolt-by-the-gates-of-a-park-1897,expressionism,test
+data/images/Expressionism/kathe_kollwitz_the_march_of_the_weavers_in_berlin.jpg,Expressionism,wikiart,Kathe Kollwitz,The March of the Weavers in Berlin,1897,https://www.wikiart.org/en/kathe-kollwitz/the-march-of-the-weavers-in-berlin-1897,expressionism,test
+data/images/Expressionism/edvard_munch_man_and_woman.jpg,Expressionism,wikiart,Edvard Munch,Man and Woman,1898,https://www.wikiart.org/en/edvard-munch/man-and-woman-1898,expressionism,test
+data/images/Expressionism/filipp_malyavin_portrait_of_daria_ivanovna_tatarintseva.jpg,Expressionism,wikiart,Filipp Malyavin,Portrait of Daria Ivanovna Tatarintseva,1898,https://www.wikiart.org/en/filipp-malyavin/portrait-of-daria-ivanovna-tatarintseva-1898,expressionism,test
+data/images/Expressionism/stanis_aw_wyspia_ski_lucjan_rydel.jpg,Expressionism,wikiart,Stanisław Wyspiański,Lucjan Rydel,1898,https://www.wikiart.org/en/stanislaw-wyspianski/wyspianski-lucjan-rydel-1898,expressionism,test
+data/images/Expressionism/pablo_picasso_la_chata.jpg,Expressionism,wikiart,Pablo Picasso,La chata,1899,https://www.wikiart.org/en/pablo-picasso/la-chata-1899,expressionism,test
+data/images/Expressionism/laszlo_mednyanszky_in_the_tavern.jpg,Expressionism,wikiart,Laszlo Mednyanszky,In the Tavern,1899,https://www.wikiart.org/en/laszlo-mednyanszky/in-the-tavern-1899,expressionism,test
+data/images/Cubism/paul_cezanne_study_of_bathers.jpg,Cubism,wikiart,Paul Cezanne,Study of Bathers,1898,https://www.wikiart.org/en/paul-cezanne/study-of-bathers,cubism,test
+data/images/Cubism/paul_cezanne_in_the_park_of_chateau_noir.jpg,Cubism,wikiart,Paul Cezanne,In the Park of Chateau Noir,1900,https://www.wikiart.org/en/paul-cezanne/in-the-park-of-chateau-noir-1900,cubism,test
+data/images/Cubism/c__r__w__nevinson_the_weir__charenton.jpg,Cubism,wikiart,C. R. W. Nevinson,"The Weir, Charenton",1900,https://www.wikiart.org/en/c-r-w-nevinson/the-weir-charenton-1900,cubism,test
+data/images/Cubism/paul_cezanne_still_life_with_three_skulls.jpg,Cubism,wikiart,Paul Cezanne,Still life with three skulls,1903,https://www.wikiart.org/en/paul-cezanne/still-life-with-three-skulls,cubism,test
+data/images/Cubism/andre_derain_baker_s_hotel.jpg,Cubism,wikiart,Andre Derain,Baker's hotel,1904,https://www.wikiart.org/en/andre-derain/baker-s-hotel,cubism,test
+data/images/Abstract/hilma_af_klint_the_large_figure_paintings__nr_5.jpg,Abstract,wikiart,Hilma af Klint,"The Large Figure Paintings, nr 5",1907,https://www.wikiart.org/en/hilma-af-klint/the-large-figure-paintings-nr-5-1907,abstract-expressionism,test
+data/images/Abstract/jasper_johns_scent.jpg,Abstract,wikiart,Jasper Johns,Scent,XX cent.,https://www.wikiart.org/en/jasper-johns/scent,abstract-expressionism,test
+data/images/Abstract/alphonse_allais_first_communion_of_anaemic_young_girls_in_the_snow.jpg,Abstract,wikiart,Alphonse Allais,First Communion of Anaemic Young Girls in the Snow,1883,https://www.wikiart.org/en/alphonse-allais/first-communion-of-anaemic-young-girls-in-the-snow,abstract-art,test
+data/images/Abstract/alphonse_allais_negroes_fighting_in_a_tunnel_by_night.jpg,Abstract,wikiart,Alphonse Allais,Negroes Fighting in a Tunnel by Night,1884,https://www.wikiart.org/en/alphonse-allais/negroes-fighting-in-a-tunnel-by-night,abstract-art,test
+data/images/Abstract/alphonse_allais_some_pimps__known_as_green_backs__on_their_bellies_in_the_grass_.jpg,Abstract,wikiart,Alphonse Allais,"Some Pimps, Known as Green Backs, on their Bellies in the Grass, Drinking Absinthe",1884,https://www.wikiart.org/en/alphonse-allais/some-pimps-known-as-green-backs-on-their-bellies-in-the-grass-drinking-absinthe,abstract-art,test
+data/images/Abstract/wassily_kandinsky_an_angel_of_the_last_judgement.jpg,Abstract,wikiart,Wassily Kandinsky,An angel of the Last Judgement,1911,https://www.wikiart.org/en/wassily-kandinsky/an-angel-of-the-last-judgement-1911,abstract-art,test
+data/images/Abstract/wassily_kandinsky_improvisation__dreamy_.jpg,Abstract,wikiart,Wassily Kandinsky,Improvisation (Dreamy),1913,https://www.wikiart.org/en/wassily-kandinsky/improvisation-dreamy-1913,abstract-art,test
+data/images/Surrealism/man_ray_invention.jpg,Surrealism,wikiart,Man Ray,Invention,1916,https://www.wikiart.org/en/man-ray/invention,surrealism,test
+data/images/Surrealism/paul_klee_asian_entertainers.jpg,Surrealism,wikiart,Paul Klee,Asian entertainers,1919,https://www.wikiart.org/en/paul-klee/asian-entertainers-1919,surrealism,test
+data/images/Surrealism/pablo_picasso_birds_of_a_feather.jpg,Surrealism,wikiart,Pablo Picasso,Birds of a Feather,1920,https://www.wikiart.org/en/pablo-picasso/birds-of-a-feather-1920,surrealism,test
+data/images/Surrealism/xul_solar_reptil_que_sube.jpg,Surrealism,wikiart,Xul Solar,Reptil que sube,1920,https://www.wikiart.org/en/xul-solar/reptil-que-sube-1920,surrealism,test
+data/images/Surrealism/m_c__escher_paradise.jpg,Surrealism,wikiart,M.C. Escher,Paradise,1921,https://www.wikiart.org/en/m-c-escher/paradise,surrealism,test
+data/images/Surrealism/paul_klee_analysis_of_diverse_perversities.jpg,Surrealism,wikiart,Paul Klee,Analysis of diverse perversities,1922,https://www.wikiart.org/en/paul-klee/analysis-of-diverse-perversities-1922,surrealism,test
+data/images/Pop Art/will_barnet_mother_and_child.jpg,Pop Art,wikiart,Will Barnet,Mother and child,XX cent.,https://www.wikiart.org/en/will-barnet/mother-and-child,pop-art,test
+data/images/Pop Art/will_barnet_woman_on_tree_with_cat.jpg,Pop Art,wikiart,Will Barnet,Woman on Tree With Cat,XX cent.,https://www.wikiart.org/en/will-barnet/woman-on-tree-with-cat,pop-art,test
+data/images/Pop Art/alex_katz_a_tree_in_winter.jpg,Pop Art,wikiart,Alex Katz,A Tree In Winter,XX cent.,https://www.wikiart.org/en/alex-katz/a-tree-in-winter,pop-art,test
+data/images/Pop Art/alex_katz_a_window_in_a_building.jpg,Pop Art,wikiart,Alex Katz,A Window In A Building,XX cent.,https://www.wikiart.org/en/alex-katz/a-window-in-a-building,pop-art,test
+data/images/Pop Art/alex_katz_ada_in_front_of_black_brook.jpg,Pop Art,wikiart,Alex Katz,Ada In Front Of Black Brook,XX cent.,https://www.wikiart.org/en/alex-katz/ada-in-front-of-black-brook,pop-art,test
+data/images/Pop Art/alex_katz_ada_in_white_dress.jpg,Pop Art,wikiart,Alex Katz,Ada in White Dress,XX cent.,https://www.wikiart.org/en/alex-katz/ada-in-white-dress,pop-art,test
+data/images/Pop Art/alex_katz_ada_with_bathing_cap.jpg,Pop Art,wikiart,Alex Katz,Ada With Bathing Cap,XX cent.,https://www.wikiart.org/en/alex-katz/ada-with-bathing-cap,pop-art,test
+data/images/Pop Art/alex_katz_ada_with_flowers.jpg,Pop Art,wikiart,Alex Katz,Ada with Flowers,XX cent.,https://www.wikiart.org/en/alex-katz/ada-with-flowers,pop-art,test
+data/images/Pop Art/alex_katz_good_afternoon.jpg,Pop Art,wikiart,Alex Katz,Good Afternoon,XX cent.,https://www.wikiart.org/en/alex-katz/good-afternoon,pop-art,test
+data/images/Pop Art/alex_katz_hiroshi_and_marcia.jpg,Pop Art,wikiart,Alex Katz,Hiroshi and Marcia,XX cent.,https://www.wikiart.org/en/alex-katz/hiroshi-and-marcia,pop-art,test
+data/images/Pop Art/alex_katz_jacob.jpg,Pop Art,wikiart,Alex Katz,Jacob,XX cent.,https://www.wikiart.org/en/alex-katz/jacob,pop-art,test
+data/images/Pop Art/alex_katz_pamela_and_sylvie.jpg,Pop Art,wikiart,Alex Katz,Pamela and Sylvie,XX cent.,https://www.wikiart.org/en/alex-katz/pamela-and-sylvie,pop-art,test
+data/images/Pop Art/alex_katz_roger_and_sophie.jpg,Pop Art,wikiart,Alex Katz,Roger and Sophie,XX cent.,https://www.wikiart.org/en/alex-katz/roger-and-sophie,pop-art,test
+data/images/Pop Art/alex_katz_roof_garden.jpg,Pop Art,wikiart,Alex Katz,Roof Garden,XX cent.,https://www.wikiart.org/en/alex-katz/roof-garden,pop-art,test
+data/images/Pop Art/alex_katz_sunny.jpg,Pop Art,wikiart,Alex Katz,Sunny,XX cent.,https://www.wikiart.org/en/alex-katz/sunny,pop-art,test
+data/images/Pop Art/alex_katz_the_red_smile.jpg,Pop Art,wikiart,Alex Katz,The Red Smile,XX cent.,https://www.wikiart.org/en/alex-katz/the-red-smile,pop-art,test
+data/images/Pop Art/jasper_johns_flag_above_white.jpg,Pop Art,wikiart,Jasper Johns,Flag Above White,XX cent.,https://www.wikiart.org/en/jasper-johns/flag-above-white,pop-art,test
+data/images/Pop Art/samuel_buri_greti.jpg,Pop Art,wikiart,Samuel Buri,Greti,XX cent.,https://www.wikiart.org/en/samuel-buri/greti,pop-art,test
+data/images/Pop Art/ivan_eyre_field_point_77_100.jpg,Pop Art,wikiart,Ivan Eyre,Field Point 77/100,XX cent.,https://www.wikiart.org/en/ivan-eyre/field-point-77-100,pop-art,test
+data/images/Pop Art/gerard_fromanger_bleu_azural.jpg,Pop Art,wikiart,Gerard Fromanger,Bleu Azural,XX cent.,https://www.wikiart.org/en/gerard-fromanger/bleu-azural,pop-art,test
+data/images/Pop Art/jose_de_guimaraes_pra_a_25_de_abril__lisboa.jpg,Pop Art,wikiart,Jose de Guimaraes,"Praça 25 de Abril, Lisboa",XX cent.,https://www.wikiart.org/en/jose-de-guimaraes/pra-a-25-de-abril-lisboa,pop-art,test
+data/images/Pop Art/hiro_yamagata_tower_at_dusk.jpg,Pop Art,wikiart,Hiro Yamagata,Tower at Dusk,XX cent.,https://www.wikiart.org/en/hiro-yamagata/not-detected-272393,pop-art,test
+data/images/Pop Art/hiro_yamagata_bubbles.jpg,Pop Art,wikiart,Hiro Yamagata,Bubbles,XX cent.,https://www.wikiart.org/en/hiro-yamagata/not-detected-272409,pop-art,test
+data/images/Pop Art/hiro_yamagata_air_show.jpg,Pop Art,wikiart,Hiro Yamagata,Air Show,XX cent.,https://www.wikiart.org/en/hiro-yamagata/not-detected-272417,pop-art,test
+data/images/Pop Art/hiro_yamagata_a_path_through_the_forest.jpg,Pop Art,wikiart,Hiro Yamagata,A Path Through the Forest,XX cent.,https://www.wikiart.org/en/hiro-yamagata/a-path-through-the-forest,pop-art,test
+data/images/Pop Art/hiro_yamagata_joan_d_arc.jpg,Pop Art,wikiart,Hiro Yamagata,Joan d'Arc,XX cent.,https://www.wikiart.org/en/hiro-yamagata/joan-d-arc,pop-art,test
+data/images/Pop Art/hiro_yamagata_basketball.jpg,Pop Art,wikiart,Hiro Yamagata,Basketball,XX cent.,https://www.wikiart.org/en/hiro-yamagata/basketball,pop-art,test
+data/images/Pop Art/eduardo_paolozzi_windtunnel_test.jpg,Pop Art,wikiart,Eduardo Paolozzi,Windtunnel Test,1950,https://www.wikiart.org/en/eduardo-paolozzi/windtunnel-test-1950,pop-art,test
+data/images/Pop Art/stuart_davis_colonial_cubism.jpg,Pop Art,wikiart,Stuart Davis,Colonial Cubism,1954,https://www.wikiart.org/en/stuart-davis/colonial-cubism-1954,pop-art,test
+data/images/Pop Art/eduardo_paolozzi_cyclops.jpg,Pop Art,wikiart,Eduardo Paolozzi,Cyclops,1958,https://www.wikiart.org/en/eduardo-paolozzi/cyclops-1958,pop-art,test
+data/images/Pop Art/roy_lichtenstein_mickey_mouse_i.jpg,Pop Art,wikiart,Roy Lichtenstein,Mickey Mouse I,1958,https://www.wikiart.org/en/roy-lichtenstein/mickey-mouse-i-1958,pop-art,test
+data/images/Pop Art/peter_blake_the_fine_art_bit.jpg,Pop Art,wikiart,Peter Blake,The Fine Art Bit,1959,https://www.wikiart.org/en/peter-blake/the-fine-art-bit-1959,pop-art,test
+data/images/Pop Art/alex_katz_bather.jpg,Pop Art,wikiart,Alex Katz,Bather,1959,https://www.wikiart.org/en/alex-katz/bather,pop-art,test
+data/images/Pop Art/james_rosenquist_source_for_president_elect.jpg,Pop Art,wikiart,James Rosenquist,Source for President Elect,1960-1961,https://www.wikiart.org/en/james-rosenquist/source-for-president-elect-1961,pop-art,test
+data/images/Pop Art/andy_warhol_100_cans.jpg,Pop Art,wikiart,Andy Warhol,100 Cans,1962,https://www.wikiart.org/en/andy-warhol/cans,pop-art,test
+data/images/Pop Art/andy_warhol_front_and_back.jpg,Pop Art,wikiart,Andy Warhol,Front And Back,1962,https://www.wikiart.org/en/andy-warhol/front-and-back,pop-art,test
+data/images/Pop Art/martial_raysse_last_year_in_capri__exotic_title_.jpg,Pop Art,wikiart,Martial Raysse,Last Year in Capri (exotic title),1962,https://www.wikiart.org/en/martial-raysse/last-year-in-capri-exotic-title-1962,pop-art,test
+data/images/Pop Art/patrick_caulfield_vases_of_flowers.jpg,Pop Art,wikiart,Patrick Caulfield,Vases of Flowers,1962,https://www.wikiart.org/en/patrick-caulfield/vases-of-flowers-1962,pop-art,test
+data/images/Pop Art/yuriy_khymych_three_towers.jpg,Pop Art,wikiart,Yuriy Khymych,Three towers,1962,https://www.wikiart.org/en/khimich-yuriy-ivanovich/tri-vezhi-1962,pop-art,test
+data/images/Pop Art/antonio_berni_juanito_remontando_un_barrilete.jpg,Pop Art,wikiart,Antonio Berni,Juanito Remontando Un Barrilete,1962,https://www.wikiart.org/en/antonio-berni/juanito-remontando-un-barrilete-1962,pop-art,test
+data/images/Expressionism/edvard_munch_self_portrait.jpg,Expressionism,wikiart,Edvard Munch,Self portrait,1886,https://www.wikiart.org/en/edvard-munch/self-portrait-1886,expressionism,test
+data/images/Expressionism/albin_egger-lienz_betendes_kind.jpg,Expressionism,wikiart,Albin Egger-Lienz,Betendes Kind,1890,https://www.wikiart.org/en/albin-egger-lienz/betendes-kind-1890,expressionism,test
+data/images/Expressionism/charles_cottet_cabaret.jpg,Expressionism,wikiart,Charles Cottet,Cabaret,1893,https://www.wikiart.org/en/charles-cottet/cabaret-1893,expressionism,test
+data/images/Expressionism/nikolai_ge_christand_robber.jpg,Expressionism,wikiart,Nikolai Ge,Christand Robber,XIX cent.,https://www.wikiart.org/en/nikolai-ge/christand-robber,expressionism,test
+data/images/Expressionism/filipp_malyavin_laughing.jpg,Expressionism,wikiart,Filipp Malyavin,Laughing,1898,https://www.wikiart.org/en/filipp-malyavin/laughting-1898,expressionism,test
+data/images/Cubism/paul_cezanne_turning_road_at_montgeroult.jpg,Cubism,wikiart,Paul Cezanne,Turning Road at Montgeroult,1899,https://www.wikiart.org/en/paul-cezanne/turning-road-at-montgeroult-1899,cubism,test
+data/images/Cubism/pablo_picasso_composition___peasants_.jpg,Cubism,wikiart,Pablo Picasso,"Composition  ""Peasants""",1906,https://www.wikiart.org/en/pablo-picasso/composition-peasants-1906,cubism,test
+data/images/Cubism/andre_derain_untitled.jpg,Cubism,wikiart,Andre Derain,Untitled,1906,https://www.wikiart.org/en/andre-derain/untitled,cubism,test
+data/images/Cubism/pablo_picasso_composition_with_skull__study_.jpg,Cubism,wikiart,Pablo Picasso,Composition with skull (study),1907,https://www.wikiart.org/en/pablo-picasso/composition-with-skull-study,cubism,test
+data/images/Cubism/pablo_picasso_female_nude__study_.jpg,Cubism,wikiart,Pablo Picasso,Female nude (study),1907,https://www.wikiart.org/en/pablo-picasso/female-nude-study-1907,cubism,test
+data/images/Cubism/pablo_picasso_flowers_on_the_table.jpg,Cubism,wikiart,Pablo Picasso,Flowers on the table,1907,https://www.wikiart.org/en/pablo-picasso/flowers-on-the-table-1907,cubism,test
+data/images/Cubism/pablo_picasso_nude_with_drapery__study_for__the_great_dancer__.jpg,Cubism,wikiart,Pablo Picasso,"Nude with Drapery (Study for ""The great dancer"")",1907,https://www.wikiart.org/en/pablo-picasso/nude-with-drapery-study-for-the-great-dancer-1907,cubism,test
+data/images/Cubism/pablo_picasso_nude_with_raised_arms.jpg,Cubism,wikiart,Pablo Picasso,Nude with raised arms,1907,https://www.wikiart.org/en/pablo-picasso/nude-with-raised-arms-1907,cubism,test
+data/images/Cubism/pablo_picasso_still_life_with_lemons.jpg,Cubism,wikiart,Pablo Picasso,Still life with lemons,1907,https://www.wikiart.org/en/pablo-picasso/still-life-with-lemons-1907,cubism,test
+data/images/Cubism/pablo_picasso_the_girls_of_avignon__study_.jpg,Cubism,wikiart,Pablo Picasso,The girls of Avignon (study),1907,https://www.wikiart.org/en/pablo-picasso/the-girls-of-avignon-study-1907,cubism,test
+data/images/Cubism/pablo_picasso_woman_with_yellow_shirt.jpg,Cubism,wikiart,Pablo Picasso,Woman with yellow shirt,1907,https://www.wikiart.org/en/pablo-picasso/woman-with-yellow-shirt-1907,cubism,test
+data/images/Cubism/andre_derain_landscape_near_cassis.jpg,Cubism,wikiart,Andre Derain,Landscape near Cassis,1907,https://www.wikiart.org/en/andre-derain/landscape-near-cassis-1907,cubism,test
+data/images/Cubism/georges_braque_fruit_dish.jpg,Cubism,wikiart,Georges Braque,Fruit Dish,1908,https://www.wikiart.org/en/georges-braque/fruit-dish,cubism,test
+data/images/Cubism/pablo_picasso_head.jpg,Cubism,wikiart,Pablo Picasso,Head,1908,https://www.wikiart.org/en/pablo-picasso/head,cubism,test
+data/images/Cubism/pablo_picasso_pot__glass_and_book.jpg,Cubism,wikiart,Pablo Picasso,"Pot, Glass and Book",1908,https://www.wikiart.org/en/pablo-picasso/pot-glass-and-book-1908,cubism,test
+data/images/Cubism/pablo_picasso_reclining_nude.jpg,Cubism,wikiart,Pablo Picasso,Reclining Nude,1908,https://www.wikiart.org/en/pablo-picasso/reclining-nude-1908,cubism,test
+data/images/Cubism/pablo_picasso_three_women.jpg,Cubism,wikiart,Pablo Picasso,Three women,1908,https://www.wikiart.org/en/pablo-picasso/three-women-1908,cubism,test
+data/images/Cubism/pablo_picasso_three_women__rhythmical_version_.jpg,Cubism,wikiart,Pablo Picasso,Three women (Rhythmical version),1908,https://www.wikiart.org/en/pablo-picasso/three-women-rhythmical-version-1908,cubism,test
+data/images/Cubism/natalia_goncharova_pillars_of_salt.jpg,Cubism,wikiart,Natalia Goncharova,Pillars of salt,1908,https://www.wikiart.org/en/natalia-goncharova/pillars-of-salt,cubism,test
+data/images/Cubism/andre_derain_bathing_women.jpg,Cubism,wikiart,Andre Derain,Bathing women,1908,https://www.wikiart.org/en/andre-derain/bathing-women,cubism,test
+data/images/Cubism/raoul_dufy_trees_at_estaque.jpg,Cubism,wikiart,Raoul Dufy,Trees at Estaque,1908,https://www.wikiart.org/en/raoul-dufy/trees-at-estaque-1908,cubism,test
+data/images/Cubism/max_weber_chardenal_dictionary.jpg,Cubism,wikiart,Max Weber,Chardenal Dictionary,1908,https://www.wikiart.org/en/max-weber/chardenal-dictionary,cubism,test
+data/images/Cubism/georges_braque_head_of_a_woman.jpg,Cubism,wikiart,Georges Braque,Head of a Woman,1909,https://www.wikiart.org/en/georges-braque/head-of-a-woman-1909,cubism,test
+data/images/Cubism/georges_braque_still_life_with_a_metronome.jpg,Cubism,wikiart,Georges Braque,Still Life with a Metronome,1909,https://www.wikiart.org/en/georges-braque/still-life-with-a-metronome,cubism,test
+data/images/Cubism/raoul_dufy_houses_in_munich.jpg,Cubism,wikiart,Raoul Dufy,Houses in Munich,1909,https://www.wikiart.org/en/raoul-dufy/houses-in-munich-1909,cubism,test
+data/images/Cubism/raoul_dufy_the_studio_on_seguier_street.jpg,Cubism,wikiart,Raoul Dufy,The studio on Seguier street,1909,https://www.wikiart.org/en/raoul-dufy/the-studio-on-seguier-street-1909,cubism,test
+data/images/Cubism/raoul_dufy_the_pleasures_of_peace__dance__the_journey_to_the_islands_.jpg,Cubism,wikiart,Raoul Dufy,The Pleasures of Peace: Dance (The Journey to the Islands),1910,https://www.wikiart.org/en/raoul-dufy/the-pleasures-of-peace-dance-the-journey-to-the-islands-1910,cubism,test
+data/images/Cubism/roger_de_la_fresnaye_standing_nude_from_the_front.jpg,Cubism,wikiart,Roger de La Fresnaye,Standing nude from the front,1910,https://www.wikiart.org/en/roger-de-la-fresnaye/standing-nude-from-the-front,cubism,test
+data/images/Cubism/piet_mondrian_the_gray_tree.jpg,Cubism,wikiart,Piet Mondrian,The Gray Tree,1911,https://www.wikiart.org/en/piet-mondrian/the-gray-tree-1911,cubism,test
+data/images/Cubism/marc_chagall_reclining_nude.jpg,Cubism,wikiart,Marc Chagall,Reclining Nude,1911,https://www.wikiart.org/en/marc-chagall/reclining-nude-1911,cubism,test
+data/images/Abstract/victor_hugo_heraldic_eagle.jpg,Abstract,wikiart,Victor Hugo,Heraldic eagle,1855,https://www.wikiart.org/en/victor-hugo/heraldic-eagle-185,abstract-expressionism,test
+data/images/Abstract/victor_hugo_lace_and_ghosts.jpg,Abstract,wikiart,Victor Hugo,Lace and Ghosts,1856,https://www.wikiart.org/en/victor-hugo/lace-and-ghosts-1856,abstract-expressionism,test
+data/images/Abstract/victor_hugo_taches_with_fingerprints.jpg,Abstract,wikiart,Victor Hugo,Taches with fingerprints,1865,https://www.wikiart.org/en/victor-hugo/taches-with-fingerprints-1865,abstract-expressionism,test
+data/images/Abstract/victor_hugo_pattern_composition.jpg,Abstract,wikiart,Victor Hugo,Pattern Composition,XIX cent.,https://www.wikiart.org/en/victor-hugo/pattern-composition,abstract-expressionism,test
+data/images/Abstract/victor_hugo_voilures.jpg,Abstract,wikiart,Victor Hugo,Voilures,XIX cent.,https://www.wikiart.org/en/victor-hugo/voilures,abstract-expressionism,test
+data/images/Abstract/huang_yongyu_horses.jpg,Abstract,wikiart,Huang Yongyu,Horses,XX cent.,https://www.wikiart.org/en/huang-yongyu/horses,abstract-expressionism,test
+data/images/Abstract/adnan_coker_untitled.jpg,Abstract,wikiart,Adnan Coker,Untitled,XX cent.,https://www.wikiart.org/en/adnan-coker/unknown-title-3,abstract-expressionism,test
+data/images/Abstract/manuel_cargaleiro_c_est_vrai__je_l_aime.jpg,Abstract,wikiart,Manuel Cargaleiro,"C’est vrai, je l’aime",XX cent.,https://www.wikiart.org/en/manuel-cargaleiro/c-est-vrai-je-l-aime,abstract-expressionism,test
+data/images/Abstract/jasper_johns_cicada__ulae_219_.jpg,Abstract,wikiart,Jasper Johns,Cicada (ULAE 219),XX cent.,https://www.wikiart.org/en/jasper-johns/cicada-ulae-219,abstract-expressionism,test
+data/images/Abstract/gerhard_richter_mediation.jpg,Abstract,wikiart,Gerhard Richter,Mediation,XX cent.,https://www.wikiart.org/en/gerhard-richter/mediation,abstract-expressionism,test
+data/images/Abstract/gerhard_richter_station.jpg,Abstract,wikiart,Gerhard Richter,Station,XX cent.,https://www.wikiart.org/en/gerhard-richter/station,abstract-expressionism,test
+data/images/Abstract/jackson_pollock_the_flame.jpg,Abstract,wikiart,Jackson Pollock,The Flame,1938,https://www.wikiart.org/en/jackson-pollock/the-flame-1938,abstract-expressionism,test
+data/images/Abstract/mark_lancaster_houston_sony.jpg,Abstract,wikiart,Mark Lancaster,Houston/Sony,XX cent.,https://www.wikiart.org/en/mark-lancaster/houston-sony,abstract-expressionism,test
+data/images/Abstract/mark_lancaster_marilyn.jpg,Abstract,wikiart,Mark Lancaster,Marilyn,XX cent.,https://www.wikiart.org/en/mark-lancaster/marilyn,abstract-expressionism,test
+data/images/Abstract/brice_marden_untitled.jpg,Abstract,wikiart,Brice Marden,Untitled,XX cent.,https://www.wikiart.org/en/brice-marden/untitled,abstract-expressionism,test
+data/images/Abstract/arshile_gorky_hitler_invades_poland.jpg,Abstract,wikiart,Arshile Gorky,Hitler invades Poland,1939,https://www.wikiart.org/en/arshile-gorky/hitler-invades-poland,abstract-expressionism,test
+data/images/Abstract/jackson_pollock_untitled.jpg,Abstract,wikiart,Jackson Pollock,Untitled,1941,https://www.wikiart.org/en/jackson-pollock/untitled-1941,abstract-expressionism,test
+data/images/Abstract/jackson_pollock_stenographic_figure.jpg,Abstract,wikiart,Jackson Pollock,Stenographic Figure,1942,https://www.wikiart.org/en/jackson-pollock/stenographic-figure,abstract-expressionism,test
+data/images/Abstract/jackson_pollock_blue__moby_dick_.jpg,Abstract,wikiart,Jackson Pollock,Blue (Moby Dick),1943,https://www.wikiart.org/en/jackson-pollock/blue-moby-dick,abstract-expressionism,test
+data/images/Abstract/jackson_pollock_mural.jpg,Abstract,wikiart,Jackson Pollock,Mural,1943,https://www.wikiart.org/en/jackson-pollock/mural-1943-1,abstract-expressionism,test
+data/images/Abstract/henri_matisse_the_heart.jpg,Abstract,wikiart,Henri Matisse,The Heart,1943,https://www.wikiart.org/en/henri-matisse/cut-outs-2,abstract-expressionism,test
+data/images/Abstract/morris_graves_wounded_gull.jpg,Abstract,wikiart,Morris Graves,Wounded Gull,1943,https://www.wikiart.org/en/morris-graves/wounded-gull-1943,abstract-expressionism,test
+data/images/Abstract/robert_motherwell_pancho_villa__dead_and_alive.jpg,Abstract,wikiart,Robert Motherwell,"Pancho Villa, Dead and Alive",1943,https://www.wikiart.org/en/robert-motherwell/pancho-villa-dead-and-alive-1943,abstract-expressionism,test
+data/images/Abstract/arshile_gorky_one_year_the_milkweed.jpg,Abstract,wikiart,Arshile Gorky,One Year the Milkweed,1944,https://www.wikiart.org/en/arshile-gorky/one-year-the-milkweed-1944-1,abstract-expressionism,test
+data/images/Abstract/arshile_gorky_the_liver_is_the_cock_s_comb.jpg,Abstract,wikiart,Arshile Gorky,The Liver is the Cock's Comb,1944,https://www.wikiart.org/en/arshile-gorky/the-liver-is-the-cock-s-comb,abstract-expressionism,test
+data/images/Abstract/willem_de_kooning_the_wave.jpg,Abstract,wikiart,Willem de Kooning,The Wave,1942-1944,https://www.wikiart.org/en/willem-de-kooning/the-wave,abstract-expressionism,test
+data/images/Abstract/mark_tobey_electric_night.jpg,Abstract,wikiart,Mark Tobey,Electric night,1944,https://www.wikiart.org/en/mark-tobey/electric-night-1944,abstract-expressionism,test
+data/images/Abstract/morris_graves_vessel_in_a_drift_of_diamond_light_in_the_sky_of_the_mind.jpg,Abstract,wikiart,Morris Graves,Vessel in a Drift of Diamond Light in the Sky of the Mind,1944,https://www.wikiart.org/en/morris-graves/vessel-in-a-drift-of-diamond-light-in-the-sky-of-the-mind-1944,abstract-expressionism,test
+data/images/Abstract/hassan_massoudy_generosity_is_giving_more_than_you_can.jpg,Abstract,wikiart,Hassan Massoudy,Generosity is giving more than you can,XX cent.,https://www.wikiart.org/en/hassan-massoudy/generosity-is-giving-more-than-you-can,abstract-expressionism,test
+data/images/Abstract/hassan_massoudy_life_passes_like_a_mysterious_caravan__take_from_it_its_moment_o.jpg,Abstract,wikiart,Hassan Massoudy,"Life passes like a mysterious caravan, take from it its moment of joy",XX cent.,https://www.wikiart.org/en/hassan-massoudy/life-passes-like-a-mysterious-caravan-take-from-it-its-moment-of-joy,abstract-expressionism,test
+data/images/Surrealism/m_c__escher_bookplate_bastiaan_kist.jpg,Surrealism,wikiart,M.C. Escher,Bookplate Bastiaan Kist,1916,https://www.wikiart.org/en/m-c-escher/bookplate-bastiaan-kist,surrealism,test
+data/images/Surrealism/marc_chagall_double_portrait_with_a_glass_of_wine.jpg,Surrealism,wikiart,Marc Chagall,Double portrait with a glass of wine,1918,https://www.wikiart.org/en/marc-chagall/double-portrait-with-a-glass-of-wine-1918,surrealism,test
+data/images/Surrealism/jean_arp_birds_in_an_aquarium.jpg,Surrealism,wikiart,Jean Arp,Birds in an Aquarium,1920,https://www.wikiart.org/en/jean-arp/birds-in-aquarium,surrealism,test
+data/images/Surrealism/xul_solar_pegaso_de_sol.jpg,Surrealism,wikiart,Xul Solar,Pegaso de Sol,1922,https://www.wikiart.org/en/xul-solar/pegaso-de-sol-1922,surrealism,test
+data/images/Surrealism/paul_klee_seventeen.jpg,Surrealism,wikiart,Paul Klee,Seventeen,1923,https://www.wikiart.org/en/paul-klee/seventeen-1923,surrealism,test
+data/images/Surrealism/xul_solar_juzgue.jpg,Surrealism,wikiart,Xul Solar,Juzgue,1923,https://www.wikiart.org/en/xul-solar/juzgue-1923,surrealism,test
+data/images/Surrealism/xul_solar__a_di_fana.jpg,Surrealism,wikiart,Xul Solar,Ña Diáfana,1923,https://www.wikiart.org/en/xul-solar/a-di-fana-1923,surrealism,test
+data/images/Surrealism/valentine_hugo_costume_repr_sentant_parties_du_monde__bal_louis_xiv.jpg,Surrealism,wikiart,Valentine Hugo,"Costume Représentant Parties Du Monde, Bal Louis XIV",1923,https://www.wikiart.org/en/valentine-hugo/costume-representant-parties-du-monde-bal-louis-xiv-1923,surrealism,test
+data/images/Surrealism/albin_egger-lienz_saying_grace.jpg,Surrealism,wikiart,Albin Egger-Lienz,Saying Grace,1923,https://www.wikiart.org/en/albin-egger-lienz/saying-grace-1923,surrealism,test
+data/images/Surrealism/max_ernst_the_letter.jpg,Surrealism,wikiart,Max Ernst,The letter,1924,https://www.wikiart.org/en/max-ernst/the-letter-1924,surrealism,test
+data/images/Surrealism/leon_underwood_flux__the_runner_.jpg,Surrealism,wikiart,Leon Underwood,Flux (The Runner),1924,https://www.wikiart.org/en/leon-underwood/flux-the-runner-1924,surrealism,test
+data/images/Surrealism/jindrich_styrsky_souvenir.jpg,Surrealism,wikiart,Jindrich Styrsky,Souvenir,1924,https://www.wikiart.org/en/jindrich-styrsky/souvenir-1924,surrealism,test
+data/images/Surrealism/ramon_oviedo_especie_inverosimil.jpg,Surrealism,wikiart,Ramon Oviedo,Especie inverosimil,XX cent.,https://www.wikiart.org/en/ramon-oviedo/especie-inverosimil,surrealism,test
+data/images/Surrealism/ramon_oviedo_forma_de_percusion.jpg,Surrealism,wikiart,Ramon Oviedo,FORMA DE PERCUSION,XX cent.,https://www.wikiart.org/en/ramon-oviedo/forma-de-percusion,surrealism,test
+data/images/Surrealism/ramon_oviedo_ignorantes_del_tiempo.jpg,Surrealism,wikiart,Ramon Oviedo,Ignorantes del Tiempo,XX cent.,https://www.wikiart.org/en/ramon-oviedo/ignorantes-del-tiempo,surrealism,test
+data/images/Surrealism/ramon_oviedo_nubarron_nocturno.jpg,Surrealism,wikiart,Ramon Oviedo,NUBARRON NOCTURNO,XX cent.,https://www.wikiart.org/en/ramon-oviedo/nubarron-nocturno,surrealism,test
+data/images/Surrealism/ramon_oviedo_forma_de_emitir_sonidos.jpg,Surrealism,wikiart,Ramon Oviedo,FORMA DE EMITIR SONIDOS,XX cent.,https://www.wikiart.org/en/ramon-oviedo/forma-de-emitir-sonidos,surrealism,test
+data/images/Surrealism/ramon_oviedo_forma_herida.jpg,Surrealism,wikiart,Ramon Oviedo,FORMA HERIDA,XX cent.,https://www.wikiart.org/en/ramon-oviedo/forma-herida,surrealism,test
+data/images/Surrealism/ramon_oviedo_formas_en_transicion.jpg,Surrealism,wikiart,Ramon Oviedo,Formas en transicion,XX cent.,https://www.wikiart.org/en/ramon-oviedo/formas-en-transicion,surrealism,test
+data/images/Surrealism/marc_chagall_naked_on_a_white_cock.jpg,Surrealism,wikiart,Marc Chagall,Naked on a white cock,1925,https://www.wikiart.org/en/marc-chagall/naked-on-a-white-cock-1925,surrealism,test
+data/images/Surrealism/salvador_dali_coupes_6.jpg,Surrealism,wikiart,Salvador Dali,Coupes 6,1925,https://www.wikiart.org/en/salvador-dali/coupes-6,surrealism,test
+data/images/Surrealism/pablo_picasso_still_life_with_fishing_net.jpg,Surrealism,wikiart,Pablo Picasso,Still life with fishing net,1925,https://www.wikiart.org/en/pablo-picasso/still-life-with-fishing-net-1925,surrealism,test
+data/images/Surrealism/joan_miro_landscape.jpg,Surrealism,wikiart,Joan Miro,Landscape,1924-1925,https://www.wikiart.org/en/joan-miro/landscape-1925,surrealism,test
+data/images/Surrealism/joan_miro_untitled.jpg,Surrealism,wikiart,Joan Miro,Untitled,1925,https://www.wikiart.org/en/joan-miro/not_detected_227927,surrealism,test
+data/images/Surrealism/joan_miro_the_white_glove.jpg,Surrealism,wikiart,Joan Miro,The White Glove,1925,https://www.wikiart.org/en/joan-miro/not_detected_227969,surrealism,test
+data/images/Surrealism/max_ernst_she_keeps_her_secret.jpg,Surrealism,wikiart,Max Ernst,She keeps her secret,1925,https://www.wikiart.org/en/max-ernst/she-keeps-her-secret-1925,surrealism,test
+data/images/Surrealism/max_ernst_the_blue_forest.jpg,Surrealism,wikiart,Max Ernst,The Blue Forest,1925,https://www.wikiart.org/en/max-ernst/the-blue-forest-1925,surrealism,test
+data/images/Renaissance/hf_albrecht_durer_work_2_82531808b9.jpg,Renaissance,huggan_wikiart,Albrecht Durer,,,,Northern_Renaissance,test
+data/images/Renaissance/hf_albrecht_durer_work_6_b17f392e66.jpg,Renaissance,huggan_wikiart,Albrecht Durer,,,,Northern_Renaissance,test
+data/images/Renaissance/hf_albrecht_durer_work_7_5188e2a539.jpg,Renaissance,huggan_wikiart,Albrecht Durer,,,,Northern_Renaissance,test
+data/images/Baroque/hf_rembrandt_work_8_14c0bb5a30.jpg,Baroque,huggan_wikiart,Rembrandt,,,,Baroque,test
+data/images/Impressionism/hf_camille_pissarro_work_4_988b7a0921.jpg,Impressionism,huggan_wikiart,Camille Pissarro,,,,Impressionism,test
+data/images/Baroque/hf_rembrandt_work_11_862c8481d3.jpg,Baroque,huggan_wikiart,Rembrandt,,,,Baroque,test
+data/images/Impressionism/hf_camille_pissarro_work_5_c713803f10.jpg,Impressionism,huggan_wikiart,Camille Pissarro,,,,Impressionism,test
+data/images/Baroque/hf_rembrandt_work_15_e15953c0de.jpg,Baroque,huggan_wikiart,Rembrandt,,,,Baroque,test
+data/images/Impressionism/hf_camille_pissarro_work_8_6f2db829cc.jpg,Impressionism,huggan_wikiart,Camille Pissarro,,,,Impressionism,test
+data/images/Impressionism/hf_camille_pissarro_work_14_829acf0a6a.jpg,Impressionism,huggan_wikiart,Camille Pissarro,,,,Impressionism,test
+data/images/Impressionism/hf_camille_pissarro_work_15_aac5e125a0.jpg,Impressionism,huggan_wikiart,Camille Pissarro,,,,Impressionism,test
+data/images/Baroque/hf_rembrandt_work_20_d77d6754ad.jpg,Baroque,huggan_wikiart,Rembrandt,,,,Baroque,test
+data/images/Impressionism/hf_alfred_sisley_work_1_3832a27a5b.jpg,Impressionism,huggan_wikiart,Alfred Sisley,,,,Impressionism,test
+data/images/Cubism/hf_juan_gris_work_2_bca0fd7e6c.jpg,Cubism,huggan_wikiart,Juan Gris,,,,Synthetic_Cubism,test
+data/images/Renaissance/hf_fra_angelico_work_2_d602a7e284.jpg,Renaissance,huggan_wikiart,Fra Angelico,,,,Early_Renaissance,test
+data/images/Impressionism/hf_gustave_caillebotte_work_1_ec3368fe7a.jpg,Impressionism,huggan_wikiart,Gustave Caillebotte,,,,Impressionism,test
+data/images/Expressionism/hf_egon_schiele_work_6_aae49400b1.jpg,Expressionism,huggan_wikiart,Egon Schiele,,,,Expressionism,test
+data/images/Expressionism/hf_ernst_ludwig_kirchner_work_2_00b5118bd9.jpg,Expressionism,huggan_wikiart,Ernst Ludwig Kirchner,,,,Expressionism,test
+data/images/Impressionism/hf_mary_cassatt_work_3_be56b5a0c5.jpg,Impressionism,huggan_wikiart,Mary Cassatt,,,,Impressionism,test
+data/images/Impressionism/hf_mary_cassatt_work_7_f601e57760.jpg,Impressionism,huggan_wikiart,Mary Cassatt,,,,Impressionism,test
+data/images/Impressionism/hf_mary_cassatt_work_8_ba05011f7e.jpg,Impressionism,huggan_wikiart,Mary Cassatt,,,,Impressionism,test
+data/images/Expressionism/hf_ernst_ludwig_kirchner_work_3_92ffb4308f.jpg,Expressionism,huggan_wikiart,Ernst Ludwig Kirchner,,,,Expressionism,test
+data/images/Impressionism/hf_gustave_caillebotte_work_5_ff91e2d888.jpg,Impressionism,huggan_wikiart,Gustave Caillebotte,,,,Impressionism,test
+data/images/Expressionism/hf_ernst_ludwig_kirchner_work_5_bbf37c4b5e.jpg,Expressionism,huggan_wikiart,Ernst Ludwig Kirchner,,,,Expressionism,test
+data/images/Renaissance/hf_titian_work_8_1f6bb7c13b.jpg,Renaissance,huggan_wikiart,Titian,,,,High_Renaissance,test
+data/images/Impressionism/hf_gustave_caillebotte_work_7_769ca137c7.jpg,Impressionism,huggan_wikiart,Gustave Caillebotte,,,,Impressionism,test
+data/images/Impressionism/hf_berthe_morisot_work_7_20d73a2f24.jpg,Impressionism,huggan_wikiart,Berthe Morisot,,,,Impressionism,test
+data/images/Impressionism/hf_alfred_sisley_work_14_726217fdf8.jpg,Impressionism,huggan_wikiart,Alfred Sisley,,,,Impressionism,test
+data/images/Cubism/hf_juan_gris_work_7_8a000384b1.jpg,Cubism,huggan_wikiart,Juan Gris,,,,Cubism,test
+data/images/Renaissance/hf_titian_work_10_dc99d3b7b5.jpg,Renaissance,huggan_wikiart,Titian,,,,High_Renaissance,test
+data/images/Impressionism/hf_gustave_caillebotte_work_11_a012ecb0c6.jpg,Impressionism,huggan_wikiart,Gustave Caillebotte,,,,Impressionism,test
+data/images/Cubism/hf_fernand_leger_work_4_5360911ba2.jpg,Cubism,huggan_wikiart,Fernand Leger,,,,Cubism,test
+data/images/Cubism/hf_juan_gris_work_13_85ff579df4.jpg,Cubism,huggan_wikiart,Juan Gris,,,,Synthetic_Cubism,test
+data/images/Pop Art/hf_andy_warhol_work_7_772efaf357.jpg,Pop Art,huggan_wikiart,Andy Warhol,,,,Pop_Art,test
+data/images/Cubism/hf_georges_braque_work_8_4f9f8f9ae7.jpg,Cubism,huggan_wikiart,Georges Braque,,,,Cubism,test
+data/images/Cubism/hf_juan_gris_work_15_c8e18623f6.jpg,Cubism,huggan_wikiart,Juan Gris,,,,Cubism,test
+data/images/Renaissance/hf_raphael_work_10_3d9192c0e1.jpg,Renaissance,huggan_wikiart,Raphael,,,,High_Renaissance,test
+data/images/Pop Art/hf_andy_warhol_work_10_051371e987.jpg,Pop Art,huggan_wikiart,Andy Warhol,,,,Pop_Art,test
+data/images/Renaissance/hf_raphael_work_13_cff5e05edf.jpg,Renaissance,huggan_wikiart,Raphael,,,,High_Renaissance,test
+data/images/Cubism/hf_fernand_leger_work_8_7770d5bedc.jpg,Cubism,huggan_wikiart,Fernand Leger,,,,Cubism,test
+data/images/Renaissance/hf_albrecht_durer_work_2_09b7425e60.jpg,Renaissance,huggan_wikiart,Albrecht Durer,,,,Northern_Renaissance,test
+data/images/Renaissance/hf_albrecht_durer_work_6_5188e2a539.jpg,Renaissance,huggan_wikiart,Albrecht Durer,,,,Northern_Renaissance,test
+data/images/Renaissance/hf_albrecht_durer_work_7_8fc6481740.jpg,Renaissance,huggan_wikiart,Albrecht Durer,,,,Northern_Renaissance,test
+data/images/Baroque/hf_rembrandt_work_8_ea256ad241.jpg,Baroque,huggan_wikiart,Rembrandt,,,,Baroque,test
+data/images/Baroque/hf_rembrandt_work_11_bfc1b742e8.jpg,Baroque,huggan_wikiart,Rembrandt,,,,Baroque,test
+data/images/Impressionism/hf_camille_pissarro_work_4_c713803f10.jpg,Impressionism,huggan_wikiart,Camille Pissarro,,,,Impressionism,test
+data/images/Impressionism/hf_camille_pissarro_work_5_e640ec320c.jpg,Impressionism,huggan_wikiart,Camille Pissarro,,,,Impressionism,test
+data/images/Baroque/hf_rembrandt_work_15_294a20a4be.jpg,Baroque,huggan_wikiart,Rembrandt,,,,Baroque,test
+data/images/Impressionism/hf_camille_pissarro_work_8_37d0d534fb.jpg,Impressionism,huggan_wikiart,Camille Pissarro,,,,Impressionism,test
+data/images/Impressionism/hf_camille_pissarro_work_14_aac5e125a0.jpg,Impressionism,huggan_wikiart,Camille Pissarro,,,,Impressionism,test
+data/images/Impressionism/hf_camille_pissarro_work_15_c5fe6b9ff5.jpg,Impressionism,huggan_wikiart,Camille Pissarro,,,,Impressionism,test
+data/images/Baroque/hf_rembrandt_work_20_fa56da1d1f.jpg,Baroque,huggan_wikiart,Rembrandt,,,,Baroque,test
+data/images/Impressionism/hf_alfred_sisley_work_1_4f8ea0c5d8.jpg,Impressionism,huggan_wikiart,Alfred Sisley,,,,Impressionism,test
+data/images/Cubism/hf_juan_gris_work_2_01d6e0fcaf.jpg,Cubism,huggan_wikiart,Juan Gris,,,,Cubism,test
+data/images/Impressionism/hf_berthe_morisot_work_2_30848a3b57.jpg,Impressionism,huggan_wikiart,Berthe Morisot,,,,Impressionism,test
+data/images/Expressionism/hf_egon_schiele_work_6_431ecfe4b6.jpg,Expressionism,huggan_wikiart,Egon Schiele,,,,Expressionism,test
+data/images/Expressionism/hf_egon_schiele_work_7_69f0ef7f07.jpg,Expressionism,huggan_wikiart,Egon Schiele,,,,Expressionism,test
+data/images/Impressionism/hf_mary_cassatt_work_6_f601e57760.jpg,Impressionism,huggan_wikiart,Mary Cassatt,,,,Impressionism,test
+data/images/Renaissance/hf_titian_work_1_c626f24692.jpg,Renaissance,huggan_wikiart,Titian,,,,High_Renaissance,test
+data/images/Impressionism/hf_mary_cassatt_work_7_ba05011f7e.jpg,Impressionism,huggan_wikiart,Mary Cassatt,,,,Impressionism,test
+data/images/Impressionism/hf_gustave_caillebotte_work_3_b2573f9d1c.jpg,Impressionism,huggan_wikiart,Gustave Caillebotte,,,,Impressionism,test
+data/images/Expressionism/hf_egon_schiele_work_9_eb06d2521b.jpg,Expressionism,huggan_wikiart,Egon Schiele,,,,Expressionism,test
+data/images/Impressionism/hf_mary_cassatt_work_8_c3d86df69c.jpg,Impressionism,huggan_wikiart,Mary Cassatt,,,,Impressionism,test
+data/images/Expressionism/hf_ernst_ludwig_kirchner_work_5_38ecba8fd4.jpg,Expressionism,huggan_wikiart,Ernst Ludwig Kirchner,,,,Expressionism,test
+data/images/Impressionism/hf_berthe_morisot_work_7_de126bf31b.jpg,Impressionism,huggan_wikiart,Berthe Morisot,,,,Impressionism,test
+data/images/Impressionism/hf_berthe_morisot_work_8_41e67c90c6.jpg,Impressionism,huggan_wikiart,Berthe Morisot,,,,Impressionism,test
+data/images/Impressionism/hf_mary_cassatt_work_10_8e407e0561.jpg,Impressionism,huggan_wikiart,Mary Cassatt,,,,Impressionism,test
+data/images/Renaissance/hf_raphael_work_1_deefc4b165.jpg,Renaissance,huggan_wikiart,Raphael,,,,High_Renaissance,test
+data/images/Cubism/hf_georges_braque_work_2_b83e932339.jpg,Cubism,huggan_wikiart,Georges Braque,,,,Analytical_Cubism,test
+data/images/Renaissance/hf_raphael_work_5_d646a03d7d.jpg,Renaissance,huggan_wikiart,Raphael,,,,High_Renaissance,test
+data/images/Impressionism/hf_gustave_caillebotte_work_11_f299cdecd7.jpg,Impressionism,huggan_wikiart,Gustave Caillebotte,,,,Impressionism,test
+data/images/Cubism/hf_georges_braque_work_5_df95e44b81.jpg,Cubism,huggan_wikiart,Georges Braque,,,,Cubism,test
+data/images/Pop Art/hf_andy_warhol_work_7_234bf798da.jpg,Pop Art,huggan_wikiart,Andy Warhol,,,,Pop_Art,test
+data/images/Cubism/hf_georges_braque_work_6_0f3bf24529.jpg,Cubism,huggan_wikiart,Georges Braque,,,,Analytical_Cubism,test
+data/images/Cubism/hf_georges_braque_work_10_c3e7bd2891.jpg,Cubism,huggan_wikiart,Georges Braque,,,,Cubism,test
+data/images/Cubism/hf_fernand_leger_work_4_87cee2ced5.jpg,Cubism,huggan_wikiart,Fernand Leger,,,,Cubism,test
+data/images/Renaissance/hf_raphael_work_10_f1717ab871.jpg,Renaissance,huggan_wikiart,Raphael,,,,High_Renaissance,test
+data/images/Pop Art/hf_andy_warhol_work_10_f3b2d395dd.jpg,Pop Art,huggan_wikiart,Andy Warhol,,,,Pop_Art,test
+data/images/Renaissance/hf_raphael_work_13_39e06b87be.jpg,Renaissance,huggan_wikiart,Raphael,,,,High_Renaissance,test
+data/images/Cubism/hf_fernand_leger_work_8_58387ef248.jpg,Cubism,huggan_wikiart,Fernand Leger,,,,Cubism,test
+data/images/Baroque/wikiart_artemisia_gentileschi_danae_072fd7c5e3.jpg,Baroque,wikiart_targeted,Artemisia Gentileschi,Danae,1612,https://www.wikiart.org/en/artemisia-gentileschi/danae-1612,baroque,test
+data/images/Cubism/wikiart_robert_delaunay_ciudades_city_66545964d9.jpg,Cubism,wikiart_targeted,Robert Delaunay,Ciudades. City,1911,https://www.wikiart.org/en/robert-delaunay/ciudades-city,orphism,test
+data/images/Cubism/wikiart_marcel_duchamp_sad_young_man_in_a_train_250d6d8356.jpg,Cubism,wikiart_targeted,Marcel Duchamp,Sad young man in a train,1911,https://www.wikiart.org/en/marcel-duchamp/sad-young-man-in-a-train-1911,cubism,test
+data/images/Cubism/wikiart_marcel_duchamp_sonata_203acdd5e0.jpg,Cubism,wikiart_targeted,Marcel Duchamp,Sonata,1911,https://www.wikiart.org/en/marcel-duchamp/sonata-1911,cubism,test
+data/images/Abstract/wikiart_mark_rothko_no_10_7a9235211c.jpg,Abstract,wikiart_targeted,Mark Rothko,No.10,1950,https://www.wikiart.org/en/mark-rothko/no-10,color-field-painting,test
+data/images/Abstract/wikiart_mark_rothko_no_2_5300fd4f40.jpg,Abstract,wikiart_targeted,Mark Rothko,No.2,1950,https://www.wikiart.org/en/mark-rothko/no-2,color-field-painting,test
+data/images/Abstract/wikiart_mark_rothko_no_18_4e9f552bdf.jpg,Abstract,wikiart_targeted,Mark Rothko,No.18,1951,https://www.wikiart.org/en/mark-rothko/no-18,color-field-painting,test
+data/images/Abstract/wikiart_mark_rothko_untitled_6681c65b4b.jpg,Abstract,wikiart_targeted,Mark Rothko,Untitled,1952,https://www.wikiart.org/en/mark-rothko/untitled-6,color-field-painting,test
+data/images/Abstract/wikiart_kazimir_malevich_black_suprematistic_square_58a5c3f275.jpg,Abstract,wikiart_targeted,Kazimir Malevich,Black Suprematistic Square,1915,https://www.wikiart.org/en/kazimir-malevich/black-suprematistic-square-1915,suprematism,test
+data/images/Abstract/wikiart_franz_kline_painting_no_7_ef1341b04b.jpg,Abstract,wikiart_targeted,Franz Kline,Painting No. 7,1952,https://www.wikiart.org/en/franz-kline/painting-no-7,action-painting,test
+data/images/Abstract/wikiart_agnes_martin_homage_to_greece_1ed1e8e974.jpg,Abstract,wikiart_targeted,Agnes Martin,Homage to Greece,1959,https://www.wikiart.org/en/agnes-martin/homage-to-greece-1959,minimalism,test
+data/images/Surrealism/wikiart_salvador_dali_female_nude_3241f8908a.jpg,Surrealism,wikiart_targeted,Salvador Dali,Female Nude,1925,https://www.wikiart.org/en/salvador-dali/female-nude-1,surrealism,test
+data/images/Surrealism/wikiart_salvador_dali_honey_is_sweeter_than_blood_b90990828f.jpg,Surrealism,wikiart_targeted,Salvador Dali,Honey Is Sweeter Than Blood,1927,https://www.wikiart.org/en/salvador-dali/honey-is-sweeter-than-blood-1,surrealism,test
+data/images/Surrealism/wikiart_salvador_dali_nude_woman_in_an_armchair_a7da54e94f.jpg,Surrealism,wikiart_targeted,Salvador Dali,Nude Woman in an Armchair,1927,https://www.wikiart.org/en/salvador-dali/nude-woman-in-an-armchair,surrealism,test
+data/images/Surrealism/wikiart_salvador_dali_female_bather_c98fa498d9.jpg,Surrealism,wikiart_targeted,Salvador Dali,Female Bather,1928,https://www.wikiart.org/en/salvador-dali/female-bather,surrealism,test
+data/images/Surrealism/wikiart_salvador_dali_inaugural_gooseflesh_aa1201c911.jpg,Surrealism,wikiart_targeted,Salvador Dali,Inaugural Gooseflesh,1928,https://www.wikiart.org/en/salvador-dali/inaugural-gooseflesh,surrealism,test
+data/images/Surrealism/wikiart_salvador_dali_little_cinders_senicitas_f5cb25c114.jpg,Surrealism,wikiart_targeted,Salvador Dali,Little Cinders (Senicitas),1927-1928,https://www.wikiart.org/en/salvador-dali/little-cinders-senicitas-1928,surrealism,test
+data/images/Pop Art/wikiart_roy_lichtenstein_girl_with_ball_46b9def8a9.jpg,Pop Art,wikiart_targeted,Roy Lichtenstein,Girl with ball,1961,https://www.wikiart.org/en/roy-lichtenstein/girl-with-ball-1961,pop-art,test
+data/images/Pop Art/wikiart_roy_lichtenstein_i_can_see_the_whole_room_and_there_s_nobody_in_it_9feeb46a8b.jpg,Pop Art,wikiart_targeted,Roy Lichtenstein,I Can See the Whole Room...and There's Nobody in It!,1961,https://www.wikiart.org/en/roy-lichtenstein/i-can-see-the-whole-room-and-theres-nobody-in-it-1961,pop-art,test
+data/images/Pop Art/wikiart_robert_indiana_the_american_dream_i_d9ad41a967.jpg,Pop Art,wikiart_targeted,Robert Indiana,"The American Dream, I",1961,https://www.wikiart.org/en/robert-indiana/the-american-dream-i-1961,pop-art,test

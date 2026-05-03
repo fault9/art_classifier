@@ -1,0 +1,234 @@
+label,artist,count
+Abstract,Wassily Kandinsky,20
+Abstract,Jasper Johns,13
+Abstract,Gerhard Richter,11
+Abstract,Henri Matisse,11
+Abstract,Jackson Pollock,10
+Abstract,Richard Pousette-Dart,10
+Abstract,Arshile Gorky,9
+Abstract,Hassan Massoudy,9
+Abstract,Victor Hugo,9
+Abstract,Morris Graves,7
+Abstract,Huang Yongyu,6
+Abstract,Alphonse Allais,5
+Abstract,Miriam Schapiro,5
+Abstract,Mark Lancaster,4
+Abstract,Mark Tobey,3
+Abstract,Arthur Dove,2
+Abstract,Brice Marden,2
+Abstract,Clyfford Still,2
+Abstract,Hans Hofmann,2
+Abstract,Hilma af Klint,2
+Abstract,Joe Goode,2
+Abstract,Mark di Suvero,2
+Abstract,Martin Chirino,2
+Abstract,Sam Gilliam,2
+Abstract,Willem de Kooning,2
+Abstract,Wolfgang Paalen,2
+Abstract,Aaron Siskind,1
+Abstract,Adnan Coker,1
+Abstract,Anne Ryan,1
+Abstract,Barnett Newman,1
+Abstract,David Hare,1
+Abstract,Frank Bowling,1
+Abstract,Franz Marc,1
+Abstract,Gerardo Dottori,1
+Abstract,Giorgio Cavallon,1
+Abstract,Jimmy Ernst,1
+Abstract,Joan Miro,1
+Abstract,Julio Pomar,1
+Abstract,Lee Krasner,1
+Abstract,Louis Schanker,1
+Abstract,Louise Nevelson,1
+Abstract,Manuel Cargaleiro,1
+Abstract,Marcel Barbeau,1
+Abstract,Noguchi Isamu,1
+Abstract,Norman Lewis,1
+Abstract,Paul Klee,1
+Abstract,Ralph Rosenborg,1
+Abstract,Robert Motherwell,1
+Abstract,Tsuruko Yamazaki,1
+Abstract,Vahram Gayfedjian,1
+Abstract,William Baziotes,1
+Abstract,Yayoi Kusama,1
+Baroque,Rembrandt,40
+Baroque,Agostino Carracci,20
+Baroque,Annibale Carracci,20
+Baroque,Caravaggio,20
+Baroque,Adam Elsheimer,16
+Baroque,Paul Bril,16
+Baroque,Peter Paul Rubens,15
+Baroque,Frans Francken the Younger,6
+Baroque,Guido Reni,6
+Baroque,Hendrick Goltzius,3
+Baroque,Maarten de Vos,3
+Baroque,Otto van Veen,3
+Baroque,Francesco Ribalta,2
+Baroque,Giulio Cesare Procaccini,2
+Baroque,Adam van Noort,1
+Baroque,Francisco Pacheco,1
+Baroque,Frans Snyders,1
+Baroque,Georges Lallemand,1
+Baroque,Hendrick Cornelisz Vroom,1
+Baroque,Jan Brueghel the Elder,1
+Baroque,Sofonisba Anguissola,1
+Cubism,Juan Gris,31
+Cubism,Georges Braque,30
+Cubism,Fernand Leger,25
+Cubism,Pablo Picasso,20
+Cubism,Paul Cezanne,20
+Cubism,Andre Derain,11
+Cubism,Raoul Dufy,9
+Cubism,Maurice de Vlaminck,7
+Cubism,Natalia Goncharova,5
+Cubism,Marc Chagall,4
+Cubism,Robert Falk,4
+Cubism,Albert Gleizes,3
+Cubism,Roger de La Fresnaye,3
+Cubism,Guilherme de Santa-Rita,2
+Cubism,Kazimir Malevich,2
+Cubism,Max Weber,2
+Cubism,Olga Rozanova,2
+Cubism,Piet Mondrian,2
+Cubism,Amadeo de Souza-Cardoso,1
+Cubism,C. R. W. Nevinson,1
+Cubism,Henri Le Fauconnier,1
+Cubism,Lajos Tihanyi,1
+Cubism,Man Ray,1
+Cubism,Olexandr Archipenko,1
+Expressionism,Edvard Munch,20
+Expressionism,Egon Schiele,20
+Expressionism,Ernst Ludwig Kirchner,20
+Expressionism,James Ensor,15
+Expressionism,Albin Egger-Lienz,10
+Expressionism,Kathe Kollwitz,8
+Expressionism,Laszlo Mednyanszky,5
+Expressionism,Paula Modersohn-Becker,5
+Expressionism,Stanisław Wyspiański,3
+Expressionism,Charles Cottet,2
+Expressionism,Filipp Malyavin,2
+Expressionism,Lovis Corinth,2
+Expressionism,Nikolai Ge,2
+Expressionism,Akseli Gallen-Kallela,1
+Expressionism,Amedeo Modigliani,1
+Expressionism,Carl Holsøe,1
+Expressionism,Charles Maurin,1
+Expressionism,Eugène Grasset,1
+Expressionism,Frantisek Kupka,1
+Expressionism,Henri Matisse,1
+Expressionism,Kees van Dongen,1
+Expressionism,Magnus Enckell,1
+Expressionism,Pablo Picasso,1
+Impressionism,Camille Pissarro,32
+Impressionism,Alfred Sisley,31
+Impressionism,Gustave Caillebotte,30
+Impressionism,Pierre-Auguste Renoir,30
+Impressionism,Berthe Morisot,28
+Impressionism,Claude Monet,20
+Impressionism,Edgar Degas,20
+Impressionism,Mary Cassatt,20
+Impressionism,Eugene Boudin,18
+Impressionism,Frederic Bazille,11
+Impressionism,Edouard Manet,6
+Impressionism,James McNeill Whistler,6
+Impressionism,Martín Rico y Ortega,6
+Impressionism,Johan Jongkind,5
+Impressionism,Giuseppe Abbati,3
+Impressionism,Silvestro Lega,3
+Impressionism,Giovanni Fattori,2
+Impressionism,Honore Daumier,2
+Impressionism,J.M.W. Turner,1
+Impressionism,Thomas Eakins,1
+Pop Art,Andy Warhol,30
+Pop Art,Alex Katz,20
+Pop Art,Hiro Yamagata,17
+Pop Art,Edward Ruscha,11
+Pop Art,Eduardo Paolozzi,10
+Pop Art,Will Barnet,8
+Pop Art,Marko Pogacnik,6
+Pop Art,Peter Blake,6
+Pop Art,Deborah Azzopardi,5
+Pop Art,Martial Raysse,5
+Pop Art,Stuart Davis,5
+Pop Art,Charles Blackman,4
+Pop Art,Gerard Fromanger,4
+Pop Art,Jasper Johns,4
+Pop Art,Wayne Thiebaud,4
+Pop Art,Yuriy Khymych,4
+Pop Art,Derek Boshier,3
+Pop Art,Ivan Eyre,3
+Pop Art,Richard Hamilton,3
+Pop Art,Roy Lichtenstein,3
+Pop Art,Antonio Berni,2
+Pop Art,Claes Oldenburg,2
+Pop Art,Nikias Skapinakis,2
+Pop Art,Pauline Boty,2
+Pop Art,Peter Phillips,2
+Pop Art,Allan D'Arcangelo,1
+Pop Art,Allen Jones,1
+Pop Art,Claudio Tozzi,1
+Pop Art,Dale Hickey,1
+Pop Art,Ellsworth Kelly,1
+Pop Art,Eric Massholder,1
+Pop Art,James Rosenquist,1
+Pop Art,Jose de Guimaraes,1
+Pop Art,Jyoti Bhatt,1
+Pop Art,Kazimierz Mikulski,1
+Pop Art,Konrad Klapheck,1
+Pop Art,LeRoy Neiman,1
+Pop Art,Patrick Caulfield,1
+Pop Art,Patrick Procktor,1
+Pop Art,Richard Smith,1
+Pop Art,Robert Rauschenberg,1
+Pop Art,Roger Raveel,1
+Pop Art,Samuel Buri,1
+Pop Art,Takato Yamamoto,1
+Pop Art,Yayoi Kusama,1
+Pop Art,Yu Youhan,1
+Renaissance,Raphael,31
+Renaissance,Andrea Mantegna,20
+Renaissance,Leonardo da Vinci,20
+Renaissance,Pietro Perugino,20
+Renaissance,Titian,20
+Renaissance,Albrecht Durer,16
+Renaissance,Vittore Carpaccio,16
+Renaissance,Luca Signorelli,14
+Renaissance,Cima da Conegliano,10
+Renaissance,Fra Angelico,10
+Renaissance,Giovanni Antonio Boltraffio,9
+Renaissance,Filippino Lippi,8
+Renaissance,Michelangelo,7
+Renaissance,Giovanni Bellini,6
+Renaissance,Pinturicchio,5
+Renaissance,Andrea Solario,3
+Renaissance,Gentile Bellini,2
+Renaissance,Giorgione,2
+Renaissance,Piero di Cosimo,2
+Renaissance,Antonio del Pollaiolo,1
+Renaissance,Fra Bartolomeo,1
+Surrealism,Joan Miro,20
+Surrealism,Max Ernst,20
+Surrealism,M.C. Escher,16
+Surrealism,Ramon Oviedo,16
+Surrealism,Paul Klee,12
+Surrealism,Pablo Picasso,10
+Surrealism,Xul Solar,7
+Surrealism,Edward Wadsworth,6
+Surrealism,Marc Chagall,6
+Surrealism,Francis Picabia,4
+Surrealism,Jean Arp,4
+Surrealism,Man Ray,3
+Surrealism,Rene Magritte,3
+Surrealism,Salvador Dali,3
+Surrealism,Georges Papazoff,2
+Surrealism,Jindrich Styrsky,2
+Surrealism,Leon Underwood,2
+Surrealism,Albin Egger-Lienz,1
+Surrealism,Andre Masson,1
+Surrealism,Boleslas Biegas,1
+Surrealism,Franz Sedlacek,1
+Surrealism,Lajos Gulacsy,1
+Surrealism,Pierre Roy,1
+Surrealism,Stanisław Szukalski,1
+Surrealism,Sven Jonson,1
+Surrealism,Valentine Hugo,1

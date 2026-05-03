@@ -1,0 +1,29 @@
+venv/
+__pycache__/
+*.pyc
+.env
+
+# image data (large binary files)
+data/images/
+data/raw/
+
+# generated embedding cache
+models/embeddings_clip.npz
+models/*.pt
+
+# generated outputs
+data/final_dataset/
+
+# HuggingFace cache
+.cache/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# extra diagnostic output
+outputs/arnheim/fixed/
+outputs/arnheim/anchor_diagnostics/

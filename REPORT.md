@@ -1,0 +1,45 @@
+# Art Movement Classification with CLIP Embeddings
+
+## Links
+
+GitHub repository: https://github.com/fault9/art_classifier
+
+Hugging Face dataset: https://huggingface.co/datasets/fault9/art-movement-rebalanced-dataset
+
+Hugging Face model: https://huggingface.co/fault9/art-movement-clip-classifier
+
+Hugging Face demo: https://huggingface.co/spaces/fault9/art-movement-classifier-demo
+
+## Introduction
+
+This project investigates whether pretrained image embeddings can support art movement classification on a small custom painting dataset. The domain problem is that art movement labels are visually and historically overlapping: Renaissance and Baroque share religious subjects, Cubism and Abstract art share geometric forms, and Expressionism overlaps with Abstract Expressionism. A second problem is dataset bias. If one artist dominates a class, a classifier may learn artist-specific style rather than movement-level visual structure.
+
+The project therefore uses CLIP image embeddings as a compact visual representation and trains shallow classifiers on top of these frozen embeddings. The final dataset contains 1,478 paintings across eight classes: Renaissance, Baroque, Impressionism, Expressionism, Cubism, Abstract, Surrealism, and Pop Art. The dataset was assembled from WikiArt-derived metadata and Hugging Face/WikiArt sources, then rebalanced by capping dominant artists and adding underrepresented artists where possible.
+
+## Method
+
+Images were resized and represented using `openai/clip-vit-base-patch32`, producing 512-dimensional image embeddings. Several classifiers were evaluated on the embeddings, including linear and non-linear scikit-learn models. The final selected model was an MLP classifier trained on CLIP embeddings. Evaluation used a fixed train/test split with 1,090 training images and 388 held-out test images. The training script also performs cross-validation to compare model choices.
+
+The web demo is implemented in Gradio and deployed on Hugging Face Spaces. It supports single-image classification, confidence visualization, batch collection analysis, and two interpretability layers. The Wölfflin tab maps the predicted movement to theoretical art-history axes. The Arnheim tab projects the image embedding onto perceptual axes constructed from anchor paintings, such as balance, depth, light, and color.
+
+## Results
+
+The final model achieved a held-out test accuracy of **0.8093** and a cross-validation accuracy of **0.8138 ± 0.0173**. The strongest classes were Impressionism and Renaissance, both above 0.90 F1. Baroque also performed well at 0.86 F1. Surrealism and Abstract were more difficult, reflecting the visual diversity of these categories and their overlap with other modern movements.
+
+The project satisfies the assignment requirements by including a custom dataset, a trained classifier specific to art movement classification, and a working Hugging Face web demo. The dataset repository is intended to be private or gated because the source images may have mixed copyright status. The model and Space can remain public because they do not redistribute the training images or the cached per-image embedding matrix.
+
+## Reflection on AI Assistance
+
+AI coding tools were useful for accelerating routine engineering tasks: writing data-processing scripts, generating audit tables, preparing Hugging Face model and dataset cards, debugging dependency errors, and improving documentation. They were especially helpful in identifying edge cases such as artist dominance, stale embedding caches, and Hugging Face runtime version conflicts.
+
+However, the work required manual checking. The AI sometimes made assumptions that needed correction, such as initially treating WikiArt availability as if it implied copyright freedom, or suggesting commands that differed slightly from the installed Hugging Face CLI. Model outputs also required domain judgment: for example, a Caravaggio painting may be classified as Renaissance if its composition is calmer and more classical than the Baroque examples in the training set. This reinforced that AI assistance is productive for implementation, but the final dataset design, interpretation, copyright framing, and evaluation claims must be checked by the developer.
+
+## References
+
+Moëll, B., & Aronsson, F. S. (2026). High-accuracy prediction of mental health scores from English BERT embeddings trained on LLM-generated synthetic self-reports: a synthetic-only method development study. *Frontiers in Digital Health*. https://doi.org/10.3389/fdgth.2025.1694464
+
+Radford, A., Kim, J. W., Hallacy, C., et al. (2021). Learning transferable visual models from natural language supervision. *International Conference on Machine Learning*.
+
+Wölfflin, H. (1915). *Principles of Art History*.
+
+Arnheim, R. (1954). *Art and Visual Perception: A Psychology of the Creative Eye*.
