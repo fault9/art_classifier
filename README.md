@@ -136,7 +136,7 @@ Scraped via WikiArt's public JSON API. ~200 images per class at web resolution.
 ## File Structure
 
 ```
-lab3_wölfflin/
+art_classifier/
 ├── data/
 │   ├── images/                   # Final painting images grouped by movement
 │   ├── metadata.csv              # Final dataset metadata
