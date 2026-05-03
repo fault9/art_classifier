@@ -1,6 +1,6 @@
-# Art Movement Classifier — Wölfflin Edition
+# Art Movement Classifier
 
-An embeddings-based image classifier that identifies the art movement of a painting, with a theoretical analysis layer grounded in Heinrich Wölfflin's *Principles of Art History* (1915).
+A CLIP-embedding image classifier for eight art movements, with two interpretability views: Wölfflin's Renaissance-Baroque visual principles and Arnheim-inspired perceptual scores. The Wölfflin layer is used mainly as an art-historical reference for Renaissance and Baroque, while the Arnheim layer scores individual images through anchor-based CLIP projections.
 
 ## Embeddings Lab Submission Summary
 
@@ -37,7 +37,7 @@ The short academic report for the course submission is in [`REPORT.md`](REPORT.m
 
 ## Wölfflin's Framework
 
-Heinrich Wölfflin identified **five pairs of opposing visual principles** that describe the shift from Renaissance to Baroque — and by extension, from classical to non-classical visual art:
+Heinrich Wölfflin identified **five pairs of opposing visual principles** that describe the shift from Renaissance to Baroque. This project uses that framework mainly as a Renaissance-Baroque reference point, then cautiously extends the mapping to the other classes for comparison:
 
 | Axis | Classical Pole | Non-Classical Pole |
 |------|---------------|-------------------|
@@ -60,7 +60,7 @@ Heinrich Wölfflin identified **five pairs of opposing visual principles** that 
 | Surrealism | Classical | Mixed | Mixed | Mixed | Mixed |
 | Pop Art | Classical | Classical | Classical | Classical | Classical |
 
-**Key hypothesis:** If CLIP or ViT embeddings encode genuine visual properties, the principal components of the embedding space should correlate with Wölfflin's axes — especially the Linear↔Painterly axis, which is the most visually salient. `train.py` tests this with Spearman correlation between PC1 rankings and theoretical positions.
+**Interpretive use:** The Wölfflin view in the demo is theoretical: it shows the Wölfflin profile assigned to the classifier's predicted movement. `train.py` also saves a PCA visualization of CLIP class centroids to inspect whether embedding geometry roughly follows these art-historical contrasts.
 
 **Surrealism** is a fascinating edge case: Dalí paints with photorealistic precision (Classical/Linear) but depicts impossible dreamlike content (Unclear). It straddles the axes in a way Wölfflin never anticipated.
 
@@ -114,29 +114,32 @@ If an anchor artist isn't in the training set (it's only ~1,400 paintings), thei
 
 ## Approach
 
-1. **Image embeddings** from pretrained vision models (CLIP, ViT)
-2. **Shallow classifier** (logistic regression / SVM / MLP) on top of frozen embeddings
-3. **5-fold cross-validation** to compare models; best combination selected automatically
-4. **Wölfflin analysis** on class centroids via PCA — tests whether embedding geometry mirrors art historical theory
+1. **Image embeddings** from `openai/clip-vit-base-patch32`
+2. **MLP classifier** trained on frozen CLIP embeddings
+3. **Held-out test evaluation** plus cross-validation metrics
+4. **Wölfflin analysis** on CLIP class centroids via PCA
+5. **Arnheim analysis** through anchor-based projection in CLIP space
 
 ---
 
 ## Dataset
 
-### Source 1: WikiArt (primary)
-Scraped via WikiArt's public JSON API. ~200 images per class at web resolution.
+The final dataset contains **1,478 paintings** across eight art movements, with **1,090 training images** and **388 held-out test images**. It was built from WikiArt-derived metadata plus targeted Hugging Face/WikiArt additions.
 
-### Source 2: HuggingFace — huggan/wikiart
-~80k paintings with WikiArt labels. Used as supplementary source where WikiArt scraping is insufficient.
+The dataset was rebalanced to reduce artist-dominance bias: overrepresented artists were capped at 20 paintings per class, and underrepresented artists were added where source data was available. Audit files in `data/` document the cap removals, additions, and copyright-risk review.
 
-**Target:** 100–200 images per class, 800–1600 total.
+Sources:
+
+- `wikiart`: primary WikiArt scrape
+- `huggan_wikiart`: additions from the Hugging Face `huggan/wikiart` dataset
+- `wikiart_targeted`: targeted WikiArt additions for underrepresented artists
 
 ---
 
 ## File Structure
 
 ```
-lab3_wölfflin/
+art_classifier/
 ├── data/
 │   ├── images/                   # Final painting images grouped by movement
 │   ├── metadata.csv              # Final dataset metadata
@@ -150,7 +153,6 @@ lab3_wölfflin/
 │   ├── classifier.joblib
 │   ├── label_encoder.joblib
 │   ├── config.json
-│   ├── embeddings_clip.npz        # Cached CLIP embeddings (written by train.py)
 │   ├── arnheim_axes.npz           # Arnheim axis vectors (written by arnheim_analysis.py)
 │   ├── confusion_matrix.png
 │   └── wolfflin_pca_{model}.png
@@ -174,32 +176,31 @@ lab3_wölfflin/
 
 ## How to Reproduce
 
-The final dataset is already included in `data/metadata.csv`, `data/train.csv`, `data/test.csv`, and `data/images/`. For normal lab use, start at training:
+The GitHub repository includes source code, metadata, model artifacts, and analysis outputs. The full image folder is not committed to GitHub; it is distributed through the Hugging Face dataset because it is large and has mixed copyright status. To retrain locally, download or restore `data/images/` so the paths in `data/metadata.csv` resolve. If you only want to run the demo, use the Hugging Face Space or the committed model files.
 
 ```bash
 # 1. Set up environment
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 
-# 2. Train
-python train.py              # compare CLIP + ViT × 3 classifiers
-python train.py --skip-vit   # CLIP only (faster, also saves embeddings_clip.npz)
+# 2. Train, after data/images/ is available locally
+python train.py              # train/evaluate the CLIP + MLP classifier
 
-# 3. Arnheim analysis (requires trained model + embeddings cache from step 2)
-python arnheim_analysis.py           # encodes images + saves axes (~10 min first run)
-python arnheim_analysis.py --skip-encode  # fast re-run once cache exists
+# 3. Arnheim analysis
+python arnheim_analysis.py           # encodes images if needed and saves axes
+python arnheim_analysis.py --skip-encode  # fast re-run once embeddings are cached
 
 # 4. Run demo
 python app.py
 ```
 
-To rebuild the dataset from source metadata, use `data/scrape_wikiart.py` and `data/build_dataset.py`. The older Hugging Face downloader and rebalance utilities are archived in `data/legacy/` for provenance only.
+To rebuild the dataset from source metadata, use `data/scrape_wikiart.py` and `data/build_dataset.py`. The older Hugging Face downloader and rebalance utilities are archived in `data/legacy/` for provenance only. The final dataset metadata and audit CSVs are included so the construction process remains inspectable without committing the image binaries to GitHub.
 
 ---
 
 ## Expected Results and Genre Confusion
 
-Based on the Wölfflin mapping, the confusion matrix should show predictable patterns:
+The held-out test accuracy is **0.8093**. Common confusions are expected where movements share subjects or visual structure:
 
 - **Renaissance ↔ Baroque**: highest confusion pair — both are Old Masters painting in oil on canvas with similar subjects. The visual difference (linear vs chiaroscuro) is subtle at thumbnail resolution.
 - **Impressionism ↔ Expressionism**: both feature visible brushwork and non-classical composition; the distinction is in color naturalism (Impressionism) vs emotional distortion (Expressionism).
@@ -207,11 +208,11 @@ Based on the Wölfflin mapping, the confusion matrix should show predictable pat
 - **Cubism ↔ Abstract**: both involve geometric non-representational surface — Cubism is earlier and still references objects; Abstract dissolves them entirely.
 - **Surrealism**: unique cross-axis position should make it both easy to identify (nothing else looks like melting clocks) and easy to confuse (the hyper-realistic rendering technique looks like Baroque).
 
-The Wölfflin analysis in `train.py` quantifies how well the embedding space captures these theoretical distances.
+The saved confusion matrix and Wölfflin/Arnheim visualizations are in `models/` and `outputs/arnheim/`.
 
 ---
 
-## HuggingFace Hub
+## Hugging Face Hub
 
 Prepared upload cards and helper script live in `hf_artifacts/`.
 

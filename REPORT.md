@@ -30,15 +30,11 @@ The project satisfies the assignment requirements by including a custom dataset,
 
 ## Reflection on AI Assistance
 
-AI coding tools were useful for accelerating routine engineering tasks: writing data-processing scripts, generating audit tables, preparing Hugging Face model and dataset cards, debugging dependency errors, and improving documentation. They were especially helpful in identifying edge cases such as artist dominance, stale embedding caches, and Hugging Face runtime version conflicts.
+AI coding tools were useful for speeding up implementation, writing scripts, generating audit tables, debugging deployment issues, and preparing Hugging Face model and dataset cards. They were especially helpful in identifying edge cases around artist dominance, stale embedding caches, and dataset rebalancing. 
 
-However, the work required manual checking. The AI sometimes made assumptions that needed correction, such as initially treating WikiArt availability as if it implied copyright freedom, or suggesting commands that differed slightly from the installed Hugging Face CLI. Model outputs also required domain judgment: for example, a Caravaggio painting may be classified as Renaissance if its composition is calmer and more classical than the Baroque examples in the training set. This reinforced that AI assistance is productive for implementation, but the final dataset design, interpretation, copyright framing, and evaluation claims must be checked by the developer.
+However, the work required manual checking. The AI sometimes made assumptions that needed correction or additional filtering, such as initially treating WikiArt availability as if it implied copyright freedom, or not balancing the dataset sufficiently across artists. Model outputs also required domain judgment: for example, a Caravaggio painting may be classified as Renaissance if its composition is calmer and more classical than the Baroque examples in the training set. This reinforced that AI assistance is productive for implementation, but the final dataset design, interpretation, copyright framing, and evaluation claims must be checked by the developer.
 
 ## References
-
-Moëll, B., & Aronsson, F. S. (2026). High-accuracy prediction of mental health scores from English BERT embeddings trained on LLM-generated synthetic self-reports: a synthetic-only method development study. *Frontiers in Digital Health*. https://doi.org/10.3389/fdgth.2025.1694464
-
-Radford, A., Kim, J. W., Hallacy, C., et al. (2021). Learning transferable visual models from natural language supervision. *International Conference on Machine Learning*.
 
 Wölfflin, H. (1915). *Principles of Art History*.
 
