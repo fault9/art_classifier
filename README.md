@@ -6,6 +6,13 @@ A CLIP-embedding image classifier for eight art movements, with two interpretabi
 
 The short academic report for the course submission is in [`REPORT.md`](REPORT.md).
 
+**Project links:**
+
+- GitHub repo: https://github.com/fault9/art_classifier
+- Hugging Face dataset: https://huggingface.co/datasets/fault9/art-movement-rebalanced-dataset
+- Hugging Face model: https://huggingface.co/fault9/art-movement-clip-classifier
+- Hugging Face demo: https://huggingface.co/spaces/fault9/art-movement-classifier-demo
+
 **Domain issue:** Art movement classifiers can learn artist-specific shortcuts instead of movement-level visual structure. In the original data, some artists dominated their class, so the dataset was rebalanced by capping artists and adding underrepresented artists.
 
 **Challenge addressed with embeddings:** The project uses pretrained image embeddings to classify paintings with a small custom dataset, avoiding the need to train a full vision model from scratch.
