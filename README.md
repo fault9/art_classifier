@@ -1,4 +1,4 @@
-# Art Movement Classifier — Wölfflin Edition
+# Art Movement Classifier — Wölfflin/Arnheim Edition
 
 An embeddings-based image classifier that identifies the art movement of a painting, with a theoretical analysis layer grounded in Heinrich Wölfflin's *Principles of Art History* (1915).
 
