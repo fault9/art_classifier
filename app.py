@@ -619,6 +619,22 @@ def arnheim_perceptual(img: Image.Image, url: str = ""):
     return "\n".join(lines), fig
 
 
+
+
+def analyze_single_painting(img: Image.Image, url: str, mode: str):
+    """Run the selected single-painting analysis with one shared input/output path."""
+    mode = mode or "Classifier"
+    if mode == "Classifier":
+        label_md, fig, description = classify_painting(img, url)
+        if description:
+            label_md = f"{label_md}\n\n{description}"
+        return label_md, fig
+    if mode == "Wölfflin":
+        return wolfflin_analysis(img, url)
+    if mode == "Arnheim":
+        return arnheim_perceptual(img, url)
+    return "Choose an analysis mode.", None
+
 # ---------------------------------------------------------------------------
 # Gradio UI
 # ---------------------------------------------------------------------------
@@ -631,40 +647,46 @@ with gr.Blocks(title="Art Movement Classifier") as demo:
         "Wölfflin's Renaissance-Baroque visual principles and Arnheim-inspired perceptual scores."
     )
 
-    gr.Markdown("### Painting Input")
-    with gr.Row():
-        with gr.Column(scale=1):
-            shared_img = gr.Image(type="pil", sources=["upload", "clipboard"], label="Upload or drag painting")
-        with gr.Column(scale=1):
-            shared_url = gr.Textbox(placeholder="https://...  (direct image URL)", label="Or paste image URL")
-            example_choice = gr.Dropdown(
-                choices=[label for label, _ in EXAMPLE_IMAGE_PATHS],
-                label="Try an example painting",
-                value=None,
-            )
-            load_example_btn = gr.Button("Load Example")
-    load_example_btn.click(
-        load_example_image,
-        inputs=example_choice,
-        outputs=[shared_img, shared_url],
-    )
-
-    with gr.Tab("Painting Classifier"):
+    with gr.Tab("Single Painting"):
         gr.Markdown(
-            "Classifies the shared painting input into one of eight movements and shows the "
-            "model's confidence distribution. Ambiguous old-master or modern works may receive close scores."
+            "Use one image input for all analyses. Pick a mode, run it, then switch modes "
+            "without re-uploading the painting."
         )
-        classify_btn = gr.Button("Classify Shared Painting", variant="primary")
         with gr.Row():
             with gr.Column(scale=1):
-                result_label = gr.Markdown()
-                result_desc  = gr.Markdown()
+                single_img = gr.Image(type="pil", sources=["upload", "clipboard"], label="Upload or drag painting")
+                single_url = gr.Textbox(placeholder="https://...  (direct image URL)", label="Or paste image URL")
+                example_choice = gr.Dropdown(
+                    choices=[label for label, _ in EXAMPLE_IMAGE_PATHS],
+                    label="Try an example painting",
+                    value=None,
+                )
+                load_example_btn = gr.Button("Load Example")
+                mode = gr.Radio(
+                    choices=["Classifier", "Wölfflin", "Arnheim"],
+                    value="Classifier",
+                    label="Analysis mode",
+                )
+                analyze_btn = gr.Button("Analyze", variant="primary")
             with gr.Column(scale=2):
-                result_chart = gr.Plot(label="Confidence Scores")
-        classify_btn.click(
-            classify_painting,
-            inputs=[shared_img, shared_url],
-            outputs=[result_label, result_chart, result_desc],
+                single_md = gr.Markdown()
+                single_plot = gr.Plot()
+
+        load_example_btn.click(
+            load_example_image,
+            inputs=example_choice,
+            outputs=[single_img, single_url],
+        )
+        analyze_btn.click(
+            analyze_single_painting,
+            inputs=[single_img, single_url, mode],
+            outputs=[single_md, single_plot],
+        )
+
+        gr.Markdown(
+            "**Mode notes:** Classifier shows movement probabilities. Wölfflin shows the "
+            "theoretical Renaissance-Baroque profile of the predicted movement. Arnheim scores "
+            "the uploaded image itself through CLIP anchor projections."
         )
 
     with gr.Tab("Collection Analyzer"):
@@ -685,65 +707,14 @@ with gr.Blocks(title="Art Movement Classifier") as demo:
                     placeholder="https://example.com/painting1.jpg\nhttps://example.com/painting2.jpg",
                     label="Or paste image URLs (one per line)",
                 )
-                analyze_btn = gr.Button("Analyse Collection", variant="primary")
+                analyze_collection_btn = gr.Button("Analyse Collection", variant="primary")
             with gr.Column(scale=2):
                 collection_md    = gr.Markdown()
                 collection_radar = gr.Plot()
-        analyze_btn.click(
+        analyze_collection_btn.click(
             analyze_collection,
             inputs=[gallery_in, urls_in],
             outputs=[collection_md, collection_radar],
-        )
-
-    with gr.Tab("Wölfflin Analysis"):
-        gr.Markdown(
-            "### Heinrich Wölfflin's Five Principles\n"
-            "Wölfflin's *Principles of Art History* (1915) was mainly written to explain "
-            "the visual shift from Renaissance classicism to Baroque dynamism. This tab uses "
-            "that framework as a theoretical reference for the **predicted movement**, not as "
-            "a direct pixel-level analysis of the uploaded painting.\n\n"
-            "1. **Linear ↔ Painterly** — contour clarity vs dissolved edges\n"
-            "2. **Plane ↔ Recession** — flat layers vs deep spatial depth\n"
-            "3. **Closed ↔ Open** — balanced, self-contained vs dynamic, asymmetric\n"
-            "4. **Multiplicity ↔ Unity** — independently articulated parts vs subordinated whole\n"
-            "5. **Clearness ↔ Unclearness** — full visibility vs selective shadow and suggestion\n\n"
-            "Renaissance and Baroque references are shown on the radar because they are the "
-            "framework's clearest poles."
-        )
-        wanalyze_btn = gr.Button("Analyse Shared Painting (Wölfflin)", variant="primary")
-        with gr.Row():
-            with gr.Column(scale=1):
-                wolfflin_md    = gr.Markdown()
-            with gr.Column(scale=2):
-                wolfflin_radar = gr.Plot()
-        wanalyze_btn.click(
-            wolfflin_analysis,
-            inputs=[shared_img, shared_url],
-            outputs=[wolfflin_md, wolfflin_radar],
-        )
-
-    with gr.Tab("Perceptual Analysis (Arnheim)"):
-        gr.Markdown(
-            "### Rudolf Arnheim's Six Perceptual Dimensions\n"
-            "Arnheim's *Art and Visual Perception* (1954) describes how viewers perceive "
-            "balance, shape, depth, movement, light, and color. Unlike Wölfflin's historical "
-            "movement profile, this tab scores the **uploaded image itself** by projecting its "
-            "CLIP embedding onto anchor-based perceptual axes.\n\n"
-            "Scores are derived by projecting the painting's CLIP embedding onto "
-            "semantic axes defined by anchor paintings at each perceptual extreme. "
-            "The result is exploratory: it shows what the model sees as visually similar, "
-            "not a final scholarly judgment."
-        )
-        aanalyze_btn = gr.Button("Analyse Shared Painting (Arnheim)", variant="primary")
-        with gr.Row():
-            with gr.Column(scale=1):
-                arnheim_md    = gr.Markdown()
-            with gr.Column(scale=2):
-                arnheim_radar = gr.Plot()
-        aanalyze_btn.click(
-            arnheim_perceptual,
-            inputs=[shared_img, shared_url],
-            outputs=[arnheim_md, arnheim_radar],
         )
 
 if __name__ == "__main__":
