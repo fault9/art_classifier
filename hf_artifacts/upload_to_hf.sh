@@ -43,6 +43,7 @@ hf upload "$MODEL_REPO" models/evaluation_metrics.json evaluation_metrics.json -
 hf upload "$MODEL_REPO" models/confusion_matrix.png confusion_matrix.png --repo-type model
 hf upload "$MODEL_REPO" models/wolfflin_pca_clip.png wolfflin_pca_clip.png --repo-type model
 hf upload "$MODEL_REPO" models/arnheim_axes.npz arnheim_axes.npz --repo-type model
+hf upload "$MODEL_REPO" models/arnheim_profiles.json arnheim_profiles.json --repo-type model
 
 echo "Uploading Space..."
 hf upload "$SPACE_REPO" hf_artifacts/space/README.md README.md --repo-type space
@@ -53,6 +54,7 @@ hf upload "$SPACE_REPO" models/classifier.joblib models/classifier.joblib --repo
 hf upload "$SPACE_REPO" models/label_encoder.joblib models/label_encoder.joblib --repo-type space
 hf upload "$SPACE_REPO" models/config.json models/config.json --repo-type space
 hf upload "$SPACE_REPO" models/arnheim_axes.npz models/arnheim_axes.npz --repo-type space
+hf upload "$SPACE_REPO" models/arnheim_profiles.json models/arnheim_profiles.json --repo-type space
 
 echo ""
 echo "Done."
