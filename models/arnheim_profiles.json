@@ -1,0 +1,76 @@
+{
+  "dim_order": [
+    "Balance",
+    "Shape",
+    "Depth",
+    "Tension",
+    "Light",
+    "Color"
+  ],
+  "profiles": {
+    "Abstract": {
+      "Balance": -1.071999,
+      "Shape": 0.845304,
+      "Depth": -0.947955,
+      "Tension": 1.238481,
+      "Light": -0.847324,
+      "Color": 0.973768
+    },
+    "Baroque": {
+      "Balance": 0.507236,
+      "Shape": -0.619518,
+      "Depth": 0.849286,
+      "Tension": 0.073132,
+      "Light": 1.169032,
+      "Color": -1.625671
+    },
+    "Cubism": {
+      "Balance": -0.98506,
+      "Shape": 0.567781,
+      "Depth": -0.616797,
+      "Tension": 0.630737,
+      "Light": -0.797741,
+      "Color": 0.424626
+    },
+    "Expressionism": {
+      "Balance": -0.680028,
+      "Shape": -0.172826,
+      "Depth": -0.238499,
+      "Tension": 0.353154,
+      "Light": -0.442601,
+      "Color": -0.317481
+    },
+    "Impressionism": {
+      "Balance": -0.652877,
+      "Shape": -1.327408,
+      "Depth": 0.086022,
+      "Tension": -1.282897,
+      "Light": -0.960565,
+      "Color": -1.055453
+    },
+    "Pop Art": {
+      "Balance": -0.832993,
+      "Shape": 0.751233,
+      "Depth": -0.850416,
+      "Tension": 0.942616,
+      "Light": -0.885262,
+      "Color": 0.991585
+    },
+    "Renaissance": {
+      "Balance": 0.882364,
+      "Shape": -0.429339,
+      "Depth": 1.00456,
+      "Tension": -0.123539,
+      "Light": 1.169254,
+      "Color": -1.484537
+    },
+    "Surrealism": {
+      "Balance": -0.947914,
+      "Shape": 0.782817,
+      "Depth": -0.663534,
+      "Tension": 1.144011,
+      "Light": -0.486911,
+      "Color": 0.600223
+    }
+  }
+}

@@ -264,38 +264,58 @@ ARNHEIM_DESCRIPTIONS = {
     "Color":   "High = vivid/saturated palette  ·  Low = muted/tonal palette",
 }
 
-# Theoretical Arnheim profiles per genre.
-# Scale: -1.0 = strongly Low pole, +1.0 = strongly High pole.
-# Dimension order: Balance, Shape, Depth, Tension, Light, Color
+# Empirical Arnheim profiles per genre.
+# These are generated from outputs/arnheim/arnheim_scores.csv and should match
+# the saved anchor axes in models/arnheim_axes.npz. They are used as a fallback
+# if models/arnheim_profiles.json is not available on the Space.
 _DIM_ORDER = ["Balance", "Shape", "Depth", "Tension", "Light", "Color"]
 ARNHEIM_PROFILES = {
-    "Renaissance":   [ 0.7,  0.4,  0.8, -0.6,  0.1, -0.4],
-    "Baroque":       [-0.2, -0.3,  0.7,  0.5,  0.8, -0.5],
-    "Impressionism": [ 0.1, -0.6,  0.2, -0.5, -0.6,  0.5],
-    "Expressionism": [-0.7, -0.5, -0.2,  0.8,  0.4,  0.7],
-    "Cubism":        [ 0.1,  0.8, -0.7,  0.4, -0.3,  0.1],
-    "Abstract":      [ 0.1,  0.1, -0.7,  0.5, -0.5,  0.5],
-    "Surrealism":    [-0.2,  0.1,  0.7, -0.2,  0.2,  0.1],
-    "Pop Art":       [ 0.8,  0.8, -0.7, -0.6, -0.6,  0.8],
+    "Abstract":      [-1.071999,  0.845304, -0.947955,  1.238481, -0.847324,  0.973768],
+    "Baroque":       [ 0.507236, -0.619518,  0.849286,  0.073132,  1.169032, -1.625671],
+    "Cubism":        [-0.985060,  0.567781, -0.616797,  0.630737, -0.797741,  0.424626],
+    "Expressionism": [-0.680028, -0.172826, -0.238499,  0.353154, -0.442601, -0.317481],
+    "Impressionism": [-0.652877, -1.327408,  0.086022, -1.282897, -0.960565, -1.055453],
+    "Pop Art":       [-0.832993,  0.751233, -0.850416,  0.942616, -0.885262,  0.991585],
+    "Renaissance":   [ 0.882364, -0.429339,  1.004560, -0.123539,  1.169254, -1.484537],
+    "Surrealism":    [-0.947914,  0.782817, -0.663534,  1.144011, -0.486911,  0.600223],
 }
+
+_arnheim_profiles_cache: dict[str, list[float]] | None = None
+
+def load_arnheim_profiles() -> dict[str, list[float]]:
+    global _arnheim_profiles_cache
+    if _arnheim_profiles_cache is not None:
+        return _arnheim_profiles_cache
+    profiles_path = MODELS_DIR / "arnheim_profiles.json"
+    if profiles_path.exists():
+        with open(profiles_path) as f:
+            payload = json.load(f)
+        profiles = {
+            genre: [float(values[d]) for d in _DIM_ORDER]
+            for genre, values in payload.get("profiles", {}).items()
+        }
+        if profiles:
+            _arnheim_profiles_cache = profiles
+            return profiles
+    _arnheim_profiles_cache = ARNHEIM_PROFILES
+    return _arnheim_profiles_cache
 
 
 def arnheim_match(scores: dict[str, float]) -> tuple[str, float]:
-    """Return (best_genre, cosine_similarity) based on Arnheim profile matching."""
-    vec = np.array([scores.get(d, 0.0) for d in _DIM_ORDER])
-    vec_norm = np.linalg.norm(vec)
+    """Return the closest empirical genre profile and a 0-1 similarity score."""
+    vec = np.array([scores.get(d, 0.0) for d in _DIM_ORDER], dtype=float)
+    profiles = load_arnheim_profiles()
 
-    best_genre, best_sim = CLASSES[0], -2.0
-    for genre, profile in ARNHEIM_PROFILES.items():
-        p = np.array(profile)
-        p_norm = np.linalg.norm(p)
-        if vec_norm < 1e-8 or p_norm < 1e-8:
-            sim = 0.0
-        else:
-            sim = float(np.dot(vec, p) / (vec_norm * p_norm))
-        if sim > best_sim:
-            best_sim, best_genre = sim, genre
-    return best_genre, best_sim
+    best_genre, best_distance = CLASSES[0], float("inf")
+    for genre, profile in profiles.items():
+        p = np.array(profile, dtype=float)
+        distance = float(np.linalg.norm(vec - p))
+        if distance < best_distance:
+            best_distance, best_genre = distance, genre
+
+    # Convert distance to a readable bounded similarity. 1.0 is identical.
+    similarity = 1.0 / (1.0 + best_distance)
+    return best_genre, similarity
 
 
 # ---------------------------------------------------------------------------
@@ -529,7 +549,7 @@ def arnheim_perceptual(img: Image.Image, url: str = ""):
     clf_pred     = _label_encoder.classes_[np.argmax(probs)]
     clf_conf     = probs.max()
 
-    # Arnheim perceptual match (profile distance)
+    # Empirical Arnheim profile match
     arn_pred, arn_sim = arnheim_match(scores)
 
     dim_names = list(_DIM_ORDER)  # canonical order for display
@@ -537,19 +557,19 @@ def arnheim_perceptual(img: Image.Image, url: str = ""):
     # --- Radar chart ---
     # Painting scores (0–100 scale)
     painting_vals = [(scores.get(d, 0.0) + 1) / 2 * 100 for d in dim_names]
-    # Arnheim-matched genre theoretical profile (0–100 scale)
-    match_profile = [(v + 1) / 2 * 100 for v in ARNHEIM_PROFILES[arn_pred]]
+    # Empirical Arnheim-matched genre profile (0–100 scale)
+    match_profile = [(v + 1) / 2 * 100 for v in load_arnheim_profiles()[arn_pred]]
 
     closed_dims = dim_names + [dim_names[0]]
 
     fig = go.Figure()
-    # Theoretical profile of Arnheim-matched genre (reference)
+    # Empirical class profile of Arnheim-matched genre (reference)
     fig.add_trace(go.Scatterpolar(
         r=match_profile + [match_profile[0]],
         theta=closed_dims,
         fill="toself", opacity=0.20,
         line=dict(color=GENRE_COLORS.get(arn_pred, "#888"), dash="dot", width=1.5),
-        name=f"Arnheim profile: {arn_pred}",
+        name=f"Empirical profile: {arn_pred}",
     ))
     # Painting's actual scores
     fig.add_trace(go.Scatterpolar(
@@ -585,7 +605,7 @@ def arnheim_perceptual(img: Image.Image, url: str = ""):
         f"| | Prediction |",
         f"|---|---|",
         f"| **Classifier** (embedding-based) | **{clf_pred}** — {clf_conf*100:.1f}% confidence |",
-        f"| **Arnheim perceptual match** | **{arn_pred}** — similarity {arn_sim:.2f} |",
+        f"| **Closest empirical Arnheim profile** | **{arn_pred}** — similarity {arn_sim:.2f} |",
         "",
         agree_note,
         "",
