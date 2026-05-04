@@ -301,21 +301,24 @@ def load_arnheim_profiles() -> dict[str, list[float]]:
     return _arnheim_profiles_cache
 
 
-def arnheim_match(scores: dict[str, float]) -> tuple[str, float]:
-    """Return the closest empirical genre profile and a 0-1 similarity score."""
+def arnheim_profile_matches(scores: dict[str, float]) -> list[tuple[str, float]]:
+    """Return empirical perceptual-profile similarities, not class predictions."""
     vec = np.array([scores.get(d, 0.0) for d in _DIM_ORDER], dtype=float)
-    profiles = load_arnheim_profiles()
+    matches: list[tuple[str, float]] = []
 
-    best_genre, best_distance = CLASSES[0], float("inf")
-    for genre, profile in profiles.items():
+    for genre, profile in load_arnheim_profiles().items():
         p = np.array(profile, dtype=float)
         distance = float(np.linalg.norm(vec - p))
-        if distance < best_distance:
-            best_distance, best_genre = distance, genre
+        # Convert distance to a readable bounded similarity. 1.0 is identical.
+        similarity = 1.0 / (1.0 + distance)
+        matches.append((genre, similarity))
 
-    # Convert distance to a readable bounded similarity. 1.0 is identical.
-    similarity = 1.0 / (1.0 + best_distance)
-    return best_genre, similarity
+    return sorted(matches, key=lambda item: item[1], reverse=True)
+
+
+def arnheim_match(scores: dict[str, float]) -> tuple[str, float]:
+    """Backward-compatible helper for the nearest perceptual profile."""
+    return arnheim_profile_matches(scores)[0]
 
 
 # ---------------------------------------------------------------------------
@@ -549,27 +552,30 @@ def arnheim_perceptual(img: Image.Image, url: str = ""):
     clf_pred     = _label_encoder.classes_[np.argmax(probs)]
     clf_conf     = probs.max()
 
-    # Empirical Arnheim profile match
-    arn_pred, arn_sim = arnheim_match(scores)
+    # Empirical Arnheim profile similarities. These are interpretive perceptual
+    # matches, not movement predictions; the classifier remains the label source.
+    profile_matches = arnheim_profile_matches(scores)
+    profiles = load_arnheim_profiles()
+    reference_genre = clf_pred if clf_pred in profiles else profile_matches[0][0]
 
     dim_names = list(_DIM_ORDER)  # canonical order for display
 
     # --- Radar chart ---
-    # Painting scores (0–100 scale)
+    # Painting scores (0-100 scale)
     painting_vals = [(scores.get(d, 0.0) + 1) / 2 * 100 for d in dim_names]
-    # Empirical Arnheim-matched genre profile (0–100 scale)
-    match_profile = [(v + 1) / 2 * 100 for v in load_arnheim_profiles()[arn_pred]]
+    # Empirical profile for the classifier's movement, used as interpretation reference.
+    match_profile = [(v + 1) / 2 * 100 for v in profiles[reference_genre]]
 
     closed_dims = dim_names + [dim_names[0]]
 
     fig = go.Figure()
-    # Empirical class profile of Arnheim-matched genre (reference)
+    # Empirical class profile of the classifier's movement (reference)
     fig.add_trace(go.Scatterpolar(
         r=match_profile + [match_profile[0]],
         theta=closed_dims,
         fill="toself", opacity=0.20,
-        line=dict(color=GENRE_COLORS.get(arn_pred, "#888"), dash="dot", width=1.5),
-        name=f"Empirical profile: {arn_pred}",
+        line=dict(color=GENRE_COLORS.get(reference_genre, "#888"), dash="dot", width=1.5),
+        name=f"Empirical class profile: {reference_genre}",
     ))
     # Painting's actual scores
     fig.add_trace(go.Scatterpolar(
@@ -592,22 +598,18 @@ def arnheim_perceptual(img: Image.Image, url: str = ""):
     )
 
     # --- Markdown summary ---
-    agree = clf_pred == arn_pred
-    agree_note = "✓ Both methods agree." if agree else (
-        f"⚠ The classifier and Arnheim match differ — "
-        f"the embedding may place this painting closer to {clf_pred} "
-        f"stylistically, even though its perceptual structure resembles {arn_pred}."
-    )
+    nearest = ", ".join(f"{genre} ({sim:.2f})" for genre, sim in profile_matches[:3])
 
     lines = [
         ARNHEIM_NOTE,
         "",
-        f"| | Prediction |",
+        f"| | Result |",
         f"|---|---|",
-        f"| **Classifier** (embedding-based) | **{clf_pred}** — {clf_conf*100:.1f}% confidence |",
-        f"| **Closest empirical Arnheim profile** | **{arn_pred}** — similarity {arn_sim:.2f} |",
+        f"| **Classifier movement** | **{clf_pred}** - {clf_conf*100:.1f}% confidence |",
+        f"| **Radar reference** | Empirical **{reference_genre}** class profile |",
+        f"| **Nearest perceptual profiles** | {nearest} |",
         "",
-        agree_note,
+        "The nearest perceptual profile is not a second movement prediction. It only shows which class averages this image resembles on the six Arnheim-inspired visual axes.",
         "",
         "---",
         "",
@@ -663,8 +665,8 @@ with gr.Blocks(title="Art Movement Classifier") as demo:
     gr.Markdown(
         "# Art Movement Classifier\n"
         "Upload a painting to classify its likely art movement using CLIP image embeddings "
-        "and a trained MLP classifier. The demo also includes two interpretability views: "
-        "Wölfflin's Renaissance-Baroque visual principles and Arnheim-inspired perceptual scores."
+        "and a trained MLP classifier. Wölfflin gives a mainly Renaissance-Baroque "
+        "theoretical reference, while Arnheim shows perceptual similarity on anchor-based visual axes."
     )
 
     with gr.Tab("Single Painting"):
@@ -706,7 +708,8 @@ with gr.Blocks(title="Art Movement Classifier") as demo:
         gr.Markdown(
             "**Mode notes:** Classifier shows movement probabilities. Wölfflin shows the "
             "theoretical Renaissance-Baroque profile of the predicted movement. Arnheim scores "
-            "the uploaded image itself through CLIP anchor projections."
+            "the uploaded image itself and lists nearest perceptual profiles; those profiles are "
+            "interpretive similarities, not extra class predictions."
         )
 
     with gr.Tab("Collection Analyzer"):

@@ -1,6 +1,6 @@
 # Art Movement Classifier
 
-A CLIP-embedding image classifier for eight art movements, with two interpretability views: Wölfflin's Renaissance-Baroque visual principles and Arnheim-inspired perceptual scores. The Wölfflin layer is used mainly as an art-historical reference for Renaissance and Baroque, while the Arnheim layer scores individual images through anchor-based CLIP projections.
+A CLIP-embedding image classifier for eight art movements, with two interpretability views. The classifier predicts the movement label. Wölfflin is used mainly as a Renaissance-Baroque art-historical reference, while the Arnheim layer compares an individual painting to empirical perceptual profiles built from anchor-based CLIP projections. Arnheim is interpretive: it explains visual similarity on perceptual axes, not a second movement prediction.
 
 ## Embeddings Lab Submission Summary
 
@@ -25,7 +25,7 @@ The short academic report for the course submission is in [`REPORT.md`](REPORT.m
 
 **Held-out accuracy:** 0.8093.
 
-**Demo:** Gradio app in `app.py` with classification, collection analysis, Wölfflin profiles, and Arnheim perceptual profiles.
+**Demo:** Gradio app in `app.py` with single-image classification, collection analysis, Wölfflin profiles, and Arnheim perceptual similarity profiles.
 
 ## The 8 Art Movement Classes
 
@@ -67,7 +67,7 @@ Heinrich Wölfflin identified **five pairs of opposing visual principles** that 
 | Surrealism | Classical | Mixed | Mixed | Mixed | Mixed |
 | Pop Art | Classical | Classical | Classical | Classical | Classical |
 
-**Interpretive use:** The Wölfflin view in the demo is theoretical: it shows the Wölfflin profile assigned to the classifier's predicted movement. `train.py` also saves a PCA visualization of CLIP class centroids to inspect whether embedding geometry roughly follows these art-historical contrasts.
+**Interpretive use:** The Wölfflin view in the demo is theoretical: it shows the Wölfflin profile assigned to the classifier's predicted movement. This is most historically meaningful for Renaissance and Baroque, the two periods Wölfflin's framework was designed to contrast. For later movements, the mapping is a cautious comparison layer rather than a claim that Wölfflin directly described those styles. `train.py` also saves a PCA visualization of CLIP class centroids to inspect whether embedding geometry roughly follows these art-historical contrasts.
 
 **Surrealism** is a fascinating edge case: Dalí paints with photorealistic precision (Classical/Linear) but depicts impossible dreamlike content (Unclear). It straddles the axes in a way Wölfflin never anticipated.
 
@@ -98,7 +98,7 @@ Rudolf Arnheim (*Art and Visual Perception*, 1954) analyzed how humans perceive 
 | Multiplicity ↔ Unity | Shape + Balance |
 | Clearness ↔ Unclearness | Light + Shape |
 
-**Key difference:** Wölfflin assigns a fixed theoretical position to each *genre* (all Baroque paintings get the same score). Arnheim scores *individual paintings* based on their actual position in CLIP embedding space relative to anchor paintings — so two paintings in the same genre can differ significantly.
+**Key difference:** Wölfflin assigns a fixed theoretical position to each *genre* (all Baroque paintings get the same score). Arnheim scores *individual paintings* based on their actual position in CLIP embedding space relative to anchor paintings, so two paintings in the same genre can differ significantly. The nearest Arnheim profile should be read as perceptual resemblance, not as an art movement label. For example, a Cubist still life can remain classified as Cubism while sitting close to Surrealism or Pop Art on the Arnheim axes because those classes share flattened space, strong shape structure, and visual tension in this dataset.
 
 ### Implementation
 
@@ -125,7 +125,7 @@ If an anchor artist isn't in the training set (it's only ~1,400 paintings), thei
 2. **MLP classifier** trained on frozen CLIP embeddings
 3. **Held-out test evaluation** plus cross-validation metrics
 4. **Wölfflin analysis** on CLIP class centroids via PCA
-5. **Arnheim analysis** through anchor-based projection in CLIP space
+5. **Arnheim analysis** through anchor-based projection in CLIP space, reported as perceptual similarity rather than classification
 
 ---
 
@@ -174,7 +174,7 @@ art_classifier/
 │       └── arnheim_summary.txt
 ├── train.py                       # Training pipeline + Wölfflin analysis
 ├── arnheim_analysis.py            # Arnheim perceptual scoring + visualisations
-├── app.py                         # Gradio demo (4 tabs)
+├── app.py                         # Gradio demo with mode selector and collection analysis
 ├── requirements.txt
 └── README.md
 ```
@@ -215,7 +215,7 @@ The held-out test accuracy is **0.8093**. Common confusions are expected where m
 - **Cubism ↔ Abstract**: both involve geometric non-representational surface — Cubism is earlier and still references objects; Abstract dissolves them entirely.
 - **Surrealism**: unique cross-axis position should make it both easy to identify (nothing else looks like melting clocks) and easy to confuse (the hyper-realistic rendering technique looks like Baroque).
 
-The saved confusion matrix and Wölfflin/Arnheim visualizations are in `models/` and `outputs/arnheim/`.
+The saved confusion matrix and Wölfflin/Arnheim visualizations are in `models/` and `outputs/arnheim/`. Arnheim profile matches are useful for interpreting cross-movement visual overlap; they are not counted as classifier accuracy.
 
 ---
 

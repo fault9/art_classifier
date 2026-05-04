@@ -73,5 +73,5 @@ The model is intended to be used through the accompanying Gradio Space. The app 
 
 - The model can confuse visually similar old-master religious paintings, especially Renaissance vs Baroque.
 - Predictions reflect visual similarity in the training distribution, not definitive art-historical attribution.
-- The Wölfflin tab in the demo is a theoretical profile of the predicted class, not a direct pixel-level measurement.
-- Arnheim perceptual scores are anchor-based projections in CLIP space and should be interpreted as exploratory.
+- The Wölfflin view in the demo is a theoretical profile of the predicted class, mainly useful for the Renaissance-Baroque contrast Wölfflin developed.
+- Arnheim perceptual scores are anchor-based projections in CLIP space and should be interpreted as exploratory perceptual similarity, not as a second movement classifier.
