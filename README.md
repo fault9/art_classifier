@@ -25,7 +25,7 @@ The short academic report for the course submission is in [`REPORT.md`](REPORT.m
 
 **Held-out accuracy:** 0.8093.
 
-**Demo:** Gradio app in `app.py` with single-image classification, collection analysis, Wölfflin profiles, and Arnheim perceptual similarity profiles.
+**Demo:** Gradio app in `app.py` with single-image classification, collection analysis, Wölfflin profiles, and an Arnheim radar that can overlay selected empirical movement profiles for perceptual comparison.
 
 ## The 8 Art Movement Classes
 
@@ -215,7 +215,7 @@ The held-out test accuracy is **0.8093**. Common confusions are expected where m
 - **Cubism ↔ Abstract**: both involve geometric non-representational surface — Cubism is earlier and still references objects; Abstract dissolves them entirely.
 - **Surrealism**: unique cross-axis position should make it both easy to identify (nothing else looks like melting clocks) and easy to confuse (the hyper-realistic rendering technique looks like Baroque).
 
-The saved confusion matrix and Wölfflin/Arnheim visualizations are in `models/` and `outputs/arnheim/`. Arnheim profile matches are useful for interpreting cross-movement visual overlap; they are not counted as classifier accuracy.
+The saved confusion matrix and Wölfflin/Arnheim visualizations are in `models/` and `outputs/arnheim/`. In the demo, the Arnheim radar always includes the classifier movement as the reference and can optionally overlay other selected movement profiles. These matches are useful for interpreting cross-movement visual overlap; they are not counted as classifier accuracy.
 
 ---
 

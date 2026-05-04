@@ -528,7 +528,7 @@ ARNHEIM_NOTE = (
 )
 
 
-def arnheim_perceptual(img: Image.Image, url: str = ""):
+def arnheim_perceptual(img: Image.Image, url: str = "", comparison_profiles: list[str] | None = None):
     img = resolve_image(img, url)
     if img is None:
         return ARNHEIM_NOTE + "\n\nUpload a painting or paste an image URL.", None
@@ -563,20 +563,35 @@ def arnheim_perceptual(img: Image.Image, url: str = ""):
     # --- Radar chart ---
     # Painting scores (0-100 scale)
     painting_vals = [(scores.get(d, 0.0) + 1) / 2 * 100 for d in dim_names]
-    # Empirical profile for the classifier's movement, used as interpretation reference.
-    match_profile = [(v + 1) / 2 * 100 for v in profiles[reference_genre]]
+    selected_profiles = [g for g in (comparison_profiles or []) if g in profiles]
+    overlay_profiles = []
+    for genre in [reference_genre] + selected_profiles:
+        if genre not in overlay_profiles:
+            overlay_profiles.append(genre)
 
     closed_dims = dim_names + [dim_names[0]]
 
     fig = go.Figure()
-    # Empirical class profile of the classifier's movement (reference)
-    fig.add_trace(go.Scatterpolar(
-        r=match_profile + [match_profile[0]],
-        theta=closed_dims,
-        fill="toself", opacity=0.20,
-        line=dict(color=GENRE_COLORS.get(reference_genre, "#888"), dash="dot", width=1.5),
-        name=f"Empirical class profile: {reference_genre}",
-    ))
+    # Empirical class profiles selected by the user. The classifier movement is
+    # always included as the main reference for the radar comparison.
+    for idx, genre in enumerate(overlay_profiles):
+        profile_vals = [(v + 1) / 2 * 100 for v in profiles[genre]]
+        is_reference = genre == reference_genre
+        fig.add_trace(go.Scatterpolar(
+            r=profile_vals + [profile_vals[0]],
+            theta=closed_dims,
+            fill="toself" if is_reference else None,
+            opacity=0.20 if is_reference else 0.75,
+            line=dict(
+                color=GENRE_COLORS.get(genre, "#888"),
+                dash="dot" if is_reference else "dash",
+                width=1.8 if is_reference else 1.2,
+            ),
+            name=(
+                f"Empirical class profile: {genre}"
+                if is_reference else f"Comparison profile: {genre}"
+            ),
+        ))
     # Painting's actual scores
     fig.add_trace(go.Scatterpolar(
         r=painting_vals + [painting_vals[0]],
@@ -593,12 +608,13 @@ def arnheim_perceptual(img: Image.Image, url: str = ""):
         )),
         title="Arnheim Perceptual Profile",
         showlegend=True,
-        height=520,
-        legend=dict(orientation="h", yanchor="bottom", y=-0.15),
+        height=560,
+        legend=dict(orientation="h", yanchor="bottom", y=-0.22),
     )
 
     # --- Markdown summary ---
     nearest = ", ".join(f"{genre} ({sim:.2f})" for genre, sim in profile_matches[:3])
+    overlays = ", ".join(overlay_profiles)
 
     lines = [
         ARNHEIM_NOTE,
@@ -606,7 +622,7 @@ def arnheim_perceptual(img: Image.Image, url: str = ""):
         f"| | Result |",
         f"|---|---|",
         f"| **Classifier movement** | **{clf_pred}** - {clf_conf*100:.1f}% confidence |",
-        f"| **Radar reference** | Empirical **{reference_genre}** class profile |",
+        f"| **Radar profiles shown** | {overlays} |",
         f"| **Nearest perceptual profiles** | {nearest} |",
         "",
         "The nearest perceptual profile is not a second movement prediction. It only shows which class averages this image resembles on the six Arnheim-inspired visual axes.",
@@ -643,7 +659,7 @@ def arnheim_perceptual(img: Image.Image, url: str = ""):
 
 
 
-def analyze_single_painting(img: Image.Image, url: str, mode: str):
+def analyze_single_painting(img: Image.Image, url: str, mode: str, arnheim_overlays: list[str] | None = None):
     """Run the selected single-painting analysis with one shared input/output path."""
     mode = mode or "Classifier"
     if mode == "Classifier":
@@ -654,7 +670,7 @@ def analyze_single_painting(img: Image.Image, url: str, mode: str):
     if mode == "Wölfflin":
         return wolfflin_analysis(img, url)
     if mode == "Arnheim":
-        return arnheim_perceptual(img, url)
+        return arnheim_perceptual(img, url, arnheim_overlays)
     return "Choose an analysis mode.", None
 
 # ---------------------------------------------------------------------------
@@ -689,6 +705,12 @@ with gr.Blocks(title="Art Movement Classifier") as demo:
                     value="Classifier",
                     label="Analysis mode",
                 )
+                arnheim_overlays = gr.CheckboxGroup(
+                    choices=CLASSES,
+                    value=[],
+                    label="Arnheim comparison profiles",
+                    info="Optional overlays for Arnheim mode. The classifier movement is always shown.",
+                )
                 analyze_btn = gr.Button("Analyze", variant="primary")
             with gr.Column(scale=2):
                 single_md = gr.Markdown()
@@ -701,15 +723,15 @@ with gr.Blocks(title="Art Movement Classifier") as demo:
         )
         analyze_btn.click(
             analyze_single_painting,
-            inputs=[single_img, single_url, mode],
+            inputs=[single_img, single_url, mode, arnheim_overlays],
             outputs=[single_md, single_plot],
         )
 
         gr.Markdown(
             "**Mode notes:** Classifier shows movement probabilities. Wölfflin shows the "
             "theoretical Renaissance-Baroque profile of the predicted movement. Arnheim scores "
-            "the uploaded image itself and lists nearest perceptual profiles; those profiles are "
-            "interpretive similarities, not extra class predictions."
+            "the uploaded image itself, lists nearest perceptual profiles, and can overlay selected "
+            "movement profiles on the radar; those profiles are interpretive similarities, not extra class predictions."
         )
 
     with gr.Tab("Collection Analyzer"):

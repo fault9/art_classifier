@@ -20,7 +20,7 @@ This Gradio Space is the working demo for an embeddings lab project. Upload a pa
 - Painting classifier with confidence scores
 - Collection analyzer for multiple images
 - Wölfflin theoretical profile for the predicted movement, mainly meaningful as a Renaissance-Baroque reference
-- Arnheim-inspired perceptual profile using CLIP anchor axes, shown as perceptual similarity rather than a second prediction
+- Arnheim-inspired perceptual profile using CLIP anchor axes, with selectable movement overlays shown as perceptual similarity rather than a second prediction
 
 ## Project Summary
 
