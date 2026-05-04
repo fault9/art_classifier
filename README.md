@@ -103,19 +103,22 @@ Rudolf Arnheim (*Art and Visual Perception*, 1954) analyzed how humans perceive 
 ### Implementation
 
 Scores are derived by **anchor-based projection**:
-1. For each dimension, define HIGH and LOW anchor paintings by artist name
+1. For each dimension, define HIGH and LOW anchor paintings by artist name or by specific `(artist, title)` pairs
 2. Find those paintings in the training set and compute anchor centroids
 3. The axis vector points from the LOW centroid to the HIGH centroid in 512-D CLIP space
-4. Every painting is projected onto this axis → score in approximately [−1, +1]
+4. Every painting is projected onto this axis
+5. Scores are calibrated with the dataset's 5th/95th percentiles so the UI scale remains roughly interpretable as Low ↔ High without a few extreme images stretching the axis
 
 If an anchor artist isn't in the training set (it's only ~1,400 paintings), their contribution is simply absent — the remaining anchors still define the axis.
 
-### Limitations
+### Limitations And Calibration
 
 - Anchor selection involves art-historical judgment and could be contested
 - Projection is approximate: CLIP embeddings encode many properties simultaneously
 - With a small training set, some anchor groups contain only 5–20 paintings — sparse representation of the perceptual extreme
 - Scores are relative to the paintings in this specific dataset, not to art in general
+
+`diagnose_anchors.py` generates `outputs/arnheim/anchor_diagnostics/calibration_report.md`, `dimension_extremes.csv`, and profile-overlap tables. Use these files to tune the anchor pools by checking whether the highest and lowest paintings on each axis actually match the intended perceptual poles. The calibration target is visual plausibility of the axes, not agreement between Arnheim nearest profiles and classifier labels. The current diagnostics flag Tension and Color as weaker axes in CLIP space, so those are the best candidates for future anchor refinement.
 
 ---
 
@@ -196,6 +199,7 @@ python train.py              # train/evaluate the CLIP + MLP classifier
 # 3. Arnheim analysis
 python arnheim_analysis.py           # encodes images if needed and saves axes
 python arnheim_analysis.py --skip-encode  # fast re-run once embeddings are cached
+python diagnose_anchors.py           # calibration report for anchor quality and profile overlap
 
 # 4. Run demo
 python app.py

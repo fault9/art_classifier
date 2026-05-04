@@ -9,6 +9,7 @@ Usage:
 """
 
 import argparse
+import json
 import logging
 import warnings
 import numpy as np
@@ -349,16 +350,29 @@ def load_or_encode(df: pd.DataFrame, batch_size: int, skip_encode: bool) -> tupl
         log.info("Loading embeddings from cache: %s", CACHE_PATH)
         data = np.load(CACHE_PATH, allow_pickle=True)
         cached_paths = list(data["paths"])
-        # Build index: cached path → row index in cache
+        # Build indexes by absolute path and by relative data/... path. The latter
+        # keeps the cache usable after renaming or moving the project folder.
         path_to_idx = {p: i for i, p in enumerate(cached_paths)}
-        missing = [p for p in abs_paths if p not in path_to_idx]
-        if missing:
-            log.warning("%d paths not found in cache; they will be zero-filled.", len(missing))
+        rel_to_idx: dict[str, int] = {}
+        for i, cached_path in enumerate(cached_paths):
+            parts = Path(str(cached_path)).parts
+            if "data" in parts:
+                data_pos = parts.index("data")
+                rel_to_idx[str(Path(*parts[data_pos:]))] = i
+
         D = data["embeddings"].shape[1]
         X = np.zeros((len(abs_paths), D))
-        for i, p in enumerate(abs_paths):
-            if p in path_to_idx:
-                X[i] = data["embeddings"][path_to_idx[p]]
+        missing = 0
+        for i, rel_path in enumerate(all_paths):
+            abs_path = str(BASE_DIR / rel_path)
+            if abs_path in path_to_idx:
+                X[i] = data["embeddings"][path_to_idx[abs_path]]
+            elif rel_path in rel_to_idx:
+                X[i] = data["embeddings"][rel_to_idx[rel_path]]
+            else:
+                missing += 1
+        if missing:
+            log.warning("%d paths not found in cache; they will be zero-filled.", missing)
         return X, all_paths
 
     if skip_encode:
@@ -460,13 +474,26 @@ def build_axis(emb: np.ndarray, high_idx: list[int], low_idx: list[int],
 
 
 def project_scores(emb: np.ndarray, axis_info: dict) -> np.ndarray:
-    """Project all embeddings onto the axis and normalize to [-1, +1]."""
+    """Project embeddings onto an axis with robust percentile calibration.
+
+    The anchor centroids define the direction. The score scale is calibrated from
+    the empirical 5th/95th percentiles of the dataset, when available, so a few
+    extreme paintings do not stretch the visual interpretation.
+    """
     raw = emb @ axis_info["axis_unit"]
     lo, hi = axis_info["low_proj"], axis_info["high_proj"]
     span = hi - lo
     if abs(span) < 1e-8:
         return np.zeros(len(emb))
-    return 2.0 * (raw - lo) / span - 1.0
+
+    anchor_score = 2.0 * (raw - lo) / span - 1.0
+    score_low = axis_info.get("score_low")
+    score_high = axis_info.get("score_high")
+    if score_low is None or score_high is None or abs(score_high - score_low) < 1e-8:
+        return anchor_score
+
+    calibrated = 2.0 * (anchor_score - score_low) / (score_high - score_low) - 1.0
+    return np.clip(calibrated, -1.5, 1.5)
 
 
 # ---------------------------------------------------------------------------
@@ -905,12 +932,22 @@ def main():
     if not built_dims:
         raise RuntimeError("No Arnheim axes could be built. Check that metadata.csv has artist info.")
 
+    # -- Robust score calibration --
+    log.info("")
+    log.info("Calibrating Arnheim score scales from dataset percentiles...")
+    for dim_name in built_dims:
+        raw_scores = project_scores(embeddings, axes_info[dim_name])
+        score_low, score_high = np.percentile(raw_scores, [5, 95])
+        axes_info[dim_name]["score_low"] = float(score_low)
+        axes_info[dim_name]["score_high"] = float(score_high)
+        log.info("  %s: 5th=%.3f 95th=%.3f", dim_name, score_low, score_high)
+
     # -- Axis independence validation --
     validate_axis_independence(axes_info, built_dims, out_dir)
 
     # -- Score all paintings --
     log.info("")
-    log.info("Projecting %d paintings onto %d axes...", len(embeddings), len(built_dims))
+    log.info("Projecting %d paintings onto %d calibrated axes...", len(embeddings), len(built_dims))
     score_cols: dict[str, np.ndarray] = {}
     for dim_name in built_dims:
         score_cols[dim_name] = project_scores(embeddings, axes_info[dim_name])
@@ -943,6 +980,8 @@ def main():
     c_high_array  = np.stack([axes_info[d]["c_high"]    for d in built_dims])
     low_proj_arr  = np.array([axes_info[d]["low_proj"]  for d in built_dims])
     high_proj_arr = np.array([axes_info[d]["high_proj"] for d in built_dims])
+    score_low_arr = np.array([axes_info[d].get("score_low", -1.0) for d in built_dims])
+    score_high_arr = np.array([axes_info[d].get("score_high", 1.0) for d in built_dims])
 
     axes_out = MODELS_DIR / "arnheim_axes.npz"
     np.savez_compressed(
@@ -953,8 +992,23 @@ def main():
         c_high=c_high_array,
         low_proj=low_proj_arr,
         high_proj=high_proj_arr,
+        score_low=score_low_arr,
+        score_high=score_high_arr,
     )
     log.info("Saved axes to %s", axes_out)
+
+    profiles = scores_df.groupby("label")[built_dims].mean().reindex(CLASSES).round(6)
+    profiles_out = MODELS_DIR / "arnheim_profiles.json"
+    profiles_payload = {
+        "dimensions": built_dims,
+        "normalization": "anchor_direction_with_dataset_5th_95th_percentile_calibration",
+        "profiles": {
+            label: {dim: float(profiles.loc[label, dim]) for dim in built_dims}
+            for label in profiles.index
+        },
+    }
+    profiles_out.write_text(json.dumps(profiles_payload, indent=2))
+    log.info("Saved empirical profiles to %s", profiles_out)
 
     # -- Visualisations (patched to use out_dir) --
     _orig_output_dir = OUTPUT_DIR

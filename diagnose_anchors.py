@@ -1,365 +1,360 @@
 """
-Anchor diagnostic script for Arnheim analysis.
+Diagnostics for Arnheim anchor calibration.
 
-Checks anchor coverage, within-group coherence, axis strength,
-and top/bottom paintings per dimension.
+This script uses the live Arnheim anchors from arnheim_analysis.py, checks
+coverage/coherence/axis strength, lists top and bottom scoring paintings, and
+summarizes empirical profile overlap. It is meant for calibrating the axes, not
+for forcing Arnheim results to agree with classifier labels.
 
-Run from lab3_wölfflin/ with venv activated:
+Usage:
     python diagnose_anchors.py
 """
 
+from __future__ import annotations
+
+from pathlib import Path
+import math
 import numpy as np
 import pandas as pd
-from pathlib import Path
-from sklearn.decomposition import PCA
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
 
-BASE_DIR = Path("/Users/folander/Scripts/Information Retrieval/lab3_wölfflin")
-DATA_CSV   = BASE_DIR / "data/metadata.csv"
+from arnheim_analysis import DIMENSIONS, DIM_NAMES, CLASSES
+
+BASE_DIR = Path(__file__).parent
+DATA_CSV = BASE_DIR / "data/metadata.csv"
 CACHE_PATH = BASE_DIR / "models/embeddings_clip.npz"
-OUT_DIR    = BASE_DIR / "outputs/arnheim/anchor_diagnostics"
-
-# ---------------------------------------------------------------------------
-# Dimension definitions — updated anchors (must stay in sync with arnheim_analysis.py)
-# ---------------------------------------------------------------------------
-DIMENSIONS = {
-    "Balance": {
-        "description": "High = symmetrical/centered composition, Low = asymmetrical/dynamic",
-        "high": ["Pietro Perugino", "Cima da Conegliano", "Giovanni Bellini", "Filippino Lippi",
-                 "Luca Signorelli", "Vittore Carpaccio", "Andy Warhol", "Roy Lichtenstein",
-                 "Stuart Davis", "Andrea Solario"],
-        "low":  ["Edgar Degas", "Claude Monet", "Jackson Pollock", "Willem de Kooning",
-                 "Arshile Gorky", "Caravaggio", "Edouard Manet", "Eugene Boudin",
-                 "Frederic Bazille", "Peter Paul Rubens"],
-    },
-    "Shape": {
-        "description": "High = geometric/regular forms, Low = organic/fluid forms",
-        "high": ["Georges Braque", "Paul Cezanne", "Fernand Leger", "Kazimir Malevich",
-                 "Piet Mondrian", "Stuart Davis", "Roy Lichtenstein", "Albert Gleizes",
-                 "Roger de La Fresnaye", "Natalia Goncharova"],
-        "low":  ["Claude Monet", "Pierre-Auguste Renoir", "Berthe Morisot", "Eugene Boudin",
-                 "Jackson Pollock", "Arshile Gorky", "Morris Graves", "Edvard Munch",
-                 "Johan Jongkind", "Frederic Bazille"],
-    },
-    "Depth": {
-        "description": "High = deep spatial recession, Low = flat/planar",
-        "high": ["Pietro Perugino", "Vittore Carpaccio", "Leonardo da Vinci", "Andrea Mantegna",
-                 "Luca Signorelli", "Paul Bril", "Adam Elsheimer", "Giovanni Antonio Boltraffio",
-                 "Cima da Conegliano", "Filippino Lippi"],
-        "low":  ["Jackson Pollock", "Andy Warhol", "Roy Lichtenstein", "Wassily Kandinsky",
-                 "Joan Miro", "Jasper Johns", "Stuart Davis", "Piet Mondrian",
-                 "Richard Pousette-Dart", "Hassan Massoudy"],
-    },
-    "Tension": {
-        "description": "High = energetic/dynamic movement, Low = static/calm",
-        "high": ["Caravaggio", "Annibale Carracci", "Agostino Carracci", "Peter Paul Rubens",
-                 "Edvard Munch", "James Ensor", "Kathe Kollwitz", "Jackson Pollock",
-                 "Arshile Gorky", "Max Ernst"],
-        "low":  ["Claude Monet", "Eugene Boudin", "Pierre-Auguste Renoir", "Berthe Morisot",
-                 "Pietro Perugino", "Cima da Conegliano", "Giovanni Bellini", "Frederic Bazille",
-                 "Johan Jongkind", "Camille Pissarro"],
-    },
-    "Light": {
-        "description": "High = dramatic contrast/chiaroscuro, Low = even/diffused light",
-        "high": ["Caravaggio", "Annibale Carracci", "Agostino Carracci", "Guido Reni",
-                 "Adam Elsheimer", "Kathe Kollwitz", "Edvard Munch", "James Ensor",
-                 "Frans Francken the Younger", "Giovanni Bellini"],
-        "low":  ["Claude Monet", "Eugene Boudin", "Frederic Bazille", "Pierre-Auguste Renoir",
-                 "Berthe Morisot", "Camille Pissarro", "Andy Warhol", "Roy Lichtenstein",
-                 "Stuart Davis", "Johan Jongkind"],
-    },
-    "Color": {
-        "description": "High = vivid/saturated, Low = muted/tonal",
-        "high": ["Henri Matisse", "Marc Chagall", "Edvard Munch", "James Ensor",
-                 "Hiro Yamagata", "Andy Warhol", "Alex Katz", "Joan Miro",
-                 "Eduardo Paolozzi", "Wassily Kandinsky"],
-        "low":  ["Eugene Boudin", "Johan Jongkind", "Frederic Bazille", "Camille Pissarro",
-                 "Caravaggio", "Annibale Carracci", "Kathe Kollwitz", "Albin Egger-Lienz",
-                 "Morris Graves", "James McNeill Whistler"],
-    },
-}
-
-DIM_NAMES = list(DIMENSIONS.keys())
+SCORES_PATH = BASE_DIR / "outputs/arnheim/arnheim_scores.csv"
+OUT_DIR = BASE_DIR / "outputs/arnheim/anchor_diagnostics"
 
 
-def cosine_similarity(a, b):
-    """Cosine similarity between two vectors."""
+def cosine_similarity(a: np.ndarray, b: np.ndarray) -> float:
     a_n = a / (np.linalg.norm(a) + 1e-8)
     b_n = b / (np.linalg.norm(b) + 1e-8)
     return float(np.dot(a_n, b_n))
 
 
-def avg_pairwise_cosine(vecs):
-    """Average pairwise cosine similarity among a set of vectors."""
+def avg_pairwise_cosine(vecs: np.ndarray) -> float:
     if len(vecs) < 2:
         return float("nan")
-    # Normalize
-    norms = np.linalg.norm(vecs, axis=1, keepdims=True) + 1e-8
-    normed = vecs / norms
-    # Sim matrix
+    normed = vecs / (np.linalg.norm(vecs, axis=1, keepdims=True) + 1e-8)
     sim_mat = normed @ normed.T
-    n = len(vecs)
-    # Upper triangle, excluding diagonal
-    idx = np.triu_indices(n, k=1)
+    idx = np.triu_indices(len(vecs), k=1)
     return float(sim_mat[idx].mean())
 
 
-def find_anchor_indices(df, artist_names, side_label):
-    """Return (found_artists, not_found_artists, indices, counts_per_artist)."""
-    found = {}
-    not_found = []
-    indices = []
-    artist_lower = df["artist"].str.lower().fillna("")
+def anchor_label(entry) -> str:
+    if isinstance(entry, str):
+        return entry
+    artist_kw, title_kw = entry[0], entry[1]
+    return f"{artist_kw} / {title_kw}" if title_kw else str(artist_kw)
 
-    for name in artist_names:
-        mask = artist_lower.str.contains(name.lower(), regex=False)
+
+def find_anchor_indices(df: pd.DataFrame, anchors: list) -> tuple[dict[str, int], list[str], list[int]]:
+    artist_lower = df["artist"].str.lower().fillna("")
+    title_lower = df["title"].str.lower().fillna("")
+    found: dict[str, int] = {}
+    not_found: list[str] = []
+    indices: list[int] = []
+
+    for entry in anchors:
+        if isinstance(entry, str):
+            artist_kw, title_kw = entry, None
+        else:
+            artist_kw, title_kw = entry[0], entry[1]
+
+        mask = artist_lower.str.contains(str(artist_kw).lower(), regex=False)
+        if title_kw:
+            mask = mask & title_lower.str.contains(str(title_kw).lower(), regex=False)
+
         hits = df.index[mask].tolist()
+        label = anchor_label(entry)
         if hits:
-            found[name] = len(hits)
+            found[label] = len(hits)
             indices.extend(hits)
         else:
-            not_found.append(name)
+            not_found.append(label)
 
-    indices = sorted(set(indices))
-    return found, not_found, indices
+    return found, not_found, sorted(set(indices))
 
 
-def main():
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+def load_embeddings(df: pd.DataFrame) -> np.ndarray:
+    if not CACHE_PATH.exists():
+        raise FileNotFoundError(
+            f"Embedding cache not found at {CACHE_PATH}. Run python arnheim_analysis.py first."
+        )
 
-    # -------------------------------------------------------------------------
-    # Load data
-    # -------------------------------------------------------------------------
-    df = pd.read_csv(DATA_CSV)
-    df = df.reset_index(drop=True)
-
-    # Load embeddings cache and match to metadata rows
     cache = np.load(CACHE_PATH, allow_pickle=True)
     cached_paths = list(cache["paths"])
-    cached_embs  = cache["embeddings"]  # shape (N_cache, 512)
-
-    # Build lookup: absolute path -> row in cache
+    cached_embs = cache["embeddings"]
     path_to_idx = {p: i for i, p in enumerate(cached_paths)}
+    rel_to_idx: dict[str, int] = {}
+    for i, cached_path in enumerate(cached_paths):
+        parts = Path(str(cached_path)).parts
+        if "data" in parts:
+            data_pos = parts.index("data")
+            rel_to_idx[str(Path(*parts[data_pos:]))] = i
 
-    # Convert relative paths in metadata to absolute
-    abs_paths = [str(BASE_DIR / fp) for fp in df["file_path"]]
-    missing = sum(1 for p in abs_paths if p not in path_to_idx)
-    if missing:
-        print(f"WARNING: {missing} metadata paths not found in cache (will be zero)")
-
-    D = cached_embs.shape[1]
-    X = np.zeros((len(df), D))
-    for i, p in enumerate(abs_paths):
-        if p in path_to_idx:
-            X[i] = cached_embs[path_to_idx[p]]
-
-    # Normalize embeddings (unit vectors)
-    norms = np.linalg.norm(X, axis=1, keepdims=True) + 1e-8
-    X_normed = X / norms
-
-    print(f"Loaded {len(df)} paintings, {D}-dim embeddings\n")
-
-    # -------------------------------------------------------------------------
-    # Step 1: Anchor coverage + coherence + axis strength
-    # -------------------------------------------------------------------------
-    lines = []
-
-    summary_rows = []
-
-    for dim_name in DIM_NAMES:
-        d = DIMENSIONS[dim_name]
-        high_names = d["high"]
-        low_names  = d["low"]
-
-        high_found, high_not_found, high_idx = find_anchor_indices(df, high_names, f"{dim_name}/HIGH")
-        low_found,  low_not_found,  low_idx  = find_anchor_indices(df, low_names,  f"{dim_name}/LOW")
-
-        lines.append(f"\n{'='*70}")
-        lines.append(f"DIMENSION: {dim_name}")
-        lines.append(f"{'='*70}")
-        lines.append(f"  HIGH side ({len(high_found)}/{len(high_names)} artists found, {len(high_idx)} paintings):")
-        for name, cnt in sorted(high_found.items()):
-            lines.append(f"    FOUND:     {name}: {cnt} paintings")
-        for name in high_not_found:
-            lines.append(f"    NOT FOUND: {name}")
-
-        lines.append(f"  LOW side ({len(low_found)}/{len(low_names)} artists found, {len(low_idx)} paintings):")
-        for name, cnt in sorted(low_found.items()):
-            lines.append(f"    FOUND:     {name}: {cnt} paintings")
-        for name in low_not_found:
-            lines.append(f"    NOT FOUND: {name}")
-
-        # Coherence
-        high_coh = avg_pairwise_cosine(X_normed[high_idx]) if len(high_idx) >= 2 else float("nan")
-        low_coh  = avg_pairwise_cosine(X_normed[low_idx])  if len(low_idx)  >= 2 else float("nan")
-
-        # Axis strength: cosine distance between centroids
-        if len(high_idx) >= 1 and len(low_idx) >= 1:
-            c_high = X_normed[high_idx].mean(axis=0)
-            c_low  = X_normed[low_idx].mean(axis=0)
-            axis_cos_sim = cosine_similarity(c_high, c_low)
-            axis_dist = 1.0 - axis_cos_sim
+    x = np.zeros((len(df), cached_embs.shape[1]))
+    missing = 0
+    for i, fp in enumerate(df["file_path"]):
+        abs_path = str(BASE_DIR / fp)
+        if abs_path in path_to_idx:
+            x[i] = cached_embs[path_to_idx[abs_path]]
+        elif fp in rel_to_idx:
+            x[i] = cached_embs[rel_to_idx[fp]]
         else:
-            axis_dist = float("nan")
+            missing += 1
 
-        lines.append(f"  HIGH coherence (avg pairwise cos sim): {high_coh:.3f}")
-        lines.append(f"  LOW  coherence (avg pairwise cos sim): {low_coh:.3f}")
-        lines.append(f"  Axis cosine distance (HIGH vs LOW centroid): {axis_dist:.3f}")
+    if missing:
+        print(f"WARNING: {missing} metadata paths missing from embedding cache; zero-filled")
+    return x
 
-        # Flag issues
-        issues = []
-        if len(high_idx) < 4:
-            issues.append(f"FEW HIGH ANCHORS ({len(high_idx)})")
-        if len(low_idx) < 4:
-            issues.append(f"FEW LOW ANCHORS ({len(low_idx)})")
-        if not np.isnan(high_coh) and high_coh < 0.45:
-            issues.append(f"HIGH incoherent ({high_coh:.3f})")
-        if not np.isnan(low_coh) and low_coh < 0.45:
-            issues.append(f"LOW incoherent ({low_coh:.3f})")
-        if not np.isnan(axis_dist) and axis_dist < 0.25:
-            issues.append(f"WEAK AXIS ({axis_dist:.3f})")
 
-        lines.append(f"  Issues: {', '.join(issues) if issues else 'OK'}")
-
-        summary_rows.append({
-            "Dimension": dim_name,
-            "HIGH found": f"{len(high_found)}/{len(high_names)}",
-            "LOW found":  f"{len(low_found)}/{len(low_names)}",
-            "HIGH coh":   f"{high_coh:.3f}" if not np.isnan(high_coh) else "N/A",
-            "LOW coh":    f"{low_coh:.3f}"  if not np.isnan(low_coh)  else "N/A",
-            "Axis dist":  f"{axis_dist:.3f}" if not np.isnan(axis_dist) else "N/A",
-            "Issues":     ", ".join(issues) if issues else "OK",
-            # Store for later use
-            "_high_idx": high_idx,
-            "_low_idx":  low_idx,
+def score_profile_matches(scores_df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    profiles = scores_df.groupby("label")[DIM_NAMES].mean().reindex(CLASSES)
+    rows = []
+    for _, row in scores_df.dropna(subset=DIM_NAMES).iterrows():
+        vec = row[DIM_NAMES].to_numpy(dtype=float)
+        matches = []
+        for label, prof in profiles.iterrows():
+            p = prof.to_numpy(dtype=float)
+            dist = float(np.linalg.norm(vec - p))
+            sim = 1.0 / (1.0 + dist)
+            matches.append((label, sim))
+        matches.sort(key=lambda item: item[1], reverse=True)
+        rows.append({
+            "file_path": row["file_path"],
+            "label": row["label"],
+            "artist": row.get("artist", ""),
+            "title": row.get("title", ""),
+            "nearest_profile": matches[0][0],
+            "nearest_similarity": matches[0][1],
+            "label_profile_similarity": dict(matches).get(row["label"], math.nan),
+            "top3_profiles": ", ".join(f"{g}:{s:.2f}" for g, s in matches[:3]),
         })
+    match_df = pd.DataFrame(rows)
+    matrix = pd.crosstab(match_df["label"], match_df["nearest_profile"]).reindex(
+        index=CLASSES, columns=CLASSES, fill_value=0
+    )
+    return match_df, matrix
 
-    # -------------------------------------------------------------------------
-    # Step 2: Top/bottom 10 per dimension
-    # -------------------------------------------------------------------------
-    # We need arnheim_scores.csv for this
-    scores_path = BASE_DIR / "outputs/arnheim/arnheim_scores.csv"
-    if scores_path.exists():
-        scores_df = pd.read_csv(scores_path)
-        lines.append(f"\n{'='*70}")
-        lines.append("TOP / BOTTOM 10 PAINTINGS PER DIMENSION (from arnheim_scores.csv)")
-        lines.append("="*70)
-        for dim_name in DIM_NAMES:
-            if dim_name not in scores_df.columns:
-                lines.append(f"\n  {dim_name}: column not found in scores CSV")
-                continue
-            sub = scores_df[["artist", "title", "label", dim_name]].dropna(subset=[dim_name])
-            sub_sorted = sub.sort_values(dim_name, ascending=False)
-            lines.append(f"\n  {dim_name} — TOP 10 (most {DIMENSIONS[dim_name]['description'].split(',')[0].replace('High = ', '')}):")
-            for _, row in sub_sorted.head(10).iterrows():
-                lines.append(f"    {row['artist']:35s}  {str(row['title'])[:40]:40s}  {row['label']:15s}  {row[dim_name]:.3f}")
-            lines.append(f"\n  {dim_name} — BOTTOM 10:")
-            for _, row in sub_sorted.tail(10).iterrows():
-                lines.append(f"    {row['artist']:35s}  {str(row['title'])[:40]:40s}  {row['label']:15s}  {row[dim_name]:.3f}")
-    else:
-        lines.append("\n  arnheim_scores.csv not found — skipping top/bottom listing")
 
-    # -------------------------------------------------------------------------
-    # Step 3: Summary flag table
-    # -------------------------------------------------------------------------
-    lines.append(f"\n{'='*70}")
-    lines.append("SUMMARY FLAG TABLE")
-    lines.append("="*70)
-    header = f"{'Dimension':<12} | {'HIGH found':>10} | {'LOW found':>9} | {'HIGH coh':>8} | {'LOW coh':>7} | {'Axis dist':>9} | Issues"
-    sep    = "-" * len(header)
-    lines.append(header)
-    lines.append(sep)
+
+def dataframe_to_markdown(df: pd.DataFrame) -> str:
+    out = []
+    reset = df.reset_index()
+    cols = [str(c) for c in reset.columns]
+    out.append("| " + " | ".join(cols) + " |")
+    out.append("|" + "|".join(["---"] * len(cols)) + "|")
+    for _, row in reset.iterrows():
+        vals = []
+        for c in reset.columns:
+            value = row[c]
+            if isinstance(value, float):
+                vals.append(f"{value:.3f}")
+            else:
+                vals.append(str(value))
+        out.append("| " + " | ".join(vals) + " |")
+    return "\n".join(out)
+
+def write_markdown_report(
+    df: pd.DataFrame,
+    x_normed: np.ndarray,
+    scores_df: pd.DataFrame | None,
+    summary_rows: list[dict],
+    match_matrix: pd.DataFrame | None,
+) -> None:
+    lines = [
+        "# Arnheim Anchor Calibration Report",
+        "",
+        "This report checks whether the Arnheim axes are visually plausible. It should be used to tune anchor pools, not to force Arnheim profile matches to agree with classifier labels.",
+        "",
+        "## Anchor Coverage And Axis Strength",
+        "",
+        "| Dimension | High Anchors | Low Anchors | High Coherence | Low Coherence | Axis Distance | Flags |",
+        "|---|---:|---:|---:|---:|---:|---|",
+    ]
     for row in summary_rows:
         lines.append(
-            f"{row['Dimension']:<12} | {row['HIGH found']:>10} | {row['LOW found']:>9} | "
-            f"{row['HIGH coh']:>8} | {row['LOW coh']:>7} | {row['Axis dist']:>9} | {row['Issues']}"
+            f"| {row['dimension']} | {row['high_count']} | {row['low_count']} | "
+            f"{row['high_coherence']:.3f} | {row['low_coherence']:.3f} | "
+            f"{row['axis_distance']:.3f} | {row['flags']} |"
         )
-    lines.append(sep)
 
-    # -------------------------------------------------------------------------
-    # Step 4: Artist pool grouped by label
-    # -------------------------------------------------------------------------
-    lines.append(f"\n{'='*70}")
-    lines.append("ARTIST POOL GROUPED BY LABEL")
-    lines.append("="*70)
-    for label in sorted(df["label"].unique()):
-        sub = df[df["label"] == label]
-        artist_counts = sub.groupby("artist").size().sort_values(ascending=False)
-        lines.append(f"\n  {label} ({len(artist_counts)} artists, {len(sub)} paintings):")
-        for artist, cnt in artist_counts.items():
-            lines.append(f"    {artist}: {cnt}")
+    lines += [
+        "",
+        "## Top And Bottom Paintings By Axis",
+        "",
+        "Use these lists as the main sanity check. If the top/bottom examples do not look like the intended perceptual pole, adjust the anchor pool for that axis.",
+    ]
 
-    # Print and save
-    output_text = "\n".join(lines)
-    print(output_text)
+    if scores_df is None:
+        lines.append("")
+        lines.append("`outputs/arnheim/arnheim_scores.csv` was not found, so score extremes were skipped.")
+    else:
+        for dim in DIM_NAMES:
+            lines += ["", f"### {dim}", "", f"{DIMENSIONS[dim]['description']}", ""]
+            sub = scores_df[["artist", "title", "label", "split", "file_path", dim]].dropna(subset=[dim])
+            top = sub.nlargest(10, dim)
+            bottom = sub.nsmallest(10, dim)
+            lines += ["**Highest scores**", "", "| Score | Label | Artist | Title | Split |", "|---:|---|---|---|---|"]
+            for _, r in top.iterrows():
+                lines.append(f"| {r[dim]:.3f} | {r['label']} | {r['artist']} | {str(r['title'])[:55]} | {r['split']} |")
+            lines += ["", "**Lowest scores**", "", "| Score | Label | Artist | Title | Split |", "|---:|---|---|---|---|"]
+            for _, r in bottom.iterrows():
+                lines.append(f"| {r[dim]:.3f} | {r['label']} | {r['artist']} | {str(r['title'])[:55]} | {r['split']} |")
 
-    out_txt = OUT_DIR / "anchor_coverage.txt"
-    with open(out_txt, "w") as f:
-        f.write(output_text)
-    print(f"\nSaved coverage report to {out_txt}")
+        lines += ["", "## Per-Class Mean Scores", ""]
+        means = scores_df.groupby("label")[DIM_NAMES].mean().reindex(CLASSES).round(3)
+        lines.append(dataframe_to_markdown(means))
 
-    # -------------------------------------------------------------------------
-    # Step 5: PCA scatter plots per dimension
-    # -------------------------------------------------------------------------
-    print("\nGenerating PCA scatter plots...")
+    if match_matrix is not None:
+        lines += [
+            "",
+            "## Nearest Empirical Profile Overlap",
+            "",
+            "Rows are dataset labels; columns are the nearest Arnheim perceptual profile. This is not classifier accuracy. It reveals where the six-axis perceptual space overlaps across movements.",
+            "",
+            dataframe_to_markdown(match_matrix),
+        ]
+
+    lines += [
+        "",
+        "## Calibration Rules",
+        "",
+        "- Tune anchors only when the top/bottom paintings are visibly wrong for the intended axis.",
+        "- Prefer specific `(artist, title)` anchors over broad artist anchors when an artist has multiple visual modes.",
+        "- Do not tune an axis simply because a painting's nearest profile differs from its movement label.",
+        "- After anchor edits, rerun `python arnheim_analysis.py --skip-encode`, then rerun this script.",
+    ]
+
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    (OUT_DIR / "calibration_report.md").write_text("\n".join(lines))
+
+
+def plot_anchor_pca(df: pd.DataFrame, x_normed: np.ndarray, summary_rows: list[dict]) -> None:
     pca = PCA(n_components=2)
-    X_pca = pca.fit_transform(X_normed)
-
+    x_pca = pca.fit_transform(x_normed)
     for row in summary_rows:
-        dim_name = row["Dimension"]
-        high_idx = row["_high_idx"]
-        low_idx  = row["_low_idx"]
-
+        dim = row["dimension"]
         fig, ax = plt.subplots(figsize=(10, 7))
-
-        # Background: all paintings (light grey)
-        ax.scatter(X_pca[:, 0], X_pca[:, 1], c="lightgrey", s=5, alpha=0.3, label="All paintings")
-
-        # LOW anchors (blue)
+        ax.scatter(x_pca[:, 0], x_pca[:, 1], c="lightgrey", s=5, alpha=0.25, label="All paintings")
+        low_idx = row["low_idx"]
+        high_idx = row["high_idx"]
         if low_idx:
-            ax.scatter(X_pca[low_idx, 0], X_pca[low_idx, 1],
-                       c="steelblue", s=40, alpha=0.8, label="LOW anchors", zorder=3)
-
-        # HIGH anchors (red)
+            ax.scatter(x_pca[low_idx, 0], x_pca[low_idx, 1], c="steelblue", s=40, alpha=0.8, label="LOW anchors")
         if high_idx:
-            ax.scatter(X_pca[high_idx, 0], X_pca[high_idx, 1],
-                       c="crimson", s=40, alpha=0.8, label="HIGH anchors", zorder=4)
+            ax.scatter(x_pca[high_idx, 0], x_pca[high_idx, 1], c="crimson", s=40, alpha=0.8, label="HIGH anchors")
 
-        # Label a few anchor points
-        labeled_high = {}
-        for idx in high_idx:
-            artist = df.loc[idx, "artist"]
-            if artist not in labeled_high:
-                labeled_high[artist] = idx
-        for artist, idx in list(labeled_high.items())[:8]:
-            ax.annotate(artist, (X_pca[idx, 0], X_pca[idx, 1]),
-                        fontsize=6, color="darkred", alpha=0.8,
-                        xytext=(3, 3), textcoords="offset points")
+        for idx in high_idx[:8]:
+            ax.annotate(str(df.loc[idx, "artist"])[:24], (x_pca[idx, 0], x_pca[idx, 1]), fontsize=6, color="darkred")
+        for idx in low_idx[:8]:
+            ax.annotate(str(df.loc[idx, "artist"])[:24], (x_pca[idx, 0], x_pca[idx, 1]), fontsize=6, color="navy")
 
-        labeled_low = {}
-        for idx in low_idx:
-            artist = df.loc[idx, "artist"]
-            if artist not in labeled_low:
-                labeled_low[artist] = idx
-        for artist, idx in list(labeled_low.items())[:8]:
-            ax.annotate(artist, (X_pca[idx, 0], X_pca[idx, 1]),
-                        fontsize=6, color="navy", alpha=0.8,
-                        xytext=(3, 3), textcoords="offset points")
-
-        ax.set_title(f"{dim_name}: Anchor positions in PCA space\n{DIMENSIONS[dim_name]['description']}", fontsize=11)
+        ax.set_title(f"{dim}: anchor positions in CLIP PCA space")
         ax.set_xlabel("PC1")
         ax.set_ylabel("PC2")
-        ax.legend(loc="upper right", fontsize=9)
+        ax.legend(loc="best", fontsize=8)
         plt.tight_layout()
+        fig.savefig(OUT_DIR / f"pca_{dim.lower()}.png", dpi=130)
+        plt.close(fig)
 
-        out_fig = OUT_DIR / f"pca_{dim_name.lower()}.png"
-        plt.savefig(out_fig, dpi=120)
-        plt.close()
-        print(f"  Saved {out_fig}")
 
-    print("\nDone.")
+def main() -> None:
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    df = pd.read_csv(DATA_CSV).reset_index(drop=True)
+    x = load_embeddings(df)
+    x_normed = x / (np.linalg.norm(x, axis=1, keepdims=True) + 1e-8)
+
+    summary_rows: list[dict] = []
+    coverage_lines = []
+    for dim in DIM_NAMES:
+        cfg = DIMENSIONS[dim]
+        high_found, high_missing, high_idx = find_anchor_indices(df, cfg["high"])
+        low_found, low_missing, low_idx = find_anchor_indices(df, cfg["low"])
+
+        high_coh = avg_pairwise_cosine(x_normed[high_idx]) if len(high_idx) >= 2 else float("nan")
+        low_coh = avg_pairwise_cosine(x_normed[low_idx]) if len(low_idx) >= 2 else float("nan")
+        if high_idx and low_idx:
+            high_centroid = x_normed[high_idx].mean(axis=0)
+            low_centroid = x_normed[low_idx].mean(axis=0)
+            axis_distance = 1.0 - cosine_similarity(high_centroid, low_centroid)
+        else:
+            axis_distance = float("nan")
+
+        flags = []
+        if len(high_idx) < 8:
+            flags.append(f"few HIGH ({len(high_idx)})")
+        if len(low_idx) < 8:
+            flags.append(f"few LOW ({len(low_idx)})")
+        if not math.isnan(high_coh) and high_coh < 0.45:
+            flags.append(f"HIGH broad ({high_coh:.2f})")
+        if not math.isnan(low_coh) and low_coh < 0.45:
+            flags.append(f"LOW broad ({low_coh:.2f})")
+        if not math.isnan(axis_distance) and axis_distance < 0.08:
+            flags.append(f"weak axis ({axis_distance:.2f})")
+
+        coverage_lines += [
+            "",
+            f"## {dim}",
+            cfg["description"],
+            "",
+            f"HIGH: {len(high_idx)} paintings from {len(high_found)}/{len(cfg['high'])} anchors",
+            *(f"  FOUND {k}: {v}" for k, v in high_found.items()),
+            *(f"  MISSING {k}" for k in high_missing),
+            f"LOW: {len(low_idx)} paintings from {len(low_found)}/{len(cfg['low'])} anchors",
+            *(f"  FOUND {k}: {v}" for k, v in low_found.items()),
+            *(f"  MISSING {k}" for k in low_missing),
+            f"High coherence: {high_coh:.3f}",
+            f"Low coherence: {low_coh:.3f}",
+            f"Axis distance: {axis_distance:.3f}",
+            f"Flags: {', '.join(flags) if flags else 'OK'}",
+        ]
+
+        summary_rows.append({
+            "dimension": dim,
+            "high_count": len(high_idx),
+            "low_count": len(low_idx),
+            "high_coherence": high_coh,
+            "low_coherence": low_coh,
+            "axis_distance": axis_distance,
+            "flags": ", ".join(flags) if flags else "OK",
+            "high_idx": high_idx,
+            "low_idx": low_idx,
+        })
+
+    scores_df = pd.read_csv(SCORES_PATH) if SCORES_PATH.exists() else None
+    match_df = None
+    match_matrix = None
+    if scores_df is not None:
+        match_df, match_matrix = score_profile_matches(scores_df)
+        match_df.to_csv(OUT_DIR / "profile_matches.csv", index=False)
+        match_matrix.to_csv(OUT_DIR / "profile_overlap_matrix.csv")
+
+        extreme_rows = []
+        for dim in DIM_NAMES:
+            sub = scores_df[["file_path", "label", "split", "artist", "title", dim]].dropna(subset=[dim])
+            for rank, (_, r) in enumerate(sub.nlargest(20, dim).iterrows(), start=1):
+                extreme_rows.append({"dimension": dim, "pole": "high", "rank": rank, **r.to_dict()})
+            for rank, (_, r) in enumerate(sub.nsmallest(20, dim).iterrows(), start=1):
+                extreme_rows.append({"dimension": dim, "pole": "low", "rank": rank, **r.to_dict()})
+        pd.DataFrame(extreme_rows).to_csv(OUT_DIR / "dimension_extremes.csv", index=False)
+
+    pd.DataFrame([{k: v for k, v in row.items() if not k.endswith("_idx")} for row in summary_rows]).to_csv(
+        OUT_DIR / "anchor_summary.csv", index=False
+    )
+    (OUT_DIR / "anchor_coverage.txt").write_text("\n".join(coverage_lines).strip() + "\n")
+    write_markdown_report(df, x_normed, scores_df, summary_rows, match_matrix)
+    plot_anchor_pca(df, x_normed, summary_rows)
+
+    print(f"Saved calibration report to {OUT_DIR / 'calibration_report.md'}")
+    print(f"Saved anchor summary to {OUT_DIR / 'anchor_summary.csv'}")
+    if scores_df is not None:
+        print(f"Saved extremes to {OUT_DIR / 'dimension_extremes.csv'}")
+        print(f"Saved profile overlap matrix to {OUT_DIR / 'profile_overlap_matrix.csv'}")
 
 
 if __name__ == "__main__":

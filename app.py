@@ -236,6 +236,8 @@ def load_arnheim_axes() -> dict | None:
         "c_high":     data["c_high"],
         "low_proj":   data["low_proj"],
         "high_proj":  data["high_proj"],
+        "score_low":  data["score_low"] if "score_low" in data.files else None,
+        "score_high": data["score_high"] if "score_high" in data.files else None,
     }
     return _arnheim_axes
 
@@ -251,6 +253,11 @@ def score_arnheim(embedding: np.ndarray, axes: dict) -> dict[str, float]:
             scores[dim] = 0.0
         else:
             s = 2.0 * (raw - lp) / (hp - lp) - 1.0
+            if axes.get("score_low") is not None and axes.get("score_high") is not None:
+                sl = float(axes["score_low"][i])
+                sh = float(axes["score_high"][i])
+                if abs(sh - sl) > 1e-8:
+                    s = 2.0 * (s - sl) / (sh - sl) - 1.0
             scores[dim] = float(np.clip(s, -1.5, 1.5))
     return scores
 
@@ -319,6 +326,11 @@ def arnheim_profile_matches(scores: dict[str, float]) -> list[tuple[str, float]]
 def arnheim_match(scores: dict[str, float]) -> tuple[str, float]:
     """Backward-compatible helper for the nearest perceptual profile."""
     return arnheim_profile_matches(scores)[0]
+
+
+def arnheim_score_to_radar(value: float) -> float:
+    """Map calibrated Arnheim score to the radar's 0-100 Low-High scale."""
+    return float(np.clip((value + 1.0) / 2.0 * 100.0, 0.0, 100.0))
 
 
 # ---------------------------------------------------------------------------
@@ -562,7 +574,7 @@ def arnheim_perceptual(img: Image.Image, url: str = "", comparison_profiles: lis
 
     # --- Radar chart ---
     # Painting scores (0-100 scale)
-    painting_vals = [(scores.get(d, 0.0) + 1) / 2 * 100 for d in dim_names]
+    painting_vals = [arnheim_score_to_radar(scores.get(d, 0.0)) for d in dim_names]
     selected_profiles = [g for g in (comparison_profiles or []) if g in profiles]
     overlay_profiles = []
     for genre in [reference_genre] + selected_profiles:
@@ -575,7 +587,7 @@ def arnheim_perceptual(img: Image.Image, url: str = "", comparison_profiles: lis
     # Empirical class profiles selected by the user. The classifier movement is
     # always included as the main reference for the radar comparison.
     for idx, genre in enumerate(overlay_profiles):
-        profile_vals = [(v + 1) / 2 * 100 for v in profiles[genre]]
+        profile_vals = [arnheim_score_to_radar(v) for v in profiles[genre]]
         is_reference = genre == reference_genre
         fig.add_trace(go.Scatterpolar(
             r=profile_vals + [profile_vals[0]],

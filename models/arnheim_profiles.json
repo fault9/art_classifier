@@ -1,5 +1,5 @@
 {
-  "dim_order": [
+  "dimensions": [
     "Balance",
     "Shape",
     "Depth",
@@ -7,70 +7,71 @@
     "Light",
     "Color"
   ],
+  "normalization": "anchor_direction_with_dataset_5th_95th_percentile_calibration",
   "profiles": {
-    "Abstract": {
-      "Balance": -1.071999,
-      "Shape": 0.845304,
-      "Depth": -0.947955,
-      "Tension": 1.238481,
-      "Light": -0.847324,
-      "Color": 0.973768
+    "Renaissance": {
+      "Balance": 0.75331,
+      "Shape": -0.189186,
+      "Depth": 0.803003,
+      "Tension": -0.087801,
+      "Light": 0.701702,
+      "Color": -0.761346
     },
     "Baroque": {
-      "Balance": 0.507236,
-      "Shape": -0.619518,
-      "Depth": 0.849286,
-      "Tension": 0.073132,
-      "Light": 1.169032,
-      "Color": -1.625671
-    },
-    "Cubism": {
-      "Balance": -0.98506,
-      "Shape": 0.567781,
-      "Depth": -0.616797,
-      "Tension": 0.630737,
-      "Light": -0.797741,
-      "Color": 0.424626
-    },
-    "Expressionism": {
-      "Balance": -0.680028,
-      "Shape": -0.172826,
-      "Depth": -0.238499,
-      "Tension": 0.353154,
-      "Light": -0.442601,
-      "Color": -0.317481
+      "Balance": 0.4543,
+      "Shape": -0.320724,
+      "Depth": 0.673635,
+      "Tension": 0.026248,
+      "Light": 0.701559,
+      "Color": -0.847064
     },
     "Impressionism": {
-      "Balance": -0.652877,
-      "Shape": -1.327408,
-      "Depth": 0.086022,
-      "Tension": -1.282897,
-      "Light": -0.960565,
-      "Color": -1.055453
+      "Balance": -0.470413,
+      "Shape": -0.809881,
+      "Depth": 0.037718,
+      "Tension": -0.75791,
+      "Light": -0.667819,
+      "Color": -0.500742
     },
-    "Pop Art": {
-      "Balance": -0.832993,
-      "Shape": 0.751233,
-      "Depth": -0.850416,
-      "Tension": 0.942616,
-      "Light": -0.885262,
-      "Color": 0.991585
+    "Expressionism": {
+      "Balance": -0.492055,
+      "Shape": -0.011769,
+      "Depth": -0.232658,
+      "Tension": 0.188632,
+      "Light": -0.334757,
+      "Color": -0.052534
     },
-    "Renaissance": {
-      "Balance": 0.882364,
-      "Shape": -0.429339,
-      "Depth": 1.00456,
-      "Tension": -0.123539,
-      "Light": 1.169254,
-      "Color": -1.484537
+    "Cubism": {
+      "Balance": -0.735192,
+      "Shape": 0.500472,
+      "Depth": -0.54784,
+      "Tension": 0.349601,
+      "Light": -0.56312,
+      "Color": 0.398185
+    },
+    "Abstract": {
+      "Balance": -0.80449,
+      "Shape": 0.69242,
+      "Depth": -0.823745,
+      "Tension": 0.70203,
+      "Light": -0.595003,
+      "Color": 0.731707
     },
     "Surrealism": {
-      "Balance": -0.947914,
-      "Shape": 0.782817,
-      "Depth": -0.663534,
-      "Tension": 1.144011,
-      "Light": -0.486911,
-      "Color": 0.600223
+      "Balance": -0.705584,
+      "Shape": 0.649202,
+      "Depth": -0.586778,
+      "Tension": 0.647248,
+      "Light": -0.363249,
+      "Color": 0.504834
+    },
+    "Pop Art": {
+      "Balance": -0.613981,
+      "Shape": 0.627356,
+      "Depth": -0.74248,
+      "Tension": 0.530459,
+      "Light": -0.619398,
+      "Color": 0.742527
     }
   }
 }

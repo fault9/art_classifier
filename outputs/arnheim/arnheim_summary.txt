@@ -6,39 +6,39 @@ Per-class mean scores (range approx. -1 to +1)
 
 Class                        Balance         Shape         Depth       Tension         Light         Color
 ----------------------------------------------------------------------------------------------------------
-Renaissance                    0.882        -0.429         1.005        -0.124         1.169        -1.485
-Baroque                        0.507        -0.620         0.849         0.073         1.169        -1.626
-Impressionism                 -0.653        -1.327         0.086        -1.283        -0.961        -1.055
-Expressionism                 -0.680        -0.173        -0.238         0.353        -0.443        -0.317
-Cubism                        -0.985         0.568        -0.617         0.631        -0.798         0.425
-Abstract                      -1.072         0.845        -0.948         1.238        -0.847         0.974
-Surrealism                    -0.948         0.783        -0.664         1.144        -0.487         0.600
-Pop Art                       -0.833         0.751        -0.850         0.943        -0.885         0.992
+Renaissance                    0.753        -0.189         0.803        -0.088         0.702        -0.761
+Baroque                        0.454        -0.321         0.674         0.026         0.702        -0.847
+Impressionism                 -0.470        -0.810         0.038        -0.758        -0.668        -0.501
+Expressionism                 -0.492        -0.012        -0.233         0.189        -0.335        -0.053
+Cubism                        -0.735         0.500        -0.548         0.350        -0.563         0.398
+Abstract                      -0.804         0.692        -0.824         0.702        -0.595         0.732
+Surrealism                    -0.706         0.649        -0.587         0.647        -0.363         0.505
+Pop Art                       -0.614         0.627        -0.742         0.530        -0.619         0.743
 
 ========================================================================
 Observations
 ========================================================================
 
 Balance (High = symmetrical/centered composition, Low = asymmetrical/dynamic)
-  Highest: Renaissance            (+0.882)
-  Lowest:  Abstract               (-1.072)
+  Highest: Renaissance            (+0.753)
+  Lowest:  Abstract               (-0.804)
 
 Shape (High = geometric/regular forms, Low = organic/fluid forms)
-  Highest: Abstract               (+0.845)
-  Lowest:  Impressionism          (-1.327)
+  Highest: Abstract               (+0.692)
+  Lowest:  Impressionism          (-0.810)
 
 Depth (High = deep spatial recession, Low = flat/planar)
-  Highest: Renaissance            (+1.005)
-  Lowest:  Abstract               (-0.948)
+  Highest: Renaissance            (+0.803)
+  Lowest:  Abstract               (-0.824)
 
 Tension (High = energetic/dynamic movement, Low = static/calm)
-  Highest: Abstract               (+1.238)
-  Lowest:  Impressionism          (-1.283)
+  Highest: Abstract               (+0.702)
+  Lowest:  Impressionism          (-0.758)
 
 Light (High = dramatic contrast/chiaroscuro, Low = even/diffused light)
-  Highest: Renaissance            (+1.169)
-  Lowest:  Impressionism          (-0.961)
+  Highest: Renaissance            (+0.702)
+  Lowest:  Impressionism          (-0.668)
 
 Color (High = vivid/saturated, Low = muted/tonal)
-  Highest: Pop Art                (+0.992)
-  Lowest:  Baroque                (-1.626)
+  Highest: Pop Art                (+0.743)
+  Lowest:  Baroque                (-0.847)
