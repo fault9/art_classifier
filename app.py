@@ -93,6 +93,15 @@ GENRE_COLORS = {
     "Pop Art":      "#FF1493",
 }
 
+EXAMPLE_IMAGE_PATHS = [
+    ["Raphael - Self Portrait", "examples/raphael_self_portrait.jpg"],
+    ["Caravaggio - Supper at Emmaus", "examples/caravaggio_supper_at_emmaus.jpg"],
+    ["Monet - The Coast at Sainte-Adresse", "examples/monet_coast_at_sainte_adresse.jpg"],
+    ["Juan Gris - Three Lamps", "examples/juan_gris_three_lamps.jpg"],
+]
+
+EXAMPLE_IMAGE_INPUTS = [[path, ""] for _, path in EXAMPLE_IMAGE_PATHS]
+
 # Wölfflin theoretical positions (−1 = classical, +1 = non-classical)
 WOLFFLIN_THEORY = {
     "Renaissance":  [-1.0, -0.8, -0.9, -0.7, -1.0],
@@ -624,6 +633,11 @@ with gr.Blocks(title="Art Movement Classifier") as demo:
                 img_in  = gr.Image(type="pil", sources=["upload", "clipboard"], label="Upload or drag painting")
                 url_in  = gr.Textbox(placeholder="https://…  (direct image URL)", label="Or paste image URL")
                 classify_btn = gr.Button("Classify", variant="primary")
+                gr.Examples(
+                    examples=EXAMPLE_IMAGE_INPUTS,
+                    inputs=[img_in, url_in],
+                    label="Try an example painting",
+                )
             with gr.Column(scale=2):
                 result_label = gr.Markdown()
                 result_chart = gr.Plot(label="Confidence Scores")
@@ -682,6 +696,11 @@ with gr.Blocks(title="Art Movement Classifier") as demo:
                 wimg_in     = gr.Image(type="pil", sources=["upload", "clipboard"], label="Upload or drag painting")
                 wurl_in     = gr.Textbox(placeholder="https://…  (direct image URL)", label="Or paste image URL")
                 wanalyze_btn = gr.Button("Analyse", variant="primary")
+                gr.Examples(
+                    examples=EXAMPLE_IMAGE_INPUTS,
+                    inputs=[wimg_in, wurl_in],
+                    label="Try an example painting",
+                )
             with gr.Column(scale=2):
                 wolfflin_md    = gr.Markdown()
                 wolfflin_radar = gr.Plot()
@@ -708,6 +727,11 @@ with gr.Blocks(title="Art Movement Classifier") as demo:
                 aimg_in     = gr.Image(type="pil", sources=["upload", "clipboard"], label="Upload or drag painting")
                 aurl_in     = gr.Textbox(placeholder="https://…  (direct image URL)", label="Or paste image URL")
                 aanalyze_btn = gr.Button("Analyse (Arnheim)", variant="primary")
+                gr.Examples(
+                    examples=EXAMPLE_IMAGE_INPUTS,
+                    inputs=[aimg_in, aurl_in],
+                    label="Try an example painting",
+                )
             with gr.Column(scale=2):
                 arnheim_md    = gr.Markdown()
                 arnheim_radar = gr.Plot()

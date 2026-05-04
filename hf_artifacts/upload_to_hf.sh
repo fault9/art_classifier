@@ -48,6 +48,7 @@ echo "Uploading Space..."
 hf upload "$SPACE_REPO" hf_artifacts/space/README.md README.md --repo-type space
 hf upload "$SPACE_REPO" app.py app.py --repo-type space
 hf upload "$SPACE_REPO" hf_artifacts/space/requirements.txt requirements.txt --repo-type space
+hf upload "$SPACE_REPO" examples examples --repo-type space
 hf upload "$SPACE_REPO" models/classifier.joblib models/classifier.joblib --repo-type space
 hf upload "$SPACE_REPO" models/label_encoder.joblib models/label_encoder.joblib --repo-type space
 hf upload "$SPACE_REPO" models/config.json models/config.json --repo-type space
