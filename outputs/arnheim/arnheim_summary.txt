@@ -6,14 +6,14 @@ Per-class mean scores (range approx. -1 to +1)
 
 Class                        Balance         Shape         Depth       Tension         Light         Color
 ----------------------------------------------------------------------------------------------------------
-Renaissance                    0.753        -0.189         0.803        -0.239         0.702        -0.761
-Baroque                        0.454        -0.321         0.674         0.065         0.702        -0.847
-Impressionism                 -0.470        -0.810         0.038        -0.635        -0.668        -0.501
-Expressionism                 -0.492        -0.012        -0.233         0.250        -0.335        -0.053
-Cubism                        -0.735         0.500        -0.548         0.263        -0.563         0.398
-Abstract                      -0.804         0.692        -0.824         0.499        -0.595         0.732
-Surrealism                    -0.706         0.649        -0.587         0.612        -0.363         0.505
-Pop Art                       -0.614         0.627        -0.742         0.418        -0.619         0.743
+Renaissance                    0.753        -0.189         0.803        -0.239         0.702        -0.772
+Baroque                        0.454        -0.321         0.674         0.065         0.702        -0.764
+Impressionism                 -0.470        -0.810         0.038        -0.635        -0.668        -0.411
+Expressionism                 -0.492        -0.012        -0.233         0.250        -0.335        -0.030
+Cubism                        -0.735         0.500        -0.548         0.263        -0.563         0.410
+Abstract                      -0.804         0.692        -0.824         0.499        -0.595         0.757
+Surrealism                    -0.706         0.649        -0.587         0.612        -0.363         0.532
+Pop Art                       -0.614         0.627        -0.742         0.418        -0.619         0.730
 
 ========================================================================
 Observations
@@ -40,5 +40,5 @@ Light (High = dramatic contrast/chiaroscuro, Low = even/diffused light)
   Lowest:  Impressionism          (-0.668)
 
 Color (High = vivid/saturated, Low = muted/tonal)
-  Highest: Pop Art                (+0.743)
-  Lowest:  Baroque                (-0.847)
+  Highest: Abstract               (+0.757)
+  Lowest:  Renaissance            (-0.772)
