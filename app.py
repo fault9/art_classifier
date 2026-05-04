@@ -100,7 +100,8 @@ EXAMPLE_IMAGE_PATHS = [
     ["Juan Gris - Three Lamps", "examples/juan_gris_three_lamps.jpg"],
 ]
 
-EXAMPLE_IMAGE_INPUTS = [[path, ""] for _, path in EXAMPLE_IMAGE_PATHS]
+EXAMPLE_IMAGE_BY_LABEL = {label: path for label, path in EXAMPLE_IMAGE_PATHS}
+
 
 # Wölfflin theoretical positions (−1 = classical, +1 = non-classical)
 WOLFFLIN_THEORY = {
@@ -145,6 +146,13 @@ def resolve_image(img: Image.Image | None, url: str) -> Image.Image | None:
     if img is not None:
         return img
     return load_from_url(url)
+
+
+
+
+def load_example_image(label: str):
+    """Load a bundled example into the shared image input."""
+    return EXAMPLE_IMAGE_BY_LABEL.get(label), ""
 
 
 # ---------------------------------------------------------------------------
@@ -623,28 +631,39 @@ with gr.Blocks(title="Art Movement Classifier") as demo:
         "Wölfflin's Renaissance-Baroque visual principles and Arnheim-inspired perceptual scores."
     )
 
+    gr.Markdown("### Painting Input")
+    with gr.Row():
+        with gr.Column(scale=1):
+            shared_img = gr.Image(type="pil", sources=["upload", "clipboard"], label="Upload or drag painting")
+        with gr.Column(scale=1):
+            shared_url = gr.Textbox(placeholder="https://...  (direct image URL)", label="Or paste image URL")
+            example_choice = gr.Dropdown(
+                choices=[label for label, _ in EXAMPLE_IMAGE_PATHS],
+                label="Try an example painting",
+                value=None,
+            )
+            load_example_btn = gr.Button("Load Example")
+    load_example_btn.click(
+        load_example_image,
+        inputs=example_choice,
+        outputs=[shared_img, shared_url],
+    )
+
     with gr.Tab("Painting Classifier"):
         gr.Markdown(
-            "Classifies a single painting into one of eight movements and shows the model's "
-            "confidence distribution. Ambiguous old-master or modern works may receive close scores."
+            "Classifies the shared painting input into one of eight movements and shows the "
+            "model's confidence distribution. Ambiguous old-master or modern works may receive close scores."
         )
+        classify_btn = gr.Button("Classify Shared Painting", variant="primary")
         with gr.Row():
             with gr.Column(scale=1):
-                img_in  = gr.Image(type="pil", sources=["upload", "clipboard"], label="Upload or drag painting")
-                url_in  = gr.Textbox(placeholder="https://…  (direct image URL)", label="Or paste image URL")
-                classify_btn = gr.Button("Classify", variant="primary")
-                gr.Examples(
-                    examples=EXAMPLE_IMAGE_INPUTS,
-                    inputs=[img_in, url_in],
-                    label="Try an example painting",
-                )
-            with gr.Column(scale=2):
                 result_label = gr.Markdown()
-                result_chart = gr.Plot(label="Confidence Scores")
                 result_desc  = gr.Markdown()
+            with gr.Column(scale=2):
+                result_chart = gr.Plot(label="Confidence Scores")
         classify_btn.click(
             classify_painting,
-            inputs=[img_in, url_in],
+            inputs=[shared_img, shared_url],
             outputs=[result_label, result_chart, result_desc],
         )
 
@@ -691,22 +710,15 @@ with gr.Blocks(title="Art Movement Classifier") as demo:
             "Renaissance and Baroque references are shown on the radar because they are the "
             "framework's clearest poles."
         )
+        wanalyze_btn = gr.Button("Analyse Shared Painting (Wölfflin)", variant="primary")
         with gr.Row():
             with gr.Column(scale=1):
-                wimg_in     = gr.Image(type="pil", sources=["upload", "clipboard"], label="Upload or drag painting")
-                wurl_in     = gr.Textbox(placeholder="https://…  (direct image URL)", label="Or paste image URL")
-                wanalyze_btn = gr.Button("Analyse", variant="primary")
-                gr.Examples(
-                    examples=EXAMPLE_IMAGE_INPUTS,
-                    inputs=[wimg_in, wurl_in],
-                    label="Try an example painting",
-                )
-            with gr.Column(scale=2):
                 wolfflin_md    = gr.Markdown()
+            with gr.Column(scale=2):
                 wolfflin_radar = gr.Plot()
         wanalyze_btn.click(
             wolfflin_analysis,
-            inputs=[wimg_in, wurl_in],
+            inputs=[shared_img, shared_url],
             outputs=[wolfflin_md, wolfflin_radar],
         )
 
@@ -722,22 +734,15 @@ with gr.Blocks(title="Art Movement Classifier") as demo:
             "The result is exploratory: it shows what the model sees as visually similar, "
             "not a final scholarly judgment."
         )
+        aanalyze_btn = gr.Button("Analyse Shared Painting (Arnheim)", variant="primary")
         with gr.Row():
             with gr.Column(scale=1):
-                aimg_in     = gr.Image(type="pil", sources=["upload", "clipboard"], label="Upload or drag painting")
-                aurl_in     = gr.Textbox(placeholder="https://…  (direct image URL)", label="Or paste image URL")
-                aanalyze_btn = gr.Button("Analyse (Arnheim)", variant="primary")
-                gr.Examples(
-                    examples=EXAMPLE_IMAGE_INPUTS,
-                    inputs=[aimg_in, aurl_in],
-                    label="Try an example painting",
-                )
-            with gr.Column(scale=2):
                 arnheim_md    = gr.Markdown()
+            with gr.Column(scale=2):
                 arnheim_radar = gr.Plot()
         aanalyze_btn.click(
             arnheim_perceptual,
-            inputs=[aimg_in, aurl_in],
+            inputs=[shared_img, shared_url],
             outputs=[arnheim_md, arnheim_radar],
         )
 
