@@ -94,10 +94,10 @@ GENRE_COLORS = {
 }
 
 EXAMPLE_IMAGE_PATHS = [
-    ["Raphael - Self Portrait (expected: Renaissance)", "examples/raphael_self_portrait.jpg"],
-    ["Caravaggio - Supper at Emmaus (expected: Baroque)", "examples/caravaggio_supper_at_emmaus.jpg"],
-    ["Monet - The Coast at Sainte-Adresse (expected: Impressionism)", "examples/monet_coast_at_sainte_adresse.jpg"],
-    ["Juan Gris - Three Lamps (expected: Cubism)", "examples/juan_gris_three_lamps.jpg"],
+    ["Raphael - Self Portrait (expected: Renaissance, held-out test)", "examples/raphael_self_portrait.jpg"],
+    ["Caravaggio - Supper at Emmaus (expected: Baroque, not in training split)", "examples/caravaggio_supper_at_emmaus.jpg"],
+    ["Monet - The Coast at Sainte-Adresse (expected: Impressionism, held-out test)", "examples/monet_coast_at_sainte_adresse.jpg"],
+    ["Georges Braque - Fruit Dish (expected: Cubism, held-out test)", "examples/georges_braque_fruit_dish.jpg"],
 ]
 
 EXAMPLE_IMAGE_BY_LABEL = {label: path for label, path in EXAMPLE_IMAGE_PATHS}
