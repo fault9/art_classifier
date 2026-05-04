@@ -98,6 +98,7 @@ EXAMPLE_IMAGE_PATHS = [
     ["Caravaggio - Supper at Emmaus (expected: Baroque, not in training split)", "examples/caravaggio_supper_at_emmaus.jpg"],
     ["Monet - The Coast at Sainte-Adresse (expected: Impressionism, held-out test)", "examples/monet_coast_at_sainte_adresse.jpg"],
     ["Georges Braque - Fruit Dish (expected: Cubism, held-out test)", "examples/georges_braque_fruit_dish.jpg"],
+    ["Salvador Dali - Honey Is Sweeter Than Blood (expected: Surrealism, held-out test)", "examples/salvador_dali_honey_is_sweeter_than_blood.jpg"],
 ]
 
 EXAMPLE_IMAGE_BY_LABEL = {label: path for label, path in EXAMPLE_IMAGE_PATHS}
