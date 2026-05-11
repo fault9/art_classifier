@@ -42,6 +42,14 @@ Held-out test accuracy: **0.8093**
 
 Cross-validation accuracy: **0.8138 ± 0.0173**
 
+Classifier comparison on CLIP embeddings:
+
+| Classifier | 5-fold CV accuracy | Std. dev. |
+|---|---:|---:|
+| MLP | 0.8138 | 0.0173 |
+| SVM-RBF | 0.8101 | 0.0125 |
+| Logistic Regression | 0.7606 | 0.0128 |
+
 Per-class F1:
 
 | Class | F1 |
@@ -60,7 +68,8 @@ Per-class F1:
 - `classifier.joblib`: trained scikit-learn classifier
 - `label_encoder.joblib`: label encoder for class ids
 - `config.json`: embedding/model configuration
-- `evaluation_metrics.json`: held-out and cross-validation metrics
+- `evaluation_metrics.json`: held-out metrics and embedded classifier comparison
+- `classifier_comparison.csv` / `classifier_comparison.json`: cross-validation comparison for the trained classifiers
 - `confusion_matrix.png`: normalized confusion matrix
 - `wolfflin_pca_clip.png`: Wölfflin-inspired PCA analysis
 - `arnheim_axes.npz`: Arnheim perceptual axis vectors used by the demo

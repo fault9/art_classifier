@@ -156,6 +156,86 @@ def load_example_image(label: str):
     return EXAMPLE_IMAGE_BY_LABEL.get(label), ""
 
 
+def load_evaluation_metrics() -> dict:
+    metrics_path = MODELS_DIR / "evaluation_metrics.json"
+    if not metrics_path.exists():
+        return {}
+    try:
+        with open(metrics_path) as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def load_classifier_comparison(metrics: dict | None = None) -> list[dict]:
+    comparison_path = MODELS_DIR / "classifier_comparison.json"
+    if comparison_path.exists():
+        try:
+            with open(comparison_path) as f:
+                rows = json.load(f)
+            if isinstance(rows, list):
+                return rows
+        except Exception:
+            pass
+    metrics = metrics or {}
+    rows = metrics.get("classifier_comparison", [])
+    return rows if isinstance(rows, list) else []
+
+
+def render_evaluation_summary() -> str:
+    metrics = load_evaluation_metrics()
+    comparison = load_classifier_comparison(metrics)
+
+    heldout = metrics.get("heldout_accuracy")
+    train_size = metrics.get("train_size", "?")
+    test_size = metrics.get("test_size", "?")
+    best_embedding = metrics.get("best_embedding", "CLIP")
+    best_classifier = metrics.get("best_classifier", "MLP")
+    cv_acc = metrics.get("cv_accuracy")
+    cv_std = metrics.get("cv_std")
+
+    heldout_text = f"{heldout * 100:.1f}%" if isinstance(heldout, (int, float)) else "Not available"
+    cv_text = (
+        f"{cv_acc * 100:.1f}% +/- {cv_std * 100:.1f}%"
+        if isinstance(cv_acc, (int, float)) and isinstance(cv_std, (int, float))
+        else "Not available"
+    )
+
+    lines = [
+        "## Evaluation",
+        "",
+        "The demo uses the best model selected by 5-fold stratified cross-validation, then reports performance on a held-out test split.",
+        "",
+        f"- **Active model:** {best_embedding} embeddings + {best_classifier}",
+        f"- **Held-out test accuracy:** {heldout_text}",
+        f"- **Best cross-validation accuracy:** {cv_text}",
+        f"- **Split size:** {train_size} train / {test_size} test images",
+        "",
+        "### Classifier Comparison",
+        "",
+        "| Embedding | Classifier | 5-fold CV accuracy | Std. dev. |",
+        "|---|---|---:|---:|",
+    ]
+
+    if comparison:
+        for row in comparison:
+            emb = row.get("embedding", "?")
+            clf = str(row.get("classifier", "?")).replace("LogisticRegression", "Logistic Regression")
+            acc = row.get("cv_accuracy")
+            std = row.get("cv_std")
+            acc_text = f"{acc * 100:.1f}%" if isinstance(acc, (int, float)) else "?"
+            std_text = f"{std * 100:.1f}%" if isinstance(std, (int, float)) else "?"
+            lines.append(f"| {emb} | {clf} | {acc_text} | {std_text} |")
+    else:
+        lines.append("| Not available | Not available | Not available | Not available |")
+
+    lines += [
+        "",
+        "This comparison is included to document that the project trained several classifiers and selected the strongest one for the public demo.",
+    ]
+    return "\n".join(lines)
+
+
 # ---------------------------------------------------------------------------
 # Model loading (lazy, cached)
 # ---------------------------------------------------------------------------
@@ -774,6 +854,9 @@ with gr.Blocks(title="Art Movement Classifier") as demo:
             inputs=[gallery_in, urls_in],
             outputs=[collection_md, collection_radar],
         )
+
+    with gr.Tab("Evaluation"):
+        gr.Markdown(render_evaluation_summary())
 
 if __name__ == "__main__":
     demo.launch(

@@ -1,0 +1,20 @@
+[
+  {
+    "embedding":"CLIP",
+    "classifier":"MLP",
+    "cv_accuracy":0.8137614679,
+    "cv_std":0.0173100571
+  },
+  {
+    "embedding":"CLIP",
+    "classifier":"SVM-RBF",
+    "cv_accuracy":0.8100917431,
+    "cv_std":0.0125120933
+  },
+  {
+    "embedding":"CLIP",
+    "classifier":"LogisticRegression",
+    "cv_accuracy":0.7605504587,
+    "cv_std":0.0127783379
+  }
+]

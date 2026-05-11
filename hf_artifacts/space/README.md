@@ -21,6 +21,7 @@ This Gradio Space is the working demo for an embeddings lab project. Upload a pa
 - Collection analyzer for multiple images
 - Wölfflin theoretical profile for the predicted movement, mainly meaningful as a Renaissance-Baroque reference
 - Arnheim-inspired perceptual profile using CLIP anchor axes, with selectable movement overlays shown as perceptual similarity rather than a second prediction
+- Evaluation tab showing held-out accuracy and the Logistic Regression, SVM-RBF, and MLP classifier comparison
 
 ## Project Summary
 
@@ -31,6 +32,8 @@ Embedding model: `openai/clip-vit-base-patch32`
 Classifier: scikit-learn MLP on frozen CLIP image embeddings
 
 Held-out accuracy: `0.8093`
+
+Best 5-fold CV model: `CLIP + MLP` at `0.8138 +/- 0.0173`
 
 Classes:
 

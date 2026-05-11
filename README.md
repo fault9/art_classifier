@@ -19,11 +19,11 @@ The short academic report for the course submission is in [`REPORT.md`](REPORT.m
 
 **Embedding type:** CLIP image embeddings from `openai/clip-vit-base-patch32`.
 
-**Trained model:** scikit-learn MLP classifier trained on frozen CLIP embeddings.
+**Trained model:** scikit-learn MLP classifier trained on frozen CLIP embeddings after comparing Logistic Regression, SVM-RBF, and MLP classifiers.
 
 **Custom dataset:** 1,478 paintings across 8 art movements, with fixed train/test splits and artist-dominance audit files.
 
-**Held-out accuracy:** 0.8093.
+**Held-out accuracy:** 0.8093. Best 5-fold CV model: CLIP + MLP at 0.8138 +/- 0.0173.
 
 **Demo:** Gradio app in `app.py` with single-image classification, collection analysis, Wölfflin profiles, and an Arnheim radar that can overlay selected empirical movement profiles for perceptual comparison.
 
@@ -126,9 +126,10 @@ If an anchor artist isn't in the training set (it's only ~1,400 paintings), thei
 
 1. **Image embeddings** from `openai/clip-vit-base-patch32`
 2. **MLP classifier** trained on frozen CLIP embeddings
-3. **Held-out test evaluation** plus cross-validation metrics
-4. **Wölfflin analysis** on CLIP class centroids via PCA
-5. **Arnheim analysis** through anchor-based projection in CLIP space, reported as perceptual similarity rather than classification
+3. **Model selection** comparing Logistic Regression, SVM-RBF, and MLP with 5-fold stratified cross-validation
+4. **Held-out test evaluation** on the fixed test split
+5. **Wölfflin analysis** on CLIP class centroids via PCA
+6. **Arnheim analysis** through anchor-based projection in CLIP space, reported as perceptual similarity rather than classification
 
 ---
 
@@ -163,6 +164,8 @@ art_classifier/
 │   ├── classifier.joblib
 │   ├── label_encoder.joblib
 │   ├── config.json
+│   ├── classifier_comparison.csv
+│   ├── classifier_comparison.json
 │   ├── arnheim_axes.npz           # Arnheim axis vectors (written by arnheim_analysis.py)
 │   ├── confusion_matrix.png
 │   └── wolfflin_pca_{model}.png
@@ -211,7 +214,15 @@ To rebuild the dataset from source metadata, use `data/scrape_wikiart.py` and `d
 
 ## Expected Results and Genre Confusion
 
-The held-out test accuracy is **0.8093**. Common confusions are expected where movements share subjects or visual structure:
+The held-out test accuracy is **0.8093**. The training pipeline compares several classifiers on the same CLIP embeddings before selecting the final model:
+
+| Embedding | Classifier | 5-fold CV accuracy | Std. dev. |
+|---|---:|---:|---:|
+| CLIP | MLP | 0.8138 | 0.0173 |
+| CLIP | SVM-RBF | 0.8101 | 0.0125 |
+| CLIP | Logistic Regression | 0.7606 | 0.0128 |
+
+Common confusions are expected where movements share subjects or visual structure:
 
 - **Renaissance ↔ Baroque**: highest confusion pair — both are Old Masters painting in oil on canvas with similar subjects. The visual difference (linear vs chiaroscuro) is subtle at thumbnail resolution.
 - **Impressionism ↔ Expressionism**: both feature visible brushwork and non-classical composition; the distinction is in color naturalism (Impressionism) vs emotional distortion (Expressionism).

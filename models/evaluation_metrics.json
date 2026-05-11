@@ -4,6 +4,26 @@
   "best_classifier": "MLP",
   "cv_accuracy": 0.8137614678899083,
   "cv_std": 0.017310057123039655,
+  "classifier_comparison": [
+    {
+      "embedding": "CLIP",
+      "classifier": "MLP",
+      "cv_accuracy": 0.8137614678899083,
+      "cv_std": 0.017310057123039655
+    },
+    {
+      "embedding": "CLIP",
+      "classifier": "SVM-RBF",
+      "cv_accuracy": 0.8100917431192659,
+      "cv_std": 0.012512093299987027
+    },
+    {
+      "embedding": "CLIP",
+      "classifier": "LogisticRegression",
+      "cv_accuracy": 0.7605504587155963,
+      "cv_std": 0.012778337868976244
+    }
+  ],
   "train_size": 1090,
   "test_size": 388,
   "per_class": {

@@ -174,10 +174,17 @@ def encode_with_cache(
     image_paths: list[str],
     batch_size: int,
 ) -> np.ndarray:
-    """Load cached embeddings by absolute path and encode only missing images."""
+    """Load cached embeddings and encode only missing images.
+
+    Caches may contain absolute paths from an older project folder name, so we
+    match both absolute paths and relative data/... paths before deciding an
+    image needs to be re-encoded.
+    """
     cache_file = MODELS_DIR / f"embeddings_{emb_name.lower()}.npz"
     abs_paths = [str(Path(p).resolve()) for p in image_paths]
-    cached: dict[str, np.ndarray] = {}
+    rel_paths = [str(Path(p)) for p in image_paths]
+    cached_by_abs: dict[str, np.ndarray] = {}
+    cached_by_rel: dict[str, np.ndarray] = {}
     dim: int | None = None
 
     if cache_file.exists():
@@ -185,28 +192,46 @@ def encode_with_cache(
         cached_paths = [str(p) for p in data["paths"]]
         cached_embeddings = data["embeddings"]
         dim = cached_embeddings.shape[1]
-        cached = {p: cached_embeddings[i] for i, p in enumerate(cached_paths)}
-        log.info("  Loaded %d cached %s embeddings from %s", len(cached), emb_name, cache_file)
+        for i, cached_path in enumerate(cached_paths):
+            emb = cached_embeddings[i]
+            cached_by_abs[cached_path] = emb
+            parts = Path(cached_path).parts
+            if "data" in parts:
+                data_pos = parts.index("data")
+                cached_by_rel[str(Path(*parts[data_pos:]))] = emb
+        log.info("  Loaded %d cached %s embeddings from %s", len(cached_paths), emb_name, cache_file)
 
-    missing_paths = [p for p in abs_paths if p not in cached]
-    if missing_paths:
-        log.info("  Encoding %d new/missing %s images", len(missing_paths), emb_name)
-        missing_embeddings = encoder(missing_paths, batch_size)
+    missing_abs_paths = []
+    encoded_missing = False
+    X_rows: list[np.ndarray | None] = []
+    for abs_path, rel_path in zip(abs_paths, rel_paths):
+        if abs_path in cached_by_abs:
+            X_rows.append(cached_by_abs[abs_path])
+        elif rel_path in cached_by_rel:
+            X_rows.append(cached_by_rel[rel_path])
+        else:
+            X_rows.append(None)
+            missing_abs_paths.append(abs_path)
+
+    if missing_abs_paths:
+        log.info("  Encoding %d new/missing %s images", len(missing_abs_paths), emb_name)
+        missing_embeddings = encoder(missing_abs_paths, batch_size)
+        encoded_missing = True
         dim = missing_embeddings.shape[1]
-        for p, emb in zip(missing_paths, missing_embeddings):
-            cached[p] = emb
+        missing_iter = iter(missing_embeddings)
+        for i, row in enumerate(X_rows):
+            if row is None:
+                X_rows[i] = next(missing_iter)
     else:
         log.info("  Reusing cached %s embeddings for all %d images", emb_name, len(abs_paths))
 
     if dim is None:
         raise RuntimeError(f"No {emb_name} embeddings available")
 
-    X = np.zeros((len(abs_paths), dim))
-    for i, p in enumerate(abs_paths):
-        X[i] = cached[p]
-
-    np.savez_compressed(str(cache_file), embeddings=X, paths=np.array(abs_paths))
-    log.info("  Saved current %s embedding cache -> %s", emb_name, cache_file)
+    X = np.stack([row for row in X_rows if row is not None])
+    if encoded_missing:
+        np.savez_compressed(str(cache_file), embeddings=X, paths=np.array(abs_paths))
+        log.info("  Saved current %s embedding cache -> %s", emb_name, cache_file)
     return X
 
 
@@ -225,6 +250,29 @@ def run_cv(X: np.ndarray, y: np.ndarray, cv: StratifiedKFold) -> dict[str, tuple
     return results
 
 
+def comparison_results_df(all_results: dict) -> pd.DataFrame:
+    rows = []
+    for (emb, clf), (mean, std) in all_results.items():
+        rows.append({
+            "embedding": emb,
+            "classifier": clf,
+            "cv_accuracy": float(mean),
+            "cv_std": float(std),
+        })
+    return pd.DataFrame(rows).sort_values("cv_accuracy", ascending=False).reset_index(drop=True)
+
+
+def save_comparison_results(all_results: dict) -> pd.DataFrame:
+    comparison_df = comparison_results_df(all_results)
+    out_csv = MODELS_DIR / "classifier_comparison.csv"
+    out_json = MODELS_DIR / "classifier_comparison.json"
+    comparison_df.to_csv(out_csv, index=False)
+    comparison_df.to_json(out_json, orient="records", indent=2)
+    print(f"Saved classifier comparison -> {out_csv}")
+    print(f"Saved classifier comparison -> {out_json}")
+    return comparison_df
+
+
 def print_comparison_table(all_results: dict) -> tuple[str, str]:
     print("\n" + "═" * 70)
     print(f"{'Model Comparison — 5-fold Stratified CV':^70}")
@@ -240,7 +288,6 @@ def print_comparison_table(all_results: dict) -> tuple[str, str]:
     best_acc = all_results[best_key][0]
     print(f"\nBest: {best_key[0]} + {best_key[1]}  (CV acc = {best_acc:.3f})")
     return best_key
-
 
 def plot_confusion_matrix(cm: np.ndarray, labels: list[str], title: str, path: Path) -> None:
     cm_norm = cm.astype(float) / cm.sum(axis=1, keepdims=True)
@@ -428,6 +475,8 @@ def main():
         return
 
     best_emb_name, best_clf_name = print_comparison_table(all_results)
+    comparison_df = save_comparison_results(all_results)
+    comparison_records = comparison_df.to_dict(orient="records")
     X_train_best, X_test_best, X_all_best = embeddings_cache[best_emb_name]
 
     # Final evaluation
@@ -464,6 +513,7 @@ def main():
         "best_classifier": best_clf_name,
         "cv_accuracy": float(all_results[(best_emb_name, best_clf_name)][0]),
         "cv_std": float(all_results[(best_emb_name, best_clf_name)][1]),
+        "classifier_comparison": comparison_records,
         "train_size": int(len(train_df)),
         "test_size": int(len(test_df)),
         "per_class": {
